@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://WorldMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/2D/HandZone.png" type="Texture" id=2]
 
 [node name="Main" type="Spatial"]
 
@@ -13,5 +14,26 @@ transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 10, 12, 19 
 current = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 24, 0 )
-light_color = Color( 1, 0.803922, 0.521569, 1 )
+transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 24, 0 )
+light_color = Color( 1, 0.913725, 0.690196, 1 )
+light_energy = 0.705
+shadow_enabled = true
+
+[node name="UserInterface" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HandZone" type="Control" parent="UserInterface"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -120.0
+margin_right = 256.0
+rect_min_size = Vector2( 512, 208 )
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/HandZone"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )

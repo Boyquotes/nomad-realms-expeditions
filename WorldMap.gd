@@ -14,7 +14,7 @@ func _ready() -> void:
 			var tile: Spatial = tile_scene.instance()
 			var tile_pos: Vector2
 			tile.translation.x = 1.5 * x
-			tile.translation.y = rand_range(0, 1)
+			tile.scale.y = (randi() % 10 + 1) * 0.2
 			tile.translation.z = sqrt(3) * z
 			if x % 2 == 1:
 				tile.translation.z += sqrt(3) * 0.5
