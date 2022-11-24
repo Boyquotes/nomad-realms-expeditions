@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Spatial",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://Scenes/Map/Tile.gd"
+}, {
+"base": "Spatial",
+"class": "WorldMap",
+"language": "GDScript",
+"path": "res://Scenes/Map/WorldMap.gd"
+} ]
+_global_script_class_icons={
+"Tile": "",
+"WorldMap": ""
+}
+
 [application]
 
 config/name="godot-card-game"
