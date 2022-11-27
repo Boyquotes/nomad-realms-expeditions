@@ -3,7 +3,6 @@ class_name WorldMap
 
 export (PackedScene) var tile_scene
 
-
 var tiles: Array = []
 
 # Called when the node enters the scene tree for the first time.

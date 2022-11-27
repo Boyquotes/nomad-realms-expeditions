@@ -10,4 +10,4 @@ func _ready() -> void:
 		var new_card: Card = card_scene.instance()
 		new_card.reset_position(i, cards.size());
 		# Set new card type...
-		$HandZone/Cards.add_child(new_card)
+#		$HandZone/Cards.add_child(new_card)

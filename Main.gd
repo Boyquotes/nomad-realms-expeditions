@@ -1,11 +1,9 @@
 extends Spatial
 
+onready var world_map: Spatial = $WorldMap
+onready var nomad: Spatial = $Actors/Nomad
+
 func _ready() -> void:
-	# Wait for the rest of the scene to load
-	yield(get_tree().root, "ready")
-	
-	var world_map: Spatial = $WorldMap
-	var nomad: Spatial = $Actors/Nomad
 	
 	# Generate a random position to spawn the nomad
 	var z = randi() % world_map.tiles.size()

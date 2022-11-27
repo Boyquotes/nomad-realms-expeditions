@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/3D/tile.glb" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Map/Tile.gd" type="Script" id=2]
-[ext_resource path="res://Shaders/TileShader.tres" type="Material" id=3]
+[ext_resource path="res://Assets/3D/Outline.material" type="Material" id=2]
+[ext_resource path="res://Assets/3D/Fill.material" type="Material" id=3]
+[ext_resource path="res://Scenes/Map/Tile.gd" type="Script" id=4]
 
 [node name="Tile" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 
 [node name="Hexagon" parent="." index="0"]
-material/0 = ExtResource( 3 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )

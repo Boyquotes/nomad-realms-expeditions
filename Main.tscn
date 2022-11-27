@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Map/WorldMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Actors/Nomad.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://CameraPivot.gd" type="Script" id=4]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 3 )
@@ -14,7 +15,7 @@ script = ExtResource( 3 )
 [node name="Nomad" parent="Actors" instance=ExtResource( 2 )]
 
 [node name="CameraPivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 10, 12, 19 )
+script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
 current = true
