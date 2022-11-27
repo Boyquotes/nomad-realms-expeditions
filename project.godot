@@ -9,29 +9,41 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://Scripts/Actors/Actor.gd"
+}, {
 "base": "Control",
 "class": "Card",
 "language": "GDScript",
-"path": "res://Scenes/UI/Card.gd"
+"path": "res://Scripts/UI/Card.gd"
 }, {
-"base": "Object",
+"base": "Node",
 "class": "GameLogic",
 "language": "GDScript",
-"path": "res://GameLogic/GameLogic.gd"
+"path": "res://GameLogic.gd"
+}, {
+"base": "Spatial",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Main.gd"
 }, {
 "base": "Spatial",
 "class": "Tile",
 "language": "GDScript",
-"path": "res://Scenes/Map/Tile.gd"
+"path": "res://Scripts/Map/Tile.gd"
 }, {
 "base": "Spatial",
 "class": "WorldMap",
 "language": "GDScript",
-"path": "res://Scenes/Map/WorldMap.gd"
+"path": "res://Scripts/Map/WorldMap.gd"
 } ]
 _global_script_class_icons={
+"Actor": "",
 "Card": "",
 "GameLogic": "",
+"Main": "",
 "Tile": "",
 "WorldMap": ""
 }

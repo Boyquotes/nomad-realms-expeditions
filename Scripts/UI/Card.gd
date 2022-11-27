@@ -1,9 +1,11 @@
-signal card_released
+signal card_selected
+signal card_played
+signal card_cancelled
 
 extends Control
 class_name Card
 
-var target_scale = 1
+var target_scale: = 1.0
 var target_position: Vector2
 var dragged: = false
 

@@ -1,4 +1,5 @@
 extends Spatial
+class_name Main
 
 onready var world_map: Spatial = $WorldMap
 onready var nomad: Spatial = $Actors/Nomad
@@ -11,4 +12,3 @@ func _ready() -> void:
 	
 	nomad.translation = world_map.tiles[z][x].translation
 	nomad.translation.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
-	

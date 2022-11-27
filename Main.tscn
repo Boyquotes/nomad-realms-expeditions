@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Map/WorldMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Actors/Nomad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Map/WorldMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Actors/Nomad.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://CameraPivot.gd" type="Script" id=4]
+[ext_resource path="res://Assets/2D/HandZone.png" type="Texture" id=5]
+[ext_resource path="res://GameLogic.gd" type="Script" id=6]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 3 )
+
+[node name="GameLogic" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="GameVisuals" type="Node" parent="."]
 
 [node name="WorldMap" parent="." instance=ExtResource( 1 )]
 
@@ -25,3 +32,15 @@ transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819,
 light_color = Color( 1, 0.913725, 0.690196, 1 )
 light_energy = 0.705
 shadow_enabled = true
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CardHand" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HandZone" type="Sprite" parent="UI/CardHand"]
+position = Vector2( 490, 574 )
+texture = ExtResource( 5 )
