@@ -10,5 +10,7 @@ func update() -> void:
 	.update()
 	
 	# Update all actors
-#	get_tree().get_nodes_in_group("actor")
+	var actors: = get_tree().get_nodes_in_group("actors")
+	for i in range(len(actors)):
+		actors[i].update()
 	# Push events to GameVisuals

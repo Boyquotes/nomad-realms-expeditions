@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/UI/Card.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/2D/jary.png" type="Texture" id=4]
 
-[node name="Nomad" type="Spatial"]
+[node name="Nomad" type="Spatial" groups=["actors"]]
 script = ExtResource( 2 )
 card_scene = ExtResource( 3 )
 

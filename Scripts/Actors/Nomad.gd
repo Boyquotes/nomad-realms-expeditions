@@ -1,4 +1,4 @@
-extends Spatial
+extends Actor
 
 export (PackedScene) var card_scene
 
@@ -11,3 +11,6 @@ func _ready() -> void:
 		new_card.reset_position(i, cards.size());
 		# Set new card type...
 #		$HandZone/Cards.add_child(new_card)
+
+func update() -> void:
+	pass
