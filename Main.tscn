@@ -5,15 +5,17 @@
 [ext_resource path="res://Main.gd" type="Script" id=3]
 [ext_resource path="res://CameraPivot.gd" type="Script" id=4]
 [ext_resource path="res://Assets/2D/HandZone.png" type="Texture" id=5]
-[ext_resource path="res://GameLogic.gd" type="Script" id=6]
+[ext_resource path="res://GameLogic/GameLogicTimer.gd" type="Script" id=6]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="GameLogic" type="Node" parent="."]
+[node name="GameLogicTimer" type="Spatial" parent="."]
 script = ExtResource( 6 )
 
-[node name="GameVisuals" type="Node" parent="."]
+[node name="NREGameLogic" type="Spatial" parent="GameLogicTimer"]
+
+[node name="GameVisuals" type="Spatial" parent="."]
 
 [node name="WorldMap" parent="." instance=ExtResource( 1 )]
 

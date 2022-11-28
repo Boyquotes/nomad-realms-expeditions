@@ -22,12 +22,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GameLogic",
 "language": "GDScript",
-"path": "res://GameLogic.gd"
+"path": "res://GameLogic/GameLogic.gd"
+}, {
+"base": "Node",
+"class": "GameLogicTimer",
+"language": "GDScript",
+"path": "res://GameLogic/GameLogicTimer.gd"
 }, {
 "base": "Spatial",
 "class": "Main",
 "language": "GDScript",
 "path": "res://Main.gd"
+}, {
+"base": "GameLogic",
+"class": "NREGameLogic",
+"language": "GDScript",
+"path": "res://GameLogic/NREGameLogic.gd"
 }, {
 "base": "Spatial",
 "class": "Tile",
@@ -43,7 +53,9 @@ _global_script_class_icons={
 "Actor": "",
 "Card": "",
 "GameLogic": "",
+"GameLogicTimer": "",
 "Main": "",
+"NREGameLogic": "",
 "Tile": "",
 "WorldMap": ""
 }
