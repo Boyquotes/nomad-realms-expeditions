@@ -9,7 +9,7 @@ onready var camera_target: Spatial = $CameraTarget
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			# zoom in
