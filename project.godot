@@ -96,6 +96,11 @@ config/name="godot-card-game"
 run/main_scene="res://NREGameContext.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+mouse_cursor/custom_image="res://Assets/2D/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 5, 5 )
+
 [global]
 
 cursor=false
