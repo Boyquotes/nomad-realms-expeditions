@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Model/Card/CardDashboard.gd"
 }, {
+"base": "Control",
+"class": "CardHand",
+"language": "GDScript",
+"path": "res://Scripts/UI/CardHand.gd"
+}, {
 "base": "Actor",
 "class": "CardPlayer",
 "language": "GDScript",
@@ -73,6 +78,7 @@ _global_script_class_icons={
 "Actor": "",
 "Card": "",
 "CardDashboard": "",
+"CardHand": "",
 "CardPlayer": "",
 "ContextQueues": "",
 "GameLogic": "",
@@ -89,6 +95,10 @@ _global_script_class_icons={
 config/name="godot-card-game"
 run/main_scene="res://NREGameContext.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+cursor=false
 
 [gui]
 
