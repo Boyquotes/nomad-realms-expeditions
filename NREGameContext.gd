@@ -1,5 +1,5 @@
-extends Spatial
-class_name Main
+extends Node
+class_name NREGameContext
 
 onready var world_map: Spatial = $WorldMap
 onready var nomad: Spatial = $Actors/Nomad

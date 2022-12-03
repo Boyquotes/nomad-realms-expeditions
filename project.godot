@@ -12,27 +12,27 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Actor",
 "language": "GDScript",
-"path": "res://Scripts/Actors/Actor.gd"
+"path": "res://Scenes/Actors/Actor.gd"
 }, {
-"base": "Control",
+"base": "Node2D",
 "class": "Card",
 "language": "GDScript",
-"path": "res://Scripts/UI/Card.gd"
+"path": "res://Scenes/UI/Card.gd"
 }, {
 "base": "Object",
 "class": "CardDashboard",
 "language": "GDScript",
-"path": "res://Scripts/Model/Card/CardDashboard.gd"
+"path": "res://Scenes/Model/Card/CardDashboard.gd"
 }, {
-"base": "Control",
+"base": "Node2D",
 "class": "CardHand",
 "language": "GDScript",
-"path": "res://Scripts/UI/CardHand.gd"
+"path": "res://Scenes/UI/CardHand.gd"
 }, {
 "base": "Actor",
 "class": "CardPlayer",
 "language": "GDScript",
-"path": "res://Scripts/Actors/CardPlayer.gd"
+"path": "res://Scenes/Actors/CardPlayer.gd"
 }, {
 "base": "Object",
 "class": "ContextQueues",
@@ -49,10 +49,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://GameLogic/GameLogicTimer.gd"
 }, {
-"base": "Spatial",
-"class": "Main",
+"base": "Node",
+"class": "NREGameContext",
 "language": "GDScript",
-"path": "res://Main.gd"
+"path": "res://NREGameContext.gd"
 }, {
 "base": "GameLogic",
 "class": "NREGameLogic",
@@ -62,17 +62,17 @@ _global_script_classes=[ {
 "base": "CardPlayer",
 "class": "Nomad",
 "language": "GDScript",
-"path": "res://Scripts/Actors/Nomad.gd"
+"path": "res://Scenes/Actors/Nomad.gd"
 }, {
 "base": "Spatial",
 "class": "Tile",
 "language": "GDScript",
-"path": "res://Scripts/Map/Tile.gd"
+"path": "res://Scenes/Map/Tile.gd"
 }, {
 "base": "Spatial",
 "class": "WorldMap",
 "language": "GDScript",
-"path": "res://Scripts/Map/WorldMap.gd"
+"path": "res://Scenes/Map/WorldMap.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
@@ -83,7 +83,7 @@ _global_script_class_icons={
 "ContextQueues": "",
 "GameLogic": "",
 "GameLogicTimer": "",
-"Main": "",
+"NREGameContext": "",
 "NREGameLogic": "",
 "Nomad": "",
 "Tile": "",
@@ -122,6 +122,10 @@ rotate_camera={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="ui_cards"
 
 [physics]
 
