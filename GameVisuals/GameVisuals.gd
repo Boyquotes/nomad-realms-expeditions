@@ -16,6 +16,10 @@ func _ready() -> void:
 	for i in range(len(dashboard.hand)):
 		create_card_gui(dashboard.hand[i])
 	ui.reset_target_positions()
+	for i in range(ui_card_hand.cards.size()):
+		var card: Card = ui_card_hand.cards[i]
+		card.margin_left = card.target_position.x
+		card.margin_top = card.target_position.y + 40
 	print(":KJAOFIHPOAHIPRHPhi")
 		
 func create_card_gui(card: String) -> void:
