@@ -14,20 +14,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Actors/Actor.gd"
 }, {
-"base": "Node2D",
-"class": "Card",
-"language": "GDScript",
-"path": "res://Scenes/UI/Card.gd"
-}, {
 "base": "Object",
 "class": "CardDashboard",
 "language": "GDScript",
 "path": "res://Scenes/Model/Card/CardDashboard.gd"
-}, {
-"base": "Node2D",
-"class": "CardHand",
-"language": "GDScript",
-"path": "res://Scenes/UI/CardHand.gd"
 }, {
 "base": "Actor",
 "class": "CardPlayer",
@@ -38,6 +28,11 @@ _global_script_classes=[ {
 "class": "ContextQueues",
 "language": "GDScript",
 "path": "res://GameLogic/ContextQueues.gd"
+}, {
+"base": "Node2D",
+"class": "GameCard",
+"language": "GDScript",
+"path": "res://Scenes/Model/Card/GameCard.gd"
 }, {
 "base": "Node",
 "class": "GameLogic",
@@ -69,6 +64,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Map/Tile.gd"
 }, {
+"base": "Node2D",
+"class": "UICardDashBoard",
+"language": "GDScript",
+"path": "res://Scenes/UI/UICardDashboard.gd"
+}, {
+"base": "Node2D",
+"class": "UICardHand",
+"language": "GDScript",
+"path": "res://Scenes/UI/UICardHand.gd"
+}, {
+"base": "GameCard",
+"class": "WorldCard",
+"language": "GDScript",
+"path": "res://Scenes/UI/WorldCard.gd"
+}, {
 "base": "Spatial",
 "class": "WorldMap",
 "language": "GDScript",
@@ -76,17 +86,19 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Card": "",
 "CardDashboard": "",
-"CardHand": "",
 "CardPlayer": "",
 "ContextQueues": "",
+"GameCard": "",
 "GameLogic": "",
 "GameLogicTimer": "",
 "NREGameContext": "",
 "NREGameLogic": "",
 "Nomad": "",
 "Tile": "",
+"UICardDashBoard": "",
+"UICardHand": "",
+"WorldCard": "",
 "WorldMap": ""
 }
 

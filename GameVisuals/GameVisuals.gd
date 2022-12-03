@@ -6,7 +6,7 @@ export (PackedScene) var card_scene
 
 onready var player: Nomad = $"../Actors/Nomad"
 onready var ui: Node2D = $"../UI"
-onready var ui_card_hand: Node2D = $"../UI/CardHand"
+onready var ui_card_hand: Node2D = $"../UI/UICardDashboard/UICardHand"
 
 func init(context_queues: ContextQueues) -> void:
 	self.context_queues = context_queues
@@ -17,12 +17,12 @@ func _ready() -> void:
 		create_card_gui(dashboard.hand[i])
 	ui.reset_target_positions()
 	for i in range(ui_card_hand.cards.size()):
-		var card: Card = ui_card_hand.cards[i]
+		var card: WorldCard = ui_card_hand.cards[i]
 		card.position = card.target_position
 		card.position.y += 40
 		
 func create_card_gui(card: String) -> void:
-	var card_node: Card = card_scene.instance()
+	var card_node: WorldCard = card_scene.instance()
 	card_node.init(card)
 	ui_card_hand.add_card(card_node)
 

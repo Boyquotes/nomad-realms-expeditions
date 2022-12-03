@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/2D/HandZone.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UI/CardHand.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/UICardHand.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/UI/UICardDashboard.gd" type="Script" id=4]
 
 [node name="UI" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="CardHand" type="Node2D" parent="."]
+[node name="UICardDashboard" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="UICardHand" type="Node2D" parent="UICardDashboard"]
 script = ExtResource( 3 )
 
-[node name="HandZone" type="Sprite" parent="CardHand"]
+[node name="HandZone" type="Sprite" parent="UICardDashboard/UICardHand"]
 position = Vector2( 512, 590 )
 texture = ExtResource( 1 )

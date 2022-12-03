@@ -12,6 +12,8 @@
 [node name="NREGameContext" type="Node"]
 script = ExtResource( 8 )
 
+[node name="UI" parent="." instance=ExtResource( 5 )]
+
 [node name="Actors" type="Spatial" parent="."]
 
 [node name="Nomad" parent="Actors" instance=ExtResource( 7 )]
@@ -37,5 +39,3 @@ transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819,
 light_color = Color( 1, 0.913725, 0.690196, 1 )
 light_energy = 0.705
 shadow_enabled = true
-
-[node name="UI" parent="." instance=ExtResource( 5 )]

@@ -1,5 +1,5 @@
 extends Node2D
-class_name CardHand
+class_name UICardHand
 
 var cards: Array = []
 

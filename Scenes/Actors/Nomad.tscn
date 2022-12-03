@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Actors/CameraTargetPivot.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Actors/Nomad.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UI/Card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/WorldCard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/2D/jary.png" type="Texture" id=4]
 
 [node name="Nomad" type="Spatial" groups=["actors"]]
