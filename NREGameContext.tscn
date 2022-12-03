@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GameVisuals/GameVisuals.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GameLogic/GameLogicTimer.gd" type="Script" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://Scenes/Map/WorldMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Actors/Nomad.tscn" type="PackedScene" id=7]
 [ext_resource path="res://NREGameContext.gd" type="Script" id=8]
+
+[sub_resource type="ProceduralSky" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 2 )
+fog_enabled = true
+fog_depth_end = 80.0
 
 [node name="NREGameContext" type="Node"]
 script = ExtResource( 8 )
@@ -32,10 +40,11 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
+environment = SubResource( 1 )
 current = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 24, 0 )
-light_color = Color( 1, 0.913725, 0.690196, 1 )
+light_color = Color( 1, 0.901961, 0.701961, 1 )
 light_energy = 0.705
 shadow_enabled = true
