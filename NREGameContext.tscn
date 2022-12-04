@@ -16,6 +16,12 @@ background_mode = 2
 background_sky = SubResource( 2 )
 fog_enabled = true
 fog_depth_end = 80.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 30.0
+dof_blur_far_transition = 10.0
+dof_blur_far_amount = 0.05
+dof_blur_near_enabled = true
+adjustment_enabled = true
 
 [node name="NREGameContext" type="Node"]
 script = ExtResource( 8 )
