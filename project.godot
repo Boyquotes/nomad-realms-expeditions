@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Model/Card/CardDashboard.gd"
 }, {
+"base": "Object",
+"class": "CardEffect",
+"language": "GDScript",
+"path": "res://Scenes/Model/Card/CardEffect.gd"
+}, {
+"base": "Object",
+"class": "CardExpression",
+"language": "GDScript",
+"path": "res://Scenes/Model/Card/CardExpression.gd"
+}, {
 "base": "Actor",
 "class": "CardPlayer",
 "language": "GDScript",
@@ -29,10 +39,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://GameLogic/ContextQueues.gd"
 }, {
-"base": "Node2D",
+"base": "Object",
 "class": "GameCard",
 "language": "GDScript",
 "path": "res://Scenes/Model/Card/GameCard.gd"
+}, {
+"base": "Node2D",
+"class": "GameCardGui",
+"language": "GDScript",
+"path": "res://Scenes/UI/GameCardGui.gd"
 }, {
 "base": "Node",
 "class": "GameLogic",
@@ -74,7 +89,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/UI/UICardHand.gd"
 }, {
-"base": "GameCard",
+"base": "GameCardGui",
 "class": "WorldCard",
 "language": "GDScript",
 "path": "res://Scenes/UI/WorldCard.gd"
@@ -87,9 +102,12 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Actor": "",
 "CardDashboard": "",
+"CardEffect": "",
+"CardExpression": "",
 "CardPlayer": "",
 "ContextQueues": "",
 "GameCard": "",
+"GameCardGui": "",
 "GameLogic": "",
 "GameLogicTimer": "",
 "NREGameContext": "",

@@ -1,36 +1,23 @@
-extends Node2D
+extends Object
 class_name GameCard
 
-var target_scale: = 1.0
-var target_position: Vector2
+enum CardRarity {
+	BASIC,
+	COMMON,
+	RARE,
+	CROMULENT
+}
 
-var hovered: = false
-var dragged: = false
+var name: String
+var cost: int
+var text: String
+#var type: CardType
+var rarity: CardRarity
+var effect: CardEffect
 
-func _process(delta: float) -> void:
-	scale *= (target_scale / scale.x - 1) * 0.2 + 1
-	if dragged:
-		position.x += (get_global_mouse_position().x - position.x) * 0.7
-		position.y += (get_global_mouse_position().y - position.y) * 0.7
-	else:
-		position.x += (target_position.x - position.x) * 0.2
-		position.y += (target_position.y - position.y) * 0.2
-
-func _hover() -> void:
-	target_scale = 1.1
-	hovered = true
-	z_index = 1
-
-func _unhover() -> void:
-	target_scale = 1
-	hovered = false
-	z_index = 0
-
-#func _unhandled_input(event: InputEvent):
-#	if hovered and event is InputEventMouseButton:
-#		if event.button_index == BUTTON_LEFT and event.pressed:
-#			dragged = true
-#			get_tree().set_input_as_handled()
-#		elif event.button_index == BUTTON_LEFT and !event.pressed:
-#			dragged = false
-#			get_tree().set_input_as_handled()
+func _init(name: String, cost: int, text: String, rarity: int, effect: CardEffect) -> void:
+	self.name = name
+	self.cost = cost
+	self.text = text
+	self.rarity = rarity
+	self.effect = effect
