@@ -104,7 +104,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="godot-card-game"
+config/name="nomad-realms-expeditions"
 run/main_scene="res://NREGameContext.tscn"
 config/icon="res://icon.png"
 
