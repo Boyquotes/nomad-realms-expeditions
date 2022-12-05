@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GameVisuals/GameVisuals.tscn" type="PackedScene" id=1]
-[ext_resource path="res://GameLogic/GameLogicTimer.gd" type="Script" id=2]
-[ext_resource path="res://GameLogic/NREGameLogic.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Actors/GameLogic/GameLogicTimer.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Actors/GameLogic/NREGameLogic.gd" type="Script" id=3]
 [ext_resource path="res://CameraPivot.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Map/WorldMap.tscn" type="PackedScene" id=6]

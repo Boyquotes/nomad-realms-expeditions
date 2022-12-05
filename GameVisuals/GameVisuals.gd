@@ -21,7 +21,7 @@ func _ready() -> void:
 		card.position = card.target_position
 		card.position.y += 40
 		
-func create_card_gui(card: String) -> void:
+func create_card_gui(card: GameCard) -> void:
 	var card_node: WorldCard = card_scene.instance()
 	card_node.init(card)
 	ui_card_hand.add_card(card_node)

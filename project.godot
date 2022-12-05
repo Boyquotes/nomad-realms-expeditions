@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "CardExpression",
 "language": "GDScript",
-"path": "res://Scenes/Model/Card/CardExpression.gd"
+"path": "res://Scenes/Model/Card/Expression/CardExpression.gd"
 }, {
 "base": "Actor",
 "class": "CardPlayer",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "ContextQueues",
 "language": "GDScript",
-"path": "res://GameLogic/ContextQueues.gd"
+"path": "res://Scenes/Actors/GameLogic/ContextQueues.gd"
 }, {
 "base": "Object",
 "class": "GameCard",
@@ -52,12 +52,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GameLogic",
 "language": "GDScript",
-"path": "res://GameLogic/GameLogic.gd"
+"path": "res://Scenes/Actors/GameLogic/GameLogic.gd"
 }, {
 "base": "Node",
 "class": "GameLogicTimer",
 "language": "GDScript",
-"path": "res://GameLogic/GameLogicTimer.gd"
+"path": "res://Scenes/Actors/GameLogic/GameLogicTimer.gd"
+}, {
+"base": "Object",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://Scenes/Model/GameState.gd"
+}, {
+"base": "CardExpression",
+"class": "MeleeDamageExpression",
+"language": "GDScript",
+"path": "res://Scenes/Model/Card/Expression/MeleeDamageExpression.gd"
 }, {
 "base": "Node",
 "class": "NREGameContext",
@@ -67,7 +77,7 @@ _global_script_classes=[ {
 "base": "GameLogic",
 "class": "NREGameLogic",
 "language": "GDScript",
-"path": "res://GameLogic/NREGameLogic.gd"
+"path": "res://Scenes/Actors/GameLogic/NREGameLogic.gd"
 }, {
 "base": "CardPlayer",
 "class": "Nomad",
@@ -110,6 +120,8 @@ _global_script_class_icons={
 "GameCardGui": "",
 "GameLogic": "",
 "GameLogicTimer": "",
+"GameState": "",
+"MeleeDamageExpression": "",
 "NREGameContext": "",
 "NREGameLogic": "",
 "Nomad": "",
@@ -125,6 +137,10 @@ _global_script_class_icons={
 config/name="nomad-realms-expeditions"
 run/main_scene="res://NREGameContext.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameCards="*res://Scenes/Model/Card/GameCards.gd"
 
 [display]
 

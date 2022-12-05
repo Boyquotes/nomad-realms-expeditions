@@ -5,8 +5,9 @@ signal card_cancelled
 extends GameCardGui
 class_name WorldCard
 
-var card_name: String
+var card: GameCard
 
-func init(card_name: String) -> void:
-	self.card_name = card_name
+func init(card: GameCard) -> void:
+	self.card = card
+	$NameLabel.text = card.name
 

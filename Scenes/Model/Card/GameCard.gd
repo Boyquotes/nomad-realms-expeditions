@@ -12,7 +12,7 @@ var name: String
 var cost: int
 var text: String
 #var type: CardType
-var rarity: CardRarity
+var rarity: int
 var effect: CardEffect
 
 func _init(name: String, cost: int, text: String, rarity: int, effect: CardEffect) -> void:
