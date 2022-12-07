@@ -21,12 +21,13 @@ func generate_tiles() -> void:
 			tile.set_name("Tile" + str(z) + "_" + str(x))
 			add_child(tile)
 			tiles[-1].append(tile)
-			if randi() % 2 == 0:
-				var tree: TreeActor = tree_scene.instance()
-				var position = Vector2(x, z)
-				translation.x = 1.5 * x
-				height = randi() % TILE_MAX_HEIGHT + 1
-			#	height = 1
-				scale.y = height * TILE_HEIGHT_SCALE
-				translation.z = sqrt(3) * z
-				add_child(tile)
+			generate_tree(x, z, tile)
+			
+func generate_tree(x, z, tile) -> void:
+	if randi() % 10 == 0:
+		var tree: TreeActor = tree_scene.instance()
+		var position = Vector2(x, z)
+		tree.translation.x = 1.5 * x
+		tree.translation.y = tile.scale.y
+		tree.translation.z = sqrt(3) * z
+		add_child(tree)

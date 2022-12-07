@@ -10,5 +10,5 @@ script = ExtResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="MeshPivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2, 0 )
-billboard = 1
+billboard = 2
 texture = ExtResource( 1 )

@@ -15,6 +15,7 @@ func spawn_nomad():
 	# Generate a random position to spawn the nomad
 	var z = randi() % world_map.tiles.size()
 	var x = randi() % world_map.tiles[0].size()
+	print(x, z)
 	
 	nomad.translation = world_map.tiles[z][x].translation
 	nomad.translation.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE

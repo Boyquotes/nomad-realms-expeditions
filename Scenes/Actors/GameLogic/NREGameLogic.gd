@@ -1,8 +1,6 @@
 extends GameLogic
 class_name NREGameLogic
 
-func _ready() -> void:
-	pass
 
 # Gets called by GameLogicTimer once every tick.
 func update() -> void:
