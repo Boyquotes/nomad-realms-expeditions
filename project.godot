@@ -140,8 +140,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="nomad-realms-expeditions"
+config/name="Nomad Realms Expeditions"
 run/main_scene="res://NREGameContext.tscn"
+boot_splash/show_image=false
 config/icon="res://icon.png"
 
 [autoload]

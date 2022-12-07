@@ -18,9 +18,9 @@ func _input(event: InputEvent) -> void:
 			# zoom out
 			if event.button_index == BUTTON_WHEEL_DOWN:
 				camera_target.translation.z *= 1 / pow(0.9, scroll_sensitivity)
-			camera_target.translation.z = clamp(camera_target.translation.z, 2, 20)
+			camera_target.translation.z = clamp(camera_target.translation.z, 5, 20)
 	elif event is InputEventMouseMotion and Input.is_action_pressed("rotate_camera"):
 		rotation.x += deg2rad(-event.relative.y * mouse_sensitivity)
-		rotation.x = clamp(rotation.x, -PI / 2, -deg2rad(10))
+		rotation.x = clamp(rotation.x, -deg2rad(60), -deg2rad(10))
 		rotation.y += deg2rad(-event.relative.x * mouse_sensitivity)
 		

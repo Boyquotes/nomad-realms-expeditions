@@ -30,4 +30,6 @@ func generate_tree(x, z, tile) -> void:
 		tree.translation.x = 1.5 * x
 		tree.translation.y = tile.scale.y
 		tree.translation.z = sqrt(3) * z
+		if x % 2 == 1:
+			tree.translation.z += sqrt(3) * 0.5
 		add_child(tree)
