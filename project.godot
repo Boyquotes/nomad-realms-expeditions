@@ -50,11 +50,16 @@ _global_script_classes=[ {
 "path": "res://Scenes/UI/GameCardGui.gd"
 }, {
 "base": "Node",
+"class": "GameInput",
+"language": "GDScript",
+"path": "res://GameInput.gd"
+}, {
+"base": "Node",
 "class": "GameLogic",
 "language": "GDScript",
 "path": "res://Scenes/Actors/GameLogic/GameLogic.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "GameLogicTimer",
 "language": "GDScript",
 "path": "res://Scenes/Actors/GameLogic/GameLogicTimer.gd"
@@ -123,6 +128,7 @@ _global_script_class_icons={
 "ContextQueues": "",
 "GameCard": "",
 "GameCardGui": "",
+"GameInput": "",
 "GameLogic": "",
 "GameLogicTimer": "",
 "GameState": "",

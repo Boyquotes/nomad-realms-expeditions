@@ -1,4 +1,4 @@
-extends Node
+extends Object
 class_name GameLogicTimer
 
 const TICKS_PER_SECOND: int = 20
@@ -10,12 +10,12 @@ var isDone: = false
 
 var accumulation: float = 0
 
-onready var game_logic = get_child(0)
+var game_logic
 
-func _ready() -> void:
-	pass
+func _init(game_logic) -> void:
+	self.game_logic = game_logic
 
-func _process(delta: float) -> void:
+func update(delta: float) -> void:
 	var new_time: int = OS.get_unix_time()
 	var frame_time: int = new_time - current_time;
 
@@ -29,9 +29,6 @@ func _process(delta: float) -> void:
 
 	# Updating as many times as needed to make up for any lag
 	while accumulation >= 1.0 / TICKS_PER_SECOND:
-		update()
+		game_logic.update()
 		accumulation = max(accumulation - 1.0 / TICKS_PER_SECOND, 0)
-
-func update() -> void:
-	game_logic.update()
 

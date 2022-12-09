@@ -10,8 +10,6 @@ onready var ui_card_hand: Node2D = $"../UI/UICardDashboard/UICardHand"
 
 func init(context_queues: ContextQueues) -> void:
 	self.context_queues = context_queues
-
-func _ready() -> void:
 	var dashboard: = player.card_dashboard
 	for i in range(len(dashboard.hand)):
 		create_card_gui(dashboard.hand[i])
