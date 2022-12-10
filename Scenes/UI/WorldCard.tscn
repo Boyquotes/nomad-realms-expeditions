@@ -36,3 +36,13 @@ margin_right = 38.0
 margin_bottom = -75.0
 grow_horizontal = 2
 align = 1
+
+[node name="TextLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.78
+anchor_bottom = 0.126
+margin_left = -50.0
+margin_right = 51.0
+margin_bottom = 84.0
+grow_horizontal = 2
+align = 1

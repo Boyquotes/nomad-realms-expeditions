@@ -1,12 +1,11 @@
 extends Node
 class_name GameInput
 
-
 var card_looking_for_target: GameCardGui
 var ui_card_dashboard: UICardDashBoard
 
 func init(context_queues: ContextQueues) -> void:
-	ui_card_dashboard = $"../UI".card_dashboard
+	ui_card_dashboard = $"../UICardDashboard"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
@@ -23,8 +22,8 @@ func detect_card_play():
 		card_looking_for_target = null
 		ui_card_dashboard.card_played_cleanup()
 
-func _on_UI_card_looking_for_target(card: GameCardGui) -> void:
+func _on_UICardDashboard_card_looking_for_target(card: GameCardGui) -> void:
 	card_looking_for_target = card
 
-func _on_UI_card_not_looking_for_target(card: GameCardGui) -> void:
+func _on_UICardDashboard_card_not_looking_for_target(card: GameCardGui) -> void:
 	card_looking_for_target = null

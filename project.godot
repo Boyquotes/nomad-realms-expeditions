@@ -100,11 +100,6 @@ _global_script_classes=[ {
 "path": "res://Scenes/Actors/TreeActor.gd"
 }, {
 "base": "Node2D",
-"class": "UI",
-"language": "GDScript",
-"path": "res://Scenes/UI/UI.gd"
-}, {
-"base": "Node2D",
 "class": "UICardDashBoard",
 "language": "GDScript",
 "path": "res://Scenes/UI/UICardDashboard.gd"
@@ -143,7 +138,6 @@ _global_script_class_icons={
 "Nomad": "",
 "Tile": "",
 "TreeActor": "",
-"UI": "",
 "UICardDashBoard": "",
 "UICardHand": "",
 "WorldCard": "",

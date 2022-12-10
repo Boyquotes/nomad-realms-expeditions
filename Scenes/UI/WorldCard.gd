@@ -10,4 +10,4 @@ var card: GameCard
 func init(card: GameCard) -> void:
 	self.card = card
 	$NameLabel.text = card.name
-
+	$TextLabel.text = card.text

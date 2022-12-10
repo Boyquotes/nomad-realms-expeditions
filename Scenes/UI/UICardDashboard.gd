@@ -8,6 +8,7 @@ onready var card_hand = $UICardHand
 var hovered_card: WorldCard
 var dragged_card: WorldCard
 
+# Whether or not the card is dragged over the PlayZone
 var card_looking_for_target: bool = false
 
 func reset_target_positions() -> void:
