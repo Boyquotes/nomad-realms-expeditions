@@ -5,7 +5,7 @@ enum TargetType {
 	TILES = 1, FRIENDLY_ACTORS = 4, ENEMY_ACTORS = 8, NEUTRAL_ACTORS = 16
 }
 
-# A mask. Tiles: bit 0, Any actor: bit 1, 
+# A mask
 var target_type: int
 var play_predicate
 var target_predicate

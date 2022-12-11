@@ -1,7 +1,6 @@
 extends Node
 class_name NREGameContext
 
-
 var context_queues: = ContextQueues.new()
 
 func _ready() -> void:

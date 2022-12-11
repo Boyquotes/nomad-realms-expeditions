@@ -1,4 +1,5 @@
-extends Spatial
+extends Node
+class_name GameVisuals
 
 var context_queues: ContextQueues
 

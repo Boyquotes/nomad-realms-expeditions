@@ -4,7 +4,7 @@ signal card_not_looking_for_target(card)
 extends Node2D
 class_name UICardDashBoard
 
-onready var card_hand = $UICardHand
+onready var card_hand: UICardHand = $UICardHand
 var hovered_card: WorldCard
 var dragged_card: WorldCard
 
@@ -74,8 +74,10 @@ func _on_PlayZone_mouse_entered() -> void:
 	if dragged_card != null:
 		card_looking_for_target = true
 		emit_signal("card_looking_for_target", dragged_card)
-		dragged_card.visible = false
-		# Play an animation on the card I guess?
+		# If it requires a target, make the card disappear
+		if dragged_card.card.effect.target_type != 0:
+			# TODO: play an animation on the card
+			dragged_card.visible = false
 
 func _on_PlayZone_mouse_exited() -> void:
 	if dragged_card != null:
