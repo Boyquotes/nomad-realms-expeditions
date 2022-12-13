@@ -25,13 +25,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		var intersected: = get_world().direct_space_state \
 			.intersect_ray(from, to, [], card_effect.target_type, false, true)
 		if intersected.has("collider"):
-			var target = (intersected.collider as Area).get_parent()
+			var target = intersected.collider.get_parent()
 			if target is Tile:
+				for tile in get_tree().get_nodes_in_group("tiles"):
+					tile.highlighted = false
 				target.highlighted = true
 			else:
 				target.highlighted = true
-			print("Hovering over ", target)
-			
 	detect_card_play()
 
 func detect_card_play():

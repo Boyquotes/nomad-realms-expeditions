@@ -70,6 +70,8 @@ func _sort_by_tree_order(a, b):
 		return false
 	return card_a.get_index() > card_b.get_index()
 
+# When card is dragged into the PlayZone, we interpret that as wanting to look
+# for a target
 func _on_PlayZone_mouse_entered() -> void:
 	if dragged_card != null:
 		card_looking_for_target = true
@@ -79,7 +81,9 @@ func _on_PlayZone_mouse_entered() -> void:
 			# TODO: play an animation on the card
 			dragged_card.visible = false
 
-func _on_PlayZone_mouse_exited() -> void:
+# When card is dragged out of the RetainZone (which is a bit larget than the
+# PlayZone!), we interpret that as cancelling the card.
+func _on_RetainZone_mouse_exited():
 	if dragged_card != null:
 		card_looking_for_target = false
 		emit_signal("card_not_looking_for_target", dragged_card)

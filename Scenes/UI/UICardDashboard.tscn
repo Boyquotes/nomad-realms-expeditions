@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/UICardHand.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UICardDashboard.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 220 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 250 )
 
 [node name="UICardDashboard" type="Node2D"]
 script = ExtResource( 2 )
@@ -28,5 +31,13 @@ __meta__ = {
 position = Vector2( 512, 220 )
 shape = SubResource( 1 )
 
+[node name="RetainZone" type="Area2D" parent="UICardHand"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UICardHand/RetainZone"]
+position = Vector2( 512, 250 )
+shape = SubResource( 2 )
+
 [connection signal="mouse_entered" from="UICardHand/PlayZone" to="." method="_on_PlayZone_mouse_entered"]
-[connection signal="mouse_exited" from="UICardHand/PlayZone" to="." method="_on_PlayZone_mouse_exited"]
+[connection signal="mouse_exited" from="UICardHand/RetainZone" to="." method="_on_RetainZone_mouse_exited"]
