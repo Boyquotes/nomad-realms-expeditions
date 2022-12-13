@@ -2,7 +2,7 @@ extends Object
 class_name CardEffect
 
 enum TargetType {
-	TILES = 1, FRIENDLY_ACTORS = 4, ENEMY_ACTORS = 8, NEUTRAL_ACTORS = 16
+	TILES = 1, FRIENDLY_ACTORS = 2, ENEMY_ACTORS = 4, NEUTRAL_ACTORS = 8
 }
 
 # A mask
