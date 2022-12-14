@@ -46,3 +46,4 @@ margin_right = 51.0
 margin_bottom = 84.0
 grow_horizontal = 2
 align = 1
+autowrap = true

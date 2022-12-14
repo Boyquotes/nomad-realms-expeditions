@@ -1,13 +1,6 @@
 extends Object
 class_name GameCard
 
-enum CardRarity {
-	BASIC,
-	COMMON,
-	RARE,
-	CROMULENT
-}
-
 var name: String
 var cost: int
 var text: String

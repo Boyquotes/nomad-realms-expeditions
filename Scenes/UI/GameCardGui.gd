@@ -13,8 +13,11 @@ func _process(delta: float) -> void:
 		position.x += (get_global_mouse_position().x - position.x) * 0.7
 		position.y += (get_global_mouse_position().y - position.y) * 0.7
 	else:
-		position.x += (target_position.x - position.x) * 0.2
-		position.y += (target_position.y - position.y) * 0.2
+		var current_target_pos: = target_position
+		if hovered && !dragged:
+			current_target_pos.y -= 80
+		position.x += (current_target_pos.x - position.x) * 0.2
+		position.y += (current_target_pos.y - position.y) * 0.2
 
 func _hover() -> void:
 	target_scale = 1.1
