@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 class_name WorldMap
 
-export (PackedScene) var tile_scene
-export (PackedScene) var tree_scene
+@export var tile_scene: PackedScene
+@export var tree_scene: PackedScene
 
 var tiles: Array = []
 
@@ -15,7 +15,7 @@ func generate_tiles() -> void:
 	for z in range(16):
 		tiles.append([])
 		for x in range(16):
-			var tile: Tile = tile_scene.instance()
+			var tile: Tile = tile_scene.instantiate()
 			tile.initialize(x, z, Color(0, 1, 0))
 			
 			tile.set_name("Tile" + str(z) + "_" + str(x))
@@ -25,11 +25,11 @@ func generate_tiles() -> void:
 			
 func generate_tree(x, z, tile) -> void:
 	if randi() % 10 == 0:
-		var tree: TreeActor = tree_scene.instance()
+		var tree: TreeActor = tree_scene.instantiate()
 		var position = Vector2(x, z)
-		tree.translation.x = 1.5 * x
-		tree.translation.y = tile.scale.y
-		tree.translation.z = sqrt(3) * z
+		tree.position.x = 1.5 * x
+		tree.position.y = tile.scale.y
+		tree.position.z = sqrt(3) * z
 		if x % 2 == 1:
-			tree.translation.z += sqrt(3) * 0.5
+			tree.position.z += sqrt(3) * 0.5
 		add_child(tree)

@@ -1,17 +1,17 @@
-extends Position3D
+extends Marker3D
 
-export var lerpSpeed: = 0.5
+@export var lerpSpeed: = 0.5
 
-onready var nomad: Spatial = $"../Actors/Nomad"
-onready var camera_target: Spatial = $"../Actors/Nomad/CameraTargetPivot/CameraTarget"
+@onready var nomad: Node3D = $"../Actors/Nomad"
+@onready var camera_target: Node3D = $"../Actors/Nomad/CameraTargetPivot/CameraTarget"
 
 
 func _ready() -> void:
-	translation = camera_target.global_translation
+	position = camera_target.global_position
 	rotation = camera_target.global_rotation
 
 func _process(_delta: float) -> void:
-	var target_pos: Vector3 = camera_target.global_translation
-	translation = translation + (target_pos - translation) * lerpSpeed
+	var target_pos: Vector3 = camera_target.global_position
+	position = position + (target_pos - position) * lerpSpeed
 	
-	self.look_at(nomad.translation, Vector3.UP)
+	self.look_at(nomad.position, Vector3.UP)

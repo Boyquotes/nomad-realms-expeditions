@@ -1,15 +1,15 @@
-extends Spatial
+extends Node3D
 class_name GameInput
 
 var card_looking_for_target: WorldCard
 var ui_card_dashboard: UICardDashBoard
 
-var camera: Camera
+var camera: Camera3D
 var card_target
 
 func init(context_queues: ContextQueues) -> void:
 	ui_card_dashboard = $"../UICardDashboard"
-	camera = $"../CameraPivot/Camera"
+	camera = $"../CameraPivot/Camera3D"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
@@ -20,16 +20,25 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		var mouse_pos: Vector2 = event.position
+		
 		# Find hovered target by casting a ray
+		var params: = PhysicsRayQueryParameters3D.new()
 		var from: = camera.project_ray_origin(mouse_pos)
 		var to: = from + camera.project_ray_normal(mouse_pos) * 400
-		var intersected: = get_world().direct_space_state \
-			.intersect_ray(from, to, [], card_effect.target_type, false, true)
+		params.from = from
+		params.to = to
+		params.collision_mask = card_effect.target_type
+		params.collide_with_areas = true
+		params.collide_with_bodies = false
+		
+		var intersected: = get_world_3d().direct_space_state.intersect_ray(params)
+		
 		if intersected.has("collider"):
+			if card_target != null:
+				# Unhighlight previous target
+				card_target.highlighted = false
 			card_target = intersected.collider.get_parent()
 			if card_target is Tile:
-				for tile in get_tree().get_nodes_in_group("tiles"):
-					tile.highlighted = false
 				card_target.highlighted = true
 			else:
 				card_target.highlighted = true
@@ -38,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func detect_card_play():
 	if Input.is_action_just_released("interact"):
 		print("You just played a card: ", card_looking_for_target.card.name, \
-			" on ", card_target)
+			" checked ", card_target)
 		card_target.highlighted = false
 		card_target = null
 		card_looking_for_target.free()

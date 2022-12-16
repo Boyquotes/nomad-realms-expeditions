@@ -1,6 +1,6 @@
 extends Object
 class_name CardDashboard
 
-var deck: = []
-var hand: = []
-var discard: = []
+var deck: Array[GameCard] = []
+var hand: Array[GameCard] = []
+var discard: Array[GameCard] = []

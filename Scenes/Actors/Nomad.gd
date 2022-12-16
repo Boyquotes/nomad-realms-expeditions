@@ -1,7 +1,7 @@
 extends CardPlayer
 class_name Nomad
 
-export (PackedScene) var card_scene
+@export var card_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

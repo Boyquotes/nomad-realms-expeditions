@@ -31,9 +31,9 @@ func _unhover() -> void:
 
 #func _unhandled_input(event: InputEvent):
 #	if hovered and event is InputEventMouseButton:
-#		if event.button_index == BUTTON_LEFT and event.pressed:
+#		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 #			dragged = true
 #			get_tree().set_input_as_handled()
-#		elif event.button_index == BUTTON_LEFT and !event.pressed:
+#		elif event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 #			dragged = false
 #			get_tree().set_input_as_handled()

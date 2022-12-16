@@ -6,124 +6,124 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
-"base": "Spatial",
-"class": "Actor",
-"language": "GDScript",
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"Actor",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/Actor.gd"
 }, {
 "base": "Object",
-"class": "CardDashboard",
-"language": "GDScript",
+"class": &"CardDashboard",
+"language": &"GDScript",
 "path": "res://Scenes/Model/Card/CardDashboard.gd"
 }, {
 "base": "Object",
-"class": "CardEffect",
-"language": "GDScript",
+"class": &"CardEffect",
+"language": &"GDScript",
 "path": "res://Scenes/Model/Card/CardEffect.gd"
 }, {
 "base": "Object",
-"class": "CardExpression",
-"language": "GDScript",
+"class": &"CardExpression",
+"language": &"GDScript",
 "path": "res://Scenes/Model/Card/Expression/CardExpression.gd"
 }, {
 "base": "Actor",
-"class": "CardPlayer",
-"language": "GDScript",
+"class": &"CardPlayer",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/CardPlayer.gd"
 }, {
 "base": "Object",
-"class": "ContextQueues",
-"language": "GDScript",
+"class": &"ContextQueues",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/GameLogic/ContextQueues.gd"
 }, {
 "base": "Object",
-"class": "GameCard",
-"language": "GDScript",
+"class": &"GameCard",
+"language": &"GDScript",
 "path": "res://Scenes/Model/Card/GameCard.gd"
 }, {
 "base": "Node2D",
-"class": "GameCardGui",
-"language": "GDScript",
+"class": &"GameCardGui",
+"language": &"GDScript",
 "path": "res://Scenes/UI/GameCardGui.gd"
 }, {
-"base": "Spatial",
-"class": "GameInput",
-"language": "GDScript",
+"base": "Node3D",
+"class": &"GameInput",
+"language": &"GDScript",
 "path": "res://GameInput.gd"
 }, {
 "base": "Node",
-"class": "GameLogic",
-"language": "GDScript",
+"class": &"GameLogic",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/GameLogic/GameLogic.gd"
 }, {
 "base": "Object",
-"class": "GameLogicTimer",
-"language": "GDScript",
+"class": &"GameLogicTimer",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/GameLogic/GameLogicTimer.gd"
 }, {
 "base": "Object",
-"class": "GameState",
-"language": "GDScript",
+"class": &"GameState",
+"language": &"GDScript",
 "path": "res://Scenes/Model/GameState.gd"
 }, {
 "base": "Node",
-"class": "GameVisuals",
-"language": "GDScript",
+"class": &"GameVisuals",
+"language": &"GDScript",
 "path": "res://GameVisuals/GameVisuals.gd"
 }, {
 "base": "CardExpression",
-"class": "MeleeDamageExpression",
-"language": "GDScript",
+"class": &"MeleeDamageExpression",
+"language": &"GDScript",
 "path": "res://Scenes/Model/Card/Expression/MeleeDamageExpression.gd"
 }, {
 "base": "Node",
-"class": "NREGameContext",
-"language": "GDScript",
+"class": &"NREGameContext",
+"language": &"GDScript",
 "path": "res://NREGameContext.gd"
 }, {
 "base": "GameLogic",
-"class": "NREGameLogic",
-"language": "GDScript",
+"class": &"NREGameLogic",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/GameLogic/NREGameLogic.gd"
 }, {
 "base": "CardPlayer",
-"class": "Nomad",
-"language": "GDScript",
+"class": &"Nomad",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/Nomad.gd"
 }, {
-"base": "Spatial",
-"class": "Tile",
-"language": "GDScript",
+"base": "Node3D",
+"class": &"Tile",
+"language": &"GDScript",
 "path": "res://Scenes/Map/Tile.gd"
 }, {
 "base": "Actor",
-"class": "TreeActor",
-"language": "GDScript",
+"class": &"TreeActor",
+"language": &"GDScript",
 "path": "res://Scenes/Actors/TreeActor.gd"
 }, {
 "base": "Node2D",
-"class": "UICardDashBoard",
-"language": "GDScript",
+"class": &"UICardDashBoard",
+"language": &"GDScript",
 "path": "res://Scenes/UI/UICardDashboard.gd"
 }, {
 "base": "Node2D",
-"class": "UICardHand",
-"language": "GDScript",
+"class": &"UICardHand",
+"language": &"GDScript",
 "path": "res://Scenes/UI/UICardHand.gd"
 }, {
 "base": "GameCardGui",
-"class": "WorldCard",
-"language": "GDScript",
+"class": &"WorldCard",
+"language": &"GDScript",
 "path": "res://Scenes/UI/WorldCard.gd"
 }, {
-"base": "Spatial",
-"class": "WorldMap",
-"language": "GDScript",
+"base": "Node3D",
+"class": &"WorldMap",
+"language": &"GDScript",
 "path": "res://Scenes/Map/WorldMap.gd"
-} ]
+}]
 _global_script_class_icons={
 "Actor": "",
 "CardDashboard": "",
@@ -154,6 +154,7 @@ _global_script_class_icons={
 
 config/name="Nomad Realms Expeditions"
 run/main_scene="res://NREGameContext.tscn"
+config/features=PackedStringArray("4.0")
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
@@ -163,9 +164,11 @@ GameCards="*res://Scenes/Model/Card/GameCards.gd"
 
 [display]
 
+window/size/viewport_width=1024
+window/size/viewport_height=576
 window/size/resizable=false
 mouse_cursor/custom_image="res://Assets/2D/cursor.png"
-mouse_cursor/custom_image_hotspot=Vector2( 5, 5 )
+mouse_cursor/custom_image_hotspot=Vector2(5, 5)
 
 [global]
 
@@ -179,13 +182,13 @@ common/drop_mouse_on_gui_input_disabled=true
 
 interact={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
 }
 rotate_camera={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"pressed":false,"double_click":false,"script":null)
+]
 }
 
 [layer_names]

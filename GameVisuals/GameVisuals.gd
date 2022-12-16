@@ -3,10 +3,10 @@ class_name GameVisuals
 
 var context_queues: ContextQueues
 
-export (PackedScene) var card_scene
+@export var card_scene: PackedScene
 
-onready var player: Nomad = $"../Actors/Nomad"
-onready var ui_card_dashboard: Node2D = $"../UICardDashboard"
+@onready var player: Nomad = $"../Actors/Nomad"
+@onready var ui_card_dashboard: Node2D = $"../UICardDashboard"
 
 func init(context_queues: ContextQueues) -> void:
 	self.context_queues = context_queues
@@ -20,7 +20,7 @@ func init(context_queues: ContextQueues) -> void:
 		card.position.y += 40
 		
 func create_card_gui(card: GameCard) -> void:
-	var card_node: WorldCard = card_scene.instance()
+	var card_node: WorldCard = card_scene.instantiate()
 	card_node.init(card)
 	ui_card_dashboard.card_hand.add_card(card_node)
 

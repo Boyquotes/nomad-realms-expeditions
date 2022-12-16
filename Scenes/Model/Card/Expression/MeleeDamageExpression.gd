@@ -3,7 +3,7 @@ class_name MeleeDamageExpression
 
 var num: int
 
-func _init(num: int) -> void:
+func _init(num: int):
 	self.num = num
 
 func handle(playerId: int, targetId: int, state: GameState):

@@ -5,18 +5,18 @@ const TICKS_PER_SECOND: int = 20
 const TICK_TIME: float = 1.0 / TICKS_PER_SECOND
 
 var game_logic_thread: = Thread.new()
-var current_time: int = OS.get_unix_time()
+var current_time: int = Time.get_unix_time_from_system()
 var isDone: = false
 
 var accumulation: float = 0
 
 var game_logic
 
-func _init(game_logic) -> void:
+func _init(game_logic):
 	self.game_logic = game_logic
 
 func update(delta: float) -> void:
-	var new_time: int = OS.get_unix_time()
+	var new_time: int = Time.get_unix_time_from_system()
 	var frame_time: int = new_time - current_time;
 
 	# The following if check is to make sure we don't fall into the spiral of death

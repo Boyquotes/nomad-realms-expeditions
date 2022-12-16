@@ -10,7 +10,7 @@ var target_type: int
 var target_predicate
 var expression: CardExpression
 
-func _init(target_type: int, target_predicate: FuncRef, expression: CardExpression):
+func _init(target_type: int, target_predicate, expression: CardExpression):
 	self.target_type = target_type;
 	self.target_predicate = target_predicate;
 	self.expression = expression;

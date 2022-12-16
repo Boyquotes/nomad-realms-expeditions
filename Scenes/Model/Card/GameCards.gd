@@ -4,7 +4,7 @@ extends Node
 enum { BASIC, COMMON, RARE, CROMULENT }
 
 # CardEffect constructor:
-# target_type: int, target_predicate: FuncRef, expression: CardExpression
+# target_type: int, target_predicate: Callable, expression: CardExpression
 var REGENESIS: = GameCard.new("Regenesis", 10, \
 	"Shuffle your discard into your deck", BASIC, \
 	CardEffect.new(0b0000, null, null))

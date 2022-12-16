@@ -1,7 +1,7 @@
-extends Spatial
+extends Node3D
 class_name Actor
 
-var highlighted: = false setget set_highlighted
+var highlighted: = false : set = set_highlighted
 
 func _ready():
 	add_to_group("actors")

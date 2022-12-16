@@ -8,7 +8,7 @@ var text: String
 var rarity: int
 var effect: CardEffect
 
-func _init(name: String, cost: int, text: String, rarity: int, effect: CardEffect) -> void:
+func _init(name: String, cost: int, text: String, rarity: int, effect: CardEffect):
 	self.name = name
 	self.cost = cost
 	self.text = text

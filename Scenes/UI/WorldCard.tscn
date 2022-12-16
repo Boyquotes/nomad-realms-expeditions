@@ -1,49 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://c3suk2hxxxjkv"]
 
-[ext_resource path="res://Assets/2D/card.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/UI/WorldCard.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://iunm6xwq0847" path="res://Assets/2D/card.png" id="1"]
+[ext_resource type="Script" path="res://Scenes/UI/WorldCard.gd" id="2"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 75, 116 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(150, 232)
 
 [node name="WorldCard" type="Node2D" groups=["cards"]]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="SelectBox" type="Area2D" parent="."]
 collision_mask = 0
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectBox"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -96.0
-margin_top = -128.0
-margin_right = 96.0
-margin_bottom = 128.0
+offset_left = -96.0
+offset_top = -128.0
+offset_right = 96.0
+offset_bottom = 128.0
 mouse_filter = 2
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="NameLabel" type="Label" parent="."]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.126
-margin_left = -37.0
-margin_top = -91.0
-margin_right = 38.0
-margin_bottom = -75.0
+offset_left = -37.0
+offset_top = -91.0
+offset_right = 38.0
+offset_bottom = -75.0
 grow_horizontal = 2
-align = 1
 
 [node name="TextLabel" type="Label" parent="."]
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.78
 anchor_bottom = 0.126
-margin_left = -50.0
-margin_right = 51.0
-margin_bottom = 84.0
+offset_left = -50.0
+offset_right = 51.0
+offset_bottom = 84.0
 grow_horizontal = 2
-align = 1
-autowrap = true
+autowrap_mode = 2
