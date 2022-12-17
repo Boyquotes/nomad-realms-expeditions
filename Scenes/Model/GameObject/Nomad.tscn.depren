@@ -1,0 +1,6 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="1"]
+[ext_resource type="Script" path="res://Scenes/Model/GameObject/Nomad.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://2ofu0um3h82q" path="res://Assets/2D/jary.png" id="4"]

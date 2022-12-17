@@ -5,7 +5,7 @@ class_name Tile
 @export var default_material: Material
 
 const TILE_MAX_HEIGHT: = 5
-const TILE_HEIGHT_SCALE: = 0.4
+const TILE_HEIGHT_SCALE: = 0.2
 
 var coordinates: Vector2
 var height: int

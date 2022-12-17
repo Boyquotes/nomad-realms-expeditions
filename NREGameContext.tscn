@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://djeg21nkqvaco"]
+[gd_scene load_steps=12 format=3 uid="uid://dvddrb7wicypc"]
 
 [ext_resource type="PackedScene" path="res://GameVisuals/GameVisuals.tscn" id="1"]
 [ext_resource type="Script" path="res://GameInput.gd" id="2"]
-[ext_resource type="Script" path="res://Scenes/Actors/GameLogic/NREGameLogic.gd" id="3"]
+[ext_resource type="Script" path="res://Scenes/GameLogic/NREGameLogic.gd" id="2_diqnx"]
 [ext_resource type="Script" path="res://CameraPivot.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://b3bcbe2yfaw0e" path="res://Scenes/Actors/Nomad.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="7"]
 [ext_resource type="Script" path="res://NREGameContext.gd" id="8"]
-[ext_resource type="PackedScene" uid="uid://gl20opyp7t4x" path="res://Scenes/Actors/TreeActor.tscn" id="9"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
 sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
@@ -28,7 +27,7 @@ adjustment_enabled = true
 script = ExtResource("8")
 
 [node name="NREGameLogic" type="Node" parent="."]
-script = ExtResource("3")
+script = ExtResource("2_diqnx")
 
 [node name="GameVisuals" parent="." instance=ExtResource("1")]
 
@@ -42,7 +41,6 @@ script = ExtResource("2")
 [node name="Nomad" parent="Actors" instance=ExtResource("7")]
 
 [node name="WorldMap" parent="." instance=ExtResource("6")]
-tree_scene = ExtResource("9")
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 script = ExtResource("4")

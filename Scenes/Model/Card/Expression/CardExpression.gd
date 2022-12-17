@@ -1,5 +1,5 @@
 extends Object
 class_name CardExpression
 
-func handle(playerId: int, targetId: int, state: GameState):
+func handle(_playerId: int, _targetId: int, _state: GameState):
 	pass
