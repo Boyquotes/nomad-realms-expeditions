@@ -5,11 +5,13 @@ var card_looking_for_target: WorldCard
 var ui_card_dashboard: UICardDashBoard
 
 var camera: Camera3D
-var card_target
+var card_target: GameObject
+var nomad: Nomad
 
 func init(context_queues: ContextQueues) -> void:
 	ui_card_dashboard = $"../UICardDashboard"
 	camera = $"../CameraPivot/Camera3D"
+	nomad = $"../Actors/Nomad"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
@@ -46,8 +48,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func detect_card_play():
 	if Input.is_action_just_released("interact"):
+		var card: = card_looking_for_target.card
 		print("You just played a card: ", card_looking_for_target.card.name, \
-			" on ", card_target)
+			" on ", card_target, " Expression: ", card.effect.expression.name())
+		card.effect.expression.handle(nomad, card_target)
 		card_target.highlighted = false
 		card_target = null
 		card_looking_for_target.free()

@@ -1,5 +1,8 @@
 extends Object
 class_name CardExpression
 
-func handle(_playerId: int, _targetId: int, _state: GameState):
+func handle(_player: CardPlayer, _target: GameObject):
 	pass
+
+func name() -> String:
+	return "Hi"

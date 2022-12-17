@@ -1,4 +1,4 @@
-extends Node3D
+extends GameObject
 class_name Actor
 
 var highlighted: = false : set = set_highlighted
@@ -12,3 +12,4 @@ func update() -> void:
 
 func set_highlighted(h: bool) -> void:
 	highlighted = h
+

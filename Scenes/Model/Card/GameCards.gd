@@ -7,7 +7,7 @@ enum { BASIC, COMMON, RARE, CROMULENT }
 # target_type: int, target_predicate: Callable, expression: CardExpression
 var TELEPORT: = GameCard.new("Teleport", 1, \
 	"Teleport to target tile within range 4", BASIC, \
-	CardEffect.new(0b0001, null, null))
+	CardEffect.new(0b0001, null, TeleportExpression.new()))
 var REGENESIS: = GameCard.new("Regenesis", 10, \
 	"Shuffle your discard into your deck", BASIC, \
 	CardEffect.new(0b0000, null, null))

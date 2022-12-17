@@ -6,9 +6,6 @@ extends Marker3D
 
 @onready var camera_target: Node3D = $CameraTarget
 
-func _ready() -> void:
-	pass # Replace with function body.
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():

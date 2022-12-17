@@ -1,4 +1,4 @@
-extends Node3D
+extends GameObject
 class_name Tile
 
 @export var highlight_material: Material
@@ -7,21 +7,15 @@ class_name Tile
 const TILE_MAX_HEIGHT: = 5
 const TILE_HEIGHT_SCALE: = 0.2
 
-var coordinates: Vector2
 var height: int
 var highlighted: = false : set = set_highlighted
 
 @onready var hexagon: MeshInstance3D = $Hexagon
 
 func initialize(x: int, z: int, color: Color) -> void:
-	coordinates = Vector2(x, z)
-	position.x = 1.5 * x
+	self.coordinates = Vector2i(x, z)
 	height = randi() % TILE_MAX_HEIGHT + 1
-#	height = 1
 	scale.y = height * TILE_HEIGHT_SCALE
-	position.z = sqrt(3) * z
-	if x % 2 == 1:
-		position.z += sqrt(3) * 0.5
 	
 #	set_color(Color(0, 1, 0))
 
