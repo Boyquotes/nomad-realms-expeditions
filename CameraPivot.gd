@@ -1,6 +1,6 @@
 extends Marker3D
 
-@export var lerpSpeed: = .8
+@export var lerpSpeed: = 1
 
 @onready var nomad: Node3D = $"../Actors/Nomad"
 @onready var camera_target: Node3D = $"../Actors/Nomad/CameraTargetPivot/CameraTarget"
@@ -15,5 +15,5 @@ func _process(_delta: float) -> void:
 	position = position + (target_pos - position) * lerpSpeed
 	
 #	look_at(nomad.position, Vector3.UP)
-	rotation = Quaternion(basis).slerp(Quaternion(camera_target.global_transform.basis), .9).get_euler()
+	rotation = camera_target.global_rotation
 

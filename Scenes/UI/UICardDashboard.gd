@@ -99,3 +99,4 @@ func card_played_cleanup() -> void:
 	hovered_card = null
 	dragged_card = null
 	is_card_looking_for_target = false
+	reset_target_positions()
