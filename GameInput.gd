@@ -47,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func detect_card_play():
 	if Input.is_action_just_released("interact"):
 		print("You just played a card: ", card_looking_for_target.card.name, \
-			" checked ", card_target)
+			" on ", card_target)
 		card_target.highlighted = false
 		card_target = null
 		card_looking_for_target.free()

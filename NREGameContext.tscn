@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://b3bcbe2yfaw0e" path="res://Scenes/Actors/Nomad.tscn" id="7"]
 [ext_resource type="Script" path="res://NREGameContext.gd" id="8"]
-[ext_resource type="PackedScene" path="res://Scenes/Actors/TreeActor.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://gl20opyp7t4x" path="res://Scenes/Actors/TreeActor.tscn" id="9"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
 sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
