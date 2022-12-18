@@ -1,25 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://6aq20kjxy5i5"]
+[gd_scene load_steps=5 format=3 uid="uid://6aq20kjxy5i5"]
 
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/TreeActor.gd" id="1_qkqfq"]
-[ext_resource type="Texture2D" uid="uid://htk8s074rim2" path="res://Assets/2D/tree.png" id="2_31wxm"]
+[ext_resource type="PackedScene" uid="uid://8wk6ixjnssys" path="res://Assets/3D/tree_mesh.tscn" id="2_5mbfy"]
+[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="2_wkc6w"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1ve6r"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_42dvf"]
+radius = 0.25
 
 [node name="TreeActor" type="Node3D"]
 script = ExtResource("1_qkqfq")
+highlight_flash = ExtResource("2_wkc6w")
 
 [node name="MeshPivot" type="Node3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="MeshPivot"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2, 0)
-billboard = 2
-double_sided = false
-texture = ExtResource("2_31wxm")
+[node name="tree" parent="MeshPivot" instance=ExtResource("2_5mbfy")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CollisionArea" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 0)
-shape = SubResource("ConcavePolygonShape3D_1ve6r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_42dvf")
