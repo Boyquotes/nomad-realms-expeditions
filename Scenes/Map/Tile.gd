@@ -2,7 +2,6 @@ extends GameObject
 class_name Tile
 
 @export var highlight_material: Material
-@export var default_material: Material
 
 const TILE_MAX_HEIGHT: = 5
 const TILE_HEIGHT_SCALE: = 0.2
@@ -25,8 +24,8 @@ func set_color(color: Color) -> void:
 	hexagon.set_surface_override_material(0, material)
 	
 func set_highlighted(h) -> void:
-	if h:
-		hexagon.set_surface_override_material(0, highlight_material)
-	else:
-		hexagon.set_surface_override_material(0, default_material)
 	highlighted = h
+	if h:
+		hexagon.material_overlay = highlight_material
+	else:
+		hexagon.material_overlay = null

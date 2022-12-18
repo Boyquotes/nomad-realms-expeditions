@@ -1,14 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfvu2m3pd7ohw"]
+[gd_scene load_steps=7 format=3 uid="uid://bfvu2m3pd7ohw"]
 
 [ext_resource type="PackedScene" uid="uid://dyhq7gtav7ei0" path="res://Assets/3D/tile.glb" id="1"]
-[ext_resource type="Material" path="res://Scenes/Map/TileOutlineMaterial.tres" id="2"]
+[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_c4e5m"]
 [ext_resource type="Script" path="res://Scenes/Map/Tile.gd" id="4"]
-
-[sub_resource type="StandardMaterial3D" id="3"]
-albedo_color = Color(0.862745, 0.67451, 0.278431, 1)
-emission_enabled = true
-emission = Color(0.862745, 0.67451, 0.278431, 1)
-emission_energy_multiplier = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5sle"]
 albedo_color = Color(0.247059, 0.815686, 0.286275, 1)
@@ -22,8 +16,7 @@ radius = 1.0
 
 [node name="Tile" groups=["tiles"] instance=ExtResource("1")]
 script = ExtResource("4")
-highlight_material = SubResource("3")
-default_material = ExtResource("2")
+highlight_material = ExtResource("3_c4e5m")
 
 [node name="Hexagon" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_l5sle")

@@ -1,23 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://drglmfxxc6dk8"]
+[gd_scene load_steps=7 format=3 uid="uid://drglmfxxc6dk8"]
 
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/Nomad.gd" id="1_d38if"]
 [ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="3"]
+[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_21smd"]
 [ext_resource type="Texture2D" uid="uid://2ofu0um3h82q" path="res://Assets/2D/jary.png" id="4"]
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="4_1wdfx"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
-radius = 0.05
-height = 0.1
+radius = 0.35
+height = 0.8
 
 [node name="Nomad" type="Node3D" groups=["actors"]]
 script = ExtResource("1_d38if")
 card_scene = ExtResource("3")
+highlight_flash = ExtResource("3_21smd")
 
 [node name="MeshPivot" type="Marker3D" parent="."]
 
 [node name="Sprite3D" type="Sprite3D" parent="MeshPivot"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.5, 0)
-billboard = 2
+double_sided = false
 texture = ExtResource("4")
 
 [node name="CameraTargetPivot" type="Marker3D" parent="."]
@@ -32,5 +34,5 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("1")
