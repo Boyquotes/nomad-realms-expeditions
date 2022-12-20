@@ -5,6 +5,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_7nuc3")
-shader_parameter/flash_speed = null
-shader_parameter/highlight_alpha = null
 shader_parameter/highlight_color = null
+shader_parameter/highlight_alpha = null
+shader_parameter/flash_speed = null

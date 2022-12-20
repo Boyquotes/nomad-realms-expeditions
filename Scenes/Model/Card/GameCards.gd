@@ -13,4 +13,4 @@ var REGENESIS: = GameCard.new("Regenesis", 10, \
 	CardEffect.new(0b0000, null, null))
 var SLASH: = GameCard.new("Slash", 1, \
 	"Deal 4 to a target within range 2", BASIC, \
-	CardEffect.new(0b1110, null, null))
+	CardEffect.new(0b1110, null, MeleeDamageExpression.new(4)))

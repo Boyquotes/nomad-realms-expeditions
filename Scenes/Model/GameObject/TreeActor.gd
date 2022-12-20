@@ -1,4 +1,4 @@
-extends Actor
+extends HealthActor
 class_name TreeActor
 
 @export var highlight_flash: ShaderMaterial
@@ -7,6 +7,7 @@ class_name TreeActor
 
 func _ready():
 	$MeshPivot.rotate_y(randf_range(0, 2 * PI))
+	health = 2
 
 func set_highlighted(h: bool) -> void:
 	super.set_highlighted(h)

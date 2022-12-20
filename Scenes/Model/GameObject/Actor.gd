@@ -13,3 +13,6 @@ func update() -> void:
 func set_highlighted(h: bool) -> void:
 	highlighted = h
 
+func die():
+	queue_free()
+	visible = false

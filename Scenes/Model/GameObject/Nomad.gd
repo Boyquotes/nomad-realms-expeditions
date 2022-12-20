@@ -12,6 +12,7 @@ class_name Nomad
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	card_dashboard.hand = [GameCards.TELEPORT, GameCards.TELEPORT, GameCards.SLASH, GameCards.REGENESIS]
+	health = 20
 #	card_dashboard.hand = ["Test card 1"]
 
 func _process(_delta: float) -> void:
