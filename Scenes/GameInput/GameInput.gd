@@ -17,10 +17,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
 		return
 	var card_effect = card_looking_for_target.card.effect
-	if card_effect.target_type == 0:
-		return
 
-	if event is InputEventMouseMotion:
+	if card_effect.target_type != 0 && event is InputEventMouseMotion:
 		var mouse_pos: Vector2 = event.position
 		
 		# Find hovered target by casting a ray
@@ -50,10 +48,14 @@ func detect_card_play():
 	if Input.is_action_just_released("interact"):
 		var card: = card_looking_for_target.card
 		print("You just played a card: ", card_looking_for_target.card.name, \
-			" on ", card_target, " Expression: ", card.effect.expression.name())
+			" on ", card_target)
 		card.effect.expression.handle(nomad, card_target)
-		card_target.highlighted = false
-		card_target = null
+		if card_target != null:
+			card_target.highlighted = false
+			card_target = null
+		nomad.card_dashboard.discard.append(card_looking_for_target)
+		var hand: = nomad.card_dashboard.hand
+		hand.remove_at(hand.find(card_looking_for_target))
 		card_looking_for_target.free()
 		card_looking_for_target = null
 		ui_card_dashboard.card_played_cleanup()

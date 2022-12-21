@@ -105,6 +105,11 @@ _global_script_classes=[{
 "path": "res://Scenes/Model/GameObject/Nomad.gd"
 }, {
 "base": "CardExpression",
+"class": &"RegenesisExpression",
+"language": &"GDScript",
+"path": "res://Scenes/Model/Card/Expression/RegenesisExpression.gd"
+}, {
+"base": "CardExpression",
 "class": &"TeleportExpression",
 "language": &"GDScript",
 "path": "res://Scenes/Model/Card/Expression/TeleportExpression.gd"
@@ -159,6 +164,7 @@ _global_script_class_icons={
 "NREGameContext": "",
 "NREGameLogic": "",
 "Nomad": "",
+"RegenesisExpression": "",
 "TeleportExpression": "",
 "Tile": "",
 "TreeActor": "",

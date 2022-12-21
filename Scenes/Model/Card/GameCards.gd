@@ -10,7 +10,7 @@ var TELEPORT: = GameCard.new("Teleport", 1, \
 	CardEffect.new(0b0001, null, TeleportExpression.new()))
 var REGENESIS: = GameCard.new("Regenesis", 10, \
 	"Shuffle your discard into your deck", BASIC, \
-	CardEffect.new(0b0000, null, null))
+	CardEffect.new(0b0000, null, RegenesisExpression.new()))
 var SLASH: = GameCard.new("Slash", 1, \
 	"Deal 4 to a target within range 2", BASIC, \
 	CardEffect.new(0b1110, null, MeleeDamageExpression.new(4)))
