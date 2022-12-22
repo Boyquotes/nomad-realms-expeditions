@@ -1,0 +1,2 @@
+extends CardPlayer
+class_name WolfActor

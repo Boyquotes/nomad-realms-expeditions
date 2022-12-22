@@ -1,5 +1,5 @@
 extends GameLogic
-class_name NREGameLogic
+class_name NomadsGameLogic
 
 @onready var game_logic_timer: = GameLogicTimer.new(self)
 

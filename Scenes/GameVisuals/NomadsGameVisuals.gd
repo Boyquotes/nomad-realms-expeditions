@@ -1,5 +1,5 @@
 extends Node
-class_name GameVisuals
+class_name NomadsGameVisuals
 
 var context_queues: ContextQueues
 

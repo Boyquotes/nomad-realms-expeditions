@@ -1,5 +1,5 @@
 extends Node3D
-class_name GameInput
+class_name NomadsGameInput
 
 var card_looking_for_target: WorldCard
 var ui_card_dashboard: UICardDashBoard
