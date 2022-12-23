@@ -11,9 +11,9 @@ var highlighted: = false : set = set_highlighted
 
 @onready var hexagon: MeshInstance3D = $Hexagon
 
-func initialize(x: int, z: int, color: Color) -> void:
+func initialize(x: int, z: int, h: int, color: Color) -> void:
 	self.coordinates = Vector2i(x, z)
-	height = randi() % TILE_MAX_HEIGHT + 1
+	height = h
 	scale.y = height * TILE_HEIGHT_SCALE
 	
 #	set_color(Color(0, 1, 0))

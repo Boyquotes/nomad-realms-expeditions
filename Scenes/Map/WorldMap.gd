@@ -15,13 +15,19 @@ func _ready() -> void:
 	
 
 func generate_tiles() -> void:
+	var noise: = FastNoiseLite.new()
+	noise.offset = Vector3(0.5, 0.5, 0.5)
+	noise.seed = 14
+	noise.frequency = 0.1
 	for z in range(16):
 		tiles.append([])
 		for x in range(16):
 			var tile: Tile = tile_scene.instantiate()
-			tile.initialize(x, z, Color(0, 1, 0))
-			
-			tile.set_name("Tile" + str(z) + "_" + str(x))
+			var h: int = int((noise.get_noise_2d(x, z + (z % 2) * 0.5) + 1) * 10)
+			if x == 0 && z == 0:
+				h = 40
+			tile.initialize(x, z, h, Color(0, 1, 0))
+			tile.set_name("Tile" + str(x) + "_" + str(z))
 			add_child(tile)
 			tiles[-1].append(tile)
 			generate_tree(x, z, tile)
