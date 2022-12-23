@@ -53,6 +53,7 @@ func detect_card_play():
 		if card_target != null:
 			card_target.highlighted = false
 			card_target = null
+		# TODO: push an event instead of handling logic inside input
 		nomad.card_dashboard.discard.append(card_looking_for_target)
 		var hand: = nomad.card_dashboard.hand
 		hand.remove_at(hand.find(card_looking_for_target))

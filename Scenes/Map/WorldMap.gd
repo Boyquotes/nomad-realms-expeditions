@@ -24,8 +24,6 @@ func generate_tiles() -> void:
 		for x in range(16):
 			var tile: Tile = tile_scene.instantiate()
 			var h: int = int((noise.get_noise_2d(x, z + (z % 2) * 0.5) + 1) * 10)
-			if x == 0 && z == 0:
-				h = 40
 			tile.initialize(x, z, h, Color(0, 1, 0))
 			tile.set_name("Tile" + str(x) + "_" + str(z))
 			add_child(tile)

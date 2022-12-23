@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnjlxryq35dya"]
+[gd_scene load_steps=11 format=3 uid="uid://dnjlxryq35dya"]
 
 [ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes/GameLogic/NomadsGameLogic.gd" id="2_8fo55"]
+[ext_resource type="PackedScene" uid="uid://ct64fhsisruvm" path="res://Scenes/GameLogic/nomads_game_logic.tscn" id="2_likut"]
 [ext_resource type="Script" path="res://CameraPivot.gd" id="4"]
 [ext_resource type="Script" path="res://Scenes/GameInput/NomadsGameInput.gd" id="4_0dc84"]
 [ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="7"]
 [ext_resource type="Script" path="res://NREGameContext.gd" id="8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
@@ -26,8 +25,7 @@ adjustment_enabled = true
 [node name="NREGameContext" type="Node"]
 script = ExtResource("8")
 
-[node name="NomadsGameLogic" type="Node" parent="."]
-script = ExtResource("2_8fo55")
+[node name="NomadsGameLogic" parent="." instance=ExtResource("2_likut")]
 
 [node name="NomadsGameVisuals" parent="." instance=ExtResource("1")]
 
@@ -37,8 +35,6 @@ script = ExtResource("4_0dc84")
 [node name="UICardDashboard" parent="." instance=ExtResource("5")]
 
 [node name="Actors" type="Node3D" parent="."]
-
-[node name="Nomad" parent="Actors" instance=ExtResource("7")]
 
 [node name="WorldMap" parent="." instance=ExtResource("6")]
 
