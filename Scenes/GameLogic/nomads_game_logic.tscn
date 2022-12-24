@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://Scenes/GameLogic/NomadsGameLogic.gd" id="1_t1mp6"]
 [ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="2_s1b04"]
-[ext_resource type="PackedScene" uid="uid://6aq20kjxy5i5" path="res://Scenes/Model/GameObject/TreeActor.tscn" id="3_snk8p"]
+[ext_resource type="PackedScene" uid="uid://das3vkks37pdg" path="res://Scenes/Model/GameObject/WolfActor.tscn" id="3_o1bfu"]
 
 [node name="NomadsGameLogic" type="Node"]
 script = ExtResource("1_t1mp6")
 nomad_scene = ExtResource("2_s1b04")
-boss_scene = ExtResource("3_snk8p")
+boss_scene = ExtResource("3_o1bfu")
 
 [node name="BossSpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 
