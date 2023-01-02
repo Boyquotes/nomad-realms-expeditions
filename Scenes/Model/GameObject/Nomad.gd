@@ -7,13 +7,13 @@ class_name Nomad
 @onready var camera_target_pivot: Marker3D = $CameraTargetPivot
 @onready var camera_target: Marker3D = $CameraTargetPivot/CameraTarget
 @onready var mesh_pivot: Marker3D = $MeshPivot
-@onready var sprite: Sprite3D = $MeshPivot/Sprite3D
+@onready var nomad_mesh: MeshInstance3D = $nomad/Nomad
+@onready var nomad_clothes_mesh: MeshInstance3D = $nomad/Clothes
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	card_dashboard.hand = [GameCards.TELEPORT, GameCards.TELEPORT, GameCards.SLASH, GameCards.REGENESIS]
 	health = 20
-#	card_dashboard.hand = ["Test card 1"]
 
 func _process(_delta: float) -> void:
 	mesh_pivot.look_at(camera_target.global_position, Vector3.UP)
@@ -32,6 +32,8 @@ func set_coordinates(c: Vector2i) -> void:
 func set_highlighted(h: bool) -> void:
 	super.set_highlighted(h)
 	if h:
-		sprite.material_overlay = highlight_flash
+		nomad_mesh.material_overlay = highlight_flash
+		nomad_clothes_mesh.material_overlay = highlight_flash
 	else:
-		sprite.material_overlay = null
+		nomad_mesh.material_overlay = null
+		nomad_clothes_mesh.material_overlay = null

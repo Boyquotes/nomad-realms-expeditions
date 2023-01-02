@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/Nomad.gd" id="1_d38if"]
 [ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="3"]
 [ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_21smd"]
-[ext_resource type="Texture2D" uid="uid://2ofu0um3h82q" path="res://Assets/2D/jary.png" id="4"]
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="4_1wdfx"]
+[ext_resource type="PackedScene" uid="uid://bg63owkkh1e6q" path="res://Assets/3D/nomad.glb" id="4_e7khk"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.35
@@ -17,10 +17,8 @@ highlight_flash = ExtResource("3_21smd")
 
 [node name="MeshPivot" type="Marker3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="MeshPivot"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.5, 0)
-double_sided = false
-texture = ExtResource("4")
+[node name="nomad" parent="MeshPivot" instance=ExtResource("4_e7khk")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CameraTargetPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
