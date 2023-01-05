@@ -7,7 +7,7 @@ enum TargetType {
 
 # A mask
 var target_type: int
-var target_predicate
+var target_predicate # Callable, aka Function in Java
 var expression: CardExpression
 
 func _init(target_type: int, target_predicate, expression: CardExpression):

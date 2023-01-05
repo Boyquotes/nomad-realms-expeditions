@@ -1,6 +1,8 @@
 extends Node3D
 class_name NomadsGameInput
 
+signal card_played_event(card_player, card, card_target)
+
 var card_looking_for_target: WorldCard
 var ui_card_dashboard: UICardDashBoard
 
@@ -37,29 +39,28 @@ func _unhandled_input(event: InputEvent) -> void:
 			if card_target != null:
 				# Unhighlight previous target
 				card_target.highlighted = false
-			card_target = intersected.collider.get_parent()
-			if card_target is Tile:
+			var potential_target = intersected.collider.get_parent()
+			var target_predicate = card_effect.target_predicate
+			if target_predicate != null && target_predicate.call(nomad, potential_target):
+				card_target = intersected.collider.get_parent()
 				card_target.highlighted = true
 			else:
-				card_target.highlighted = true
+				card_target = null
 	detect_card_play()
 
 func detect_card_play():
-	if Input.is_action_just_released("interact"):
-		var card: = card_looking_for_target.card
-		print("You just played a card: ", card_looking_for_target.card.name, \
-			" on ", card_target)
-		card.effect.expression.handle(nomad, card_target)
-		if card_target != null:
-			card_target.highlighted = false
-			card_target = null
-		# TODO: push an event instead of handling logic inside input
-		nomad.card_dashboard.discard.append(card_looking_for_target)
-		var hand: = nomad.card_dashboard.hand
-		hand.remove_at(hand.find(card_looking_for_target))
-		card_looking_for_target.free()
-		card_looking_for_target = null
-		ui_card_dashboard.card_played_cleanup()
+	if !Input.is_action_just_released("interact"):
+		return
+	var card: = card_looking_for_target.card
+	var target_predicate = card.effect.target_predicate
+	if target_predicate != null && !target_predicate.call(nomad, card_target):
+		return
+	emit_signal("card_played_event", nomad, card_looking_for_target, card_target)
+	card_looking_for_target = null
+	ui_card_dashboard.card_played_cleanup()
+	if card_target != null:
+		card_target.highlighted = false
+		card_target = null
 
 func _on_UICardDashboard_card_looking_for_target(card: WorldCard) -> void:
 	card_looking_for_target = card

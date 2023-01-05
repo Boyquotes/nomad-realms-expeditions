@@ -29,7 +29,7 @@ func spawn_nomad():
 	# Generate a random position to spawn the nomad
 	var z = randi() % world_map.tiles.size()
 	var x = randi() % world_map.tiles[0].size()
-	nomad.position = world_map.tiles[z][x].position
+	nomad.world_pos = WorldPos.new(0, 0, x, z)
 	nomad.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
 	actors.add_child(nomad)
 
@@ -41,6 +41,18 @@ func _on_boss_spawn_timer_timeout():
 	var z = randi() % world_map.tiles.size()
 	var x = randi() % world_map.tiles[0].size()
 	actors.add_child(boss)
-	boss.coordinates = Vector2i(x, z)
+	boss.world_pos = WorldPos.new(0, 0, x, z)
 	boss.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE + 10
-	print("NomadsGameLogic.gd: BOSS SPAWNED AT ", boss.coordinates, "!")
+	print("NomadsGameLogic.gd: BOSS SPAWNED AT ", boss.world_pos, "!")
+
+
+func _on_nomads_game_input_card_played_event(card_player: CardPlayer, card: WorldCard, card_target):
+	var card_model = card.card
+	print("You just played a card: ", card_model.name, " on ", card_target)
+	card_model.effect.expression.handle(card_player, card_target)
+	# TODO: push an event instead of handling logic inside input
+	card_player.card_dashboard.discard.append(card)
+	var hand: = card_player.card_dashboard.hand
+	hand.remove_at(hand.find(card))
+	card.free()
+	card = null

@@ -28,39 +28,20 @@ func generate_tiles() -> void:
 			tile.set_name("Tile" + str(x) + "_" + str(z))
 			add_child(tile)
 			tiles[-1].append(tile)
-			generate_tree(x, z, tile)
 
 func generate_actors() -> void:
 	for z in range(16):
 		for x in range(16):
 			var tile: Tile = tiles[z][x]
-			var rand: = randi() % 20
+			var rand: = randi() % 15
 			if rand == 0:
 				var tree: TreeActor = tree_scene.instantiate()
-				var position = Vector2(x, z)
-				tree.position.x = 1.5 * x
+				tree.world_pos = WorldPos.new(0, 0, x, z)
 				tree.position.y = tile.scale.y
-				tree.position.z = sqrt(3) * z
-				if x % 2 == 1:
-					tree.position.z += sqrt(3) * 0.5
 				add_child(tree)
 			elif rand == 1:
 				var wolf: WolfActor = wolf_scene.instantiate()
-				var position = Vector2(x, z)
-				wolf.position.x = 1.5 * x
+				wolf.world_pos = WorldPos.new(0, 0, x, z)
 				wolf.position.y = tile.scale.y
-				wolf.position.z = sqrt(3) * z
-				if x % 2 == 1:
-					wolf.position.z += sqrt(3) * 0.5
 				add_child(wolf)
 
-func generate_tree(x, z, tile) -> void:
-	if randi() % 10 == 0:
-		var tree: TreeActor = tree_scene.instantiate()
-		var position = Vector2(x, z)
-		tree.position.x = 1.5 * x
-		tree.position.y = tile.scale.y
-		tree.position.z = sqrt(3) * z
-		if x % 2 == 1:
-			tree.position.z += sqrt(3) * 0.5
-		add_child(tree)

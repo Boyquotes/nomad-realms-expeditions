@@ -12,7 +12,7 @@ var highlighted: = false : set = set_highlighted
 @onready var hexagon: MeshInstance3D = $Hexagon
 
 func initialize(x: int, z: int, h: int, color: Color) -> void:
-	self.coordinates = Vector2i(x, z)
+	self.world_pos = WorldPos.new(0, 0, x, z)
 	height = h
 	scale.y = height * TILE_HEIGHT_SCALE
 	

@@ -51,5 +51,6 @@ light_color = Color(1, 0.901961, 0.701961, 1)
 light_energy = 0.705
 shadow_enabled = true
 
+[connection signal="card_played_event" from="NomadsGameInput" to="NomadsGameLogic" method="_on_nomads_game_input_card_played_event"]
 [connection signal="card_looking_for_target" from="UICardDashboard" to="NomadsGameInput" method="_on_UICardDashboard_card_looking_for_target"]
 [connection signal="card_not_looking_for_target" from="UICardDashboard" to="NomadsGameInput" method="_on_UICardDashboard_card_not_looking_for_target"]

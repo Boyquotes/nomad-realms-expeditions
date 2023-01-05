@@ -148,6 +148,11 @@ _global_script_classes=[{
 "class": &"WorldMap",
 "language": &"GDScript",
 "path": "res://Scenes/Map/WorldMap.gd"
+}, {
+"base": "Object",
+"class": &"WorldPos",
+"language": &"GDScript",
+"path": "res://Scenes/Model/WorldPos.gd"
 }]
 _global_script_class_icons={
 "Actor": "",
@@ -177,7 +182,8 @@ _global_script_class_icons={
 "UICardHand": "",
 "WolfActor": "",
 "WorldCard": "",
-"WorldMap": ""
+"WorldMap": "",
+"WorldPos": ""
 }
 
 [application]
