@@ -15,13 +15,22 @@ func init(context_queues: ContextQueues) -> void:
 
 # Gets called by GameLogicTimer once every tick.
 func update() -> void:
-	# Equivalent to `super.update()` in Java
 	super.update()
 	
 	# Update all actors
 	var actors: = get_tree().get_nodes_in_group("actors")
-	for i in range(len(actors)):
-		actors[i].update()
+	for actor in actors:
+		actor.update()
+	
+	if game_tick != 0 && game_tick % 20 == 0:
+		var card_players: = get_tree().get_nodes_in_group("card_players")
+		for cp in card_players:
+			var card_player: CardPlayer = cp as CardPlayer
+			var dashboard: = card_player.card_dashboard
+			if dashboard.deck.size() > 0:
+				if dashboard.hand.size() == 8:
+					dashboard.discard.append(dashboard.hand.pop_front())
+				dashboard.hand.append(dashboard.deck.pop_front())
 	# Push events to GameVisuals
 
 func spawn_nomad():

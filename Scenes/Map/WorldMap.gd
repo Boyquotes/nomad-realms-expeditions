@@ -41,6 +41,9 @@ func generate_actors() -> void:
 				add_child(tree)
 			elif rand == 1:
 				var wolf: WolfActor = wolf_scene.instantiate()
+				wolf.card_dashboard.hand.append(GameCards.SLASH)
+				wolf.card_dashboard.hand.append(GameCards.SLASH)
+				wolf.card_dashboard.hand.append(GameCards.REGENESIS)
 				wolf.world_pos = WorldPos.new(0, 0, x, z)
 				wolf.position.y = tile.scale.y
 				add_child(wolf)
