@@ -7,8 +7,7 @@ class_name Nomad
 @onready var camera_target_pivot: Marker3D = $CameraTargetPivot
 @onready var camera_target: Marker3D = $CameraTargetPivot/CameraTarget
 @onready var mesh_pivot: Marker3D = $MeshPivot
-@onready var nomad_mesh: MeshInstance3D = $nomad/Nomad
-@onready var nomad_clothes_mesh: MeshInstance3D = $nomad/Clothes
+@onready var nomad_mesh: MeshInstance3D = $MeshPivot/nomad/Nomad
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,7 +35,5 @@ func set_highlighted(h: bool) -> void:
 	super.set_highlighted(h)
 	if h:
 		nomad_mesh.material_overlay = highlight_flash
-		nomad_clothes_mesh.material_overlay = highlight_flash
 	else:
 		nomad_mesh.material_overlay = null
-		nomad_clothes_mesh.material_overlay = null
