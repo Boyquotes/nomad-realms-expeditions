@@ -1,0 +1,2 @@
+extends GameObject
+class_name GameEvent

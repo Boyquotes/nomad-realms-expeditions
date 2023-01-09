@@ -39,6 +39,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Scenes/GameLogic/ContextQueues.gd"
 }, {
+"base": "GameEvent",
+"class": &"ExpressionEvent",
+"language": &"GDScript",
+"path": "res://Scenes/Event/ExpressionEvent.gd"
+}, {
 "base": "Object",
 "class": &"GameCard",
 "language": &"GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[{
 "class": &"GameCardGui",
 "language": &"GDScript",
 "path": "res://Scenes/UI/GameCardGui.gd"
+}, {
+"base": "GameObject",
+"class": &"GameEvent",
+"language": &"GDScript",
+"path": "res://Scenes/Event/GameEvent.gd"
 }, {
 "base": "Node",
 "class": &"GameLogic",
@@ -161,8 +171,10 @@ _global_script_class_icons={
 "CardExpression": "",
 "CardPlayer": "",
 "ContextQueues": "",
+"ExpressionEvent": "",
 "GameCard": "",
 "GameCardGui": "",
+"GameEvent": "",
 "GameLogic": "",
 "GameLogicTimer": "",
 "GameObject": "",
