@@ -42,7 +42,7 @@ _global_script_classes=[{
 "base": "GameEvent",
 "class": &"ExpressionEvent",
 "language": &"GDScript",
-"path": "res://Scenes/Event/ExpressionEvent.gd"
+"path": "res://Scenes/Event/Expression/ExpressionEvent.gd"
 }, {
 "base": "Object",
 "class": &"GameCard",
@@ -83,6 +83,11 @@ _global_script_classes=[{
 "class": &"HealthActor",
 "language": &"GDScript",
 "path": "res://Scenes/Model/GameObject/HealthActor.gd"
+}, {
+"base": "ExpressionEvent",
+"class": &"MeleeDamageEvent",
+"language": &"GDScript",
+"path": "res://Scenes/Event/Expression/MeleeDamageEvent.gd"
 }, {
 "base": "CardExpression",
 "class": &"MeleeDamageExpression",
@@ -180,6 +185,7 @@ _global_script_class_icons={
 "GameObject": "",
 "GameState": "",
 "HealthActor": "",
+"MeleeDamageEvent": "",
 "MeleeDamageExpression": "",
 "NREGameContext": "",
 "Nomad": "",

@@ -15,6 +15,9 @@ var expressionEventHeap: Array[ExpressionEvent] = []
 func add(actor: Actor):
 	actors[actor.id] = actor
 
+func get_actor(id: int) -> Actor:
+	return actors[id]
+
 func copy() -> GameState:
 	var copy: = GameState.new()
 	for card in cards:
