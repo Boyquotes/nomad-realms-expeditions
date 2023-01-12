@@ -10,7 +10,7 @@ var chains: Array[Array] = []
 var card_players: = {}
 var chunk_to_actors: = {}
 
-var expressionEventHeap: Array[ExpressionEvent] = []
+var expression_event_heap: Array[ExpressionEvent] = []
 
 func add(actor: Actor):
 	actors[actor.id] = actor
@@ -28,6 +28,6 @@ func copy() -> GameState:
 		copy.chains.append(chain)
 	copy.card_players = card_players
 	copy.chunk_to_actors = chunk_to_actors
-	for event in expressionEventHeap:
-		copy.expressionEventHeap.append(event)
+	for event in expression_event_heap:
+		copy.expression_event_heap.append(event)
 	return copy

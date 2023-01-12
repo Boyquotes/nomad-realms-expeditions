@@ -1,7 +1,6 @@
 extends CardExpression
 class_name TeleportExpression
 
-func handle(player: CardPlayer, target: GameObject):
+func handle(player: CardPlayer, target: GameObject, event_heap: Array[ExpressionEvent]):
 	var tile: = target as Tile
-	player.world_pos = tile.world_pos
-	player.position.y = tile.scale.y
+	event_heap.append(TeleportEvent.new(player.id, tile.world_pos))

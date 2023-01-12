@@ -72,7 +72,7 @@ func _on_boss_spawn_timer_timeout() -> void:
 func _on_nomads_game_input_card_played_event(card_player: CardPlayer, card: WorldCard, card_target):
 	var card_model = card.card
 	print("You just played a card: ", card_model.name, " on ", card_target)
-	card_model.effect.expression.handle(card_player, card_target)
+	card_model.effect.expression.handle(card_player, card_target, next_state.expression_event_heap)
 	# TODO: push an event instead of handling logic inside input
 	card_player.card_dashboard.discard.append(card)
 	var hand: = card_player.card_dashboard.hand
