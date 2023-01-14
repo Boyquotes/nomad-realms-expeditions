@@ -15,3 +15,6 @@ func set_world_pos(pos: WorldPos) -> void:
 	position.x = 1.5 * net_x
 	# Offset y by half a tile if x is odd
 	position.z = sqrt(3) * (net_y + 0.5 * (tx % 2))
+
+func generate_id() -> void:
+	self.id = IdGenerator.generate_id()

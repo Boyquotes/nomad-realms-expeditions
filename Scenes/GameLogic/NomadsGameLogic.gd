@@ -15,13 +15,19 @@ var next_state: GameState = GameState.new()
 func init(context_queues: ContextQueues) -> void:
 	super.init(context_queues)
 	spawn_nomad()
+	world_map.init(next_state)
 	advance_state()
-	
 
 # Gets called by GameLogicTimer once every tick.
 func update() -> void:
 	super.update()
-	
+	next_state.expression_event_heap.sort_custom( \
+		func(a, b): return a.priority() < b.priority \
+	)
+	while next_state.expression_event_heap.size() > 0:
+		var event: ExpressionEvent = next_state.expression_event_heap.pop_front()
+		event.process(game_tick, next_state)
+		
 	# Update all actors
 	var actors: = get_tree().get_nodes_in_group("actors")
 	for actor in actors:
@@ -40,7 +46,7 @@ func update() -> void:
 	
 	# Push events to GameVisuals
 	
-	# TODO: call advance_state()
+	advance_state()
 
 func spawn_nomad():
 	var nomad: Nomad = nomad_scene.instantiate() as Nomad
@@ -49,10 +55,13 @@ func spawn_nomad():
 	var x = randi() % world_map.tiles[0].size()
 	nomad.world_pos = WorldPos.new(0, 0, x, z)
 	nomad.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
+	nomad.generate_id()
 	actors.add_child(nomad)
 
 func advance_state() -> void:
 	game_states.append(next_state.copy())
+	while game_states.size() > 30:
+		game_states.pop_front()
 
 func current_state() -> GameState:
 	return game_states[-1]

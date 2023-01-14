@@ -8,11 +8,14 @@ class_name WorldMap
 var tiles: Array[Array] = []
 
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	randomize()
+	# I don't know why, but if you generate tiles in init(), the game crashes
 	generate_tiles()
-	generate_actors()
-	
+
+func init(state: GameState) -> void:
+	generate_actors(state)
 
 func generate_tiles() -> void:
 	var noise: = FastNoiseLite.new()
@@ -29,7 +32,7 @@ func generate_tiles() -> void:
 			add_child(tile)
 			tiles[-1].append(tile)
 
-func generate_actors() -> void:
+func generate_actors(state: GameState) -> void:
 	for z in range(16):
 		for x in range(16):
 			var tile: Tile = tiles[z][x]
@@ -38,7 +41,9 @@ func generate_actors() -> void:
 				var tree: TreeActor = tree_scene.instantiate()
 				tree.world_pos = WorldPos.new(0, 0, x, z)
 				tree.position.y = tile.scale.y
+				tree.generate_id()
 				add_child(tree)
+				state.add(tree)
 			elif rand == 1:
 				var wolf: WolfActor = wolf_scene.instantiate()
 				wolf.card_dashboard.hand.append(GameCards.SLASH)
@@ -46,5 +51,7 @@ func generate_actors() -> void:
 				wolf.card_dashboard.hand.append(GameCards.REGENESIS)
 				wolf.world_pos = WorldPos.new(0, 0, x, z)
 				wolf.position.y = tile.scale.y
+				wolf.generate_id()
 				add_child(wolf)
+				state.add(wolf)
 

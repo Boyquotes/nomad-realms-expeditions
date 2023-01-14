@@ -221,6 +221,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameCards="*res://Scenes/Model/Card/GameCards.gd"
+IdGenerator="*res://Scenes/Model/IdGenerator.gd"
 
 [display]
 
