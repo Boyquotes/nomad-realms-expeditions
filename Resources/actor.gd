@@ -1,0 +1,2 @@
+extends GameObjectResource
+class_name ActorResource

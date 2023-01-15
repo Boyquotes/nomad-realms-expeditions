@@ -1,4 +1,4 @@
-extends Object
+extends Resource
 class_name WorldPos
 
 var chunk_pos: Vector2i
