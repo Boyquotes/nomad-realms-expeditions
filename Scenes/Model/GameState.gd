@@ -23,7 +23,7 @@ func copy() -> GameState:
 	for card in cards:
 		copy.cards[card] = cards[card]
 	for actor in actors:
-		copy.actors[actor] = actors[actor]
+		copy.actors[actor] = actors[actor].copy()
 	for chain in chains:
 		copy.chains.append(chain)
 	copy.card_players = card_players

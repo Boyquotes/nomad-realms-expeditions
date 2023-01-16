@@ -1,8 +1,8 @@
 extends Resource
 class_name WorldPos
 
-var chunk_pos: Vector2i
-var tile_pos: Vector2i
+@export var chunk_pos: Vector2i
+@export var tile_pos: Vector2i
 
 func _init(cx, cy, tx, ty):
 	chunk_pos = Vector2i(cx, cy)

@@ -18,3 +18,10 @@ func set_world_pos(pos: WorldPos) -> void:
 
 func generate_id() -> void:
 	self.id = IdGenerator.generate_id()
+
+
+func copy() -> GameObject:
+	return null
+
+func copy_to(object) -> void:
+	object.id = id
