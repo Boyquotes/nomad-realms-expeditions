@@ -225,7 +225,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Nomad Realms Expeditions"
-run/main_scene="res://NREGameContext.tscn"
+run/main_scene="res://Scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/show_image=false
 config/icon="res://icon.png"
