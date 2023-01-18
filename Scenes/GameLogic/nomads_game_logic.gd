@@ -1,5 +1,4 @@
 extends GameLogic
-class_name NomadsGameLogic
 
 @onready var game_logic_timer: = GameLogicTimer.new(self)
 
@@ -14,8 +13,8 @@ var next_state: GameState = GameState.new()
 
 func init(context_queues: ContextQueues) -> void:
 	super.init(context_queues)
-	spawn_nomad()
-	world_map.init(next_state)
+#	spawn_nomad()
+#	world_map.init(next_state)
 	advance_state()
 
 # Gets called by GameLogicTimer once every tick.
@@ -27,11 +26,11 @@ func update() -> void:
 	while next_state.expression_event_heap.size() > 0:
 		var event: ExpressionEvent = next_state.expression_event_heap.pop_front()
 		event.process(game_tick, next_state)
-		
-	# Update all actors
-	var actors: = get_tree().get_nodes_in_group("actors")
-	for actor in actors:
-		actor.update()
+
+#	# Update all actors
+#	var actors: = get_tree().get_nodes_in_group("actors")
+#	for actor in actors:
+#		actor.update()
 	
 	# Everyone draws a card if game_tick is divisible by 20
 	if game_tick != 0 && game_tick % 20 == 0:

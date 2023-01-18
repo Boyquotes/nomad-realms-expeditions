@@ -49,6 +49,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Scenes/Event/Expression/ExpressionEvent.gd"
 }, {
+"base": "Node3D",
+"class": &"Game",
+"language": &"GDScript",
+"path": "res://Game.gd"
+}, {
 "base": "Object",
 "class": &"GameCard",
 "language": &"GDScript",
@@ -104,11 +109,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Scenes/Model/Card/Expression/MeleeDamageExpression.gd"
 }, {
-"base": "Node",
-"class": &"NREGameContext",
-"language": &"GDScript",
-"path": "res://NREGameContext.gd"
-}, {
 "base": "CardPlayer",
 "class": &"Nomad",
 "language": &"GDScript",
@@ -118,11 +118,6 @@ _global_script_classes=[{
 "class": &"NomadsGameInput",
 "language": &"GDScript",
 "path": "res://Scenes/GameInput/NomadsGameInput.gd"
-}, {
-"base": "GameLogic",
-"class": &"NomadsGameLogic",
-"language": &"GDScript",
-"path": "res://Scenes/GameLogic/NomadsGameLogic.gd"
 }, {
 "base": "Node",
 "class": &"NomadsGameVisuals",
@@ -193,6 +188,7 @@ _global_script_class_icons={
 "CardPlayer": "",
 "ContextQueues": "",
 "ExpressionEvent": "",
+"Game": "",
 "GameCard": "",
 "GameCardGui": "",
 "GameEvent": "",
@@ -204,10 +200,8 @@ _global_script_class_icons={
 "HealthActor": "",
 "MeleeDamageEvent": "",
 "MeleeDamageExpression": "",
-"NREGameContext": "",
 "Nomad": "",
 "NomadsGameInput": "",
-"NomadsGameLogic": "",
 "NomadsGameVisuals": "",
 "RegenesisExpression": "",
 "TeleportEvent": "",
@@ -234,6 +228,7 @@ config/icon="res://icon.png"
 
 GameCards="*res://Scenes/Model/Card/GameCards.gd"
 IdGenerator="*res://Scenes/Model/IdGenerator.gd"
+NomadsGameLogic="*res://Scenes/GameLogic/nomads_game_logic.gd"
 
 [display]
 

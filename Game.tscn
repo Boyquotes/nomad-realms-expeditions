@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://cywma501627j5"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_1rhsf"]
+[ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_cndyb"]
+[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="4_3qvar"]
+[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="4_q77r4"]
+[ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_3t8e8"]
+[ext_resource type="Script" path="res://CameraPivot.gd" id="6_5hkch"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
+sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
+ground_bottom_color = Color(0.156863, 0.184314, 0.211765, 1)
+
+[sub_resource type="Sky" id="2"]
+sky_material = SubResource("ProceduralSkyMaterial_ltiu1")
+
+[sub_resource type="Environment" id="1"]
+background_mode = 2
+sky = SubResource("2")
+fog_enabled = true
+fog_sky_affect = 0.0
+adjustment_enabled = true
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_1rhsf")
+
+[node name="NomadsGameVisuals" parent="." instance=ExtResource("2_cndyb")]
+
+[node name="UICardDashboard" parent="." instance=ExtResource("4_q77r4")]
+
+[node name="Actors" type="Node3D" parent="."]
+
+[node name="Nomad" parent="Actors" instance=ExtResource("4_3qvar")]
+
+[node name="WorldMap" parent="." instance=ExtResource("5_3t8e8")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+script = ExtResource("6_5hkch")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+environment = SubResource("1")
+current = true
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 24, 0)
+light_color = Color(1, 0.901961, 0.701961, 1)
+light_energy = 0.705
+shadow_enabled = true
