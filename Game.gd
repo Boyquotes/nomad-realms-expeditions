@@ -18,9 +18,15 @@ func _ready() -> void:
 	NomadsGameLogic.init(context_queues)
 	$NomadsGameVisuals.init(context_queues)
 	world_map.init(NomadsGameLogic.next_state)
-	ui_card_dashboard = $"../UICardDashboard"
-	camera = $"../CameraPivot/Camera3D"
-	nomad = $"../Actors/Nomad"
+	ui_card_dashboard = $UICardDashboard
+	camera = $CameraPivot/Camera3D
+	nomad = $Actors/Nomad
+	# Set nomad position
+	var z = randi() % world_map.tiles.size()
+	var x = randi() % world_map.tiles[0].size()
+	nomad.world_pos = WorldPos.new(0, 0, x, z)
+	nomad.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
+	nomad.generate_id()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
@@ -28,6 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var card_effect = card_looking_for_target.card.effect
 
 	if card_effect.target_type != 0 && event is InputEventMouseMotion:
+		print("Hi")
 		var mouse_pos: Vector2 = event.position
 		
 		# Find hovered target by casting a ray
