@@ -52,7 +52,7 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Game",
 "language": &"GDScript",
-"path": "res://Game.gd"
+"path": "res://game.gd"
 }, {
 "base": "Object",
 "class": &"GameCard",

@@ -29,7 +29,6 @@ func set_world_pos(pos: WorldPos) -> void:
 		camera_target_pivot.global_position = prev_cam_target_pos
 	else:
 		super.set_world_pos(pos)
-	
 
 func set_highlighted(h: bool) -> void:
 	super.set_highlighted(h)

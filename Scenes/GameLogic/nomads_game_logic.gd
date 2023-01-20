@@ -13,8 +13,6 @@ var next_state: GameState = GameState.new()
 
 func init(context_queues: ContextQueues) -> void:
 	super.init(context_queues)
-#	spawn_nomad()
-#	world_map.init(next_state)
 	advance_state()
 
 # Gets called by GameLogicTimer once every tick.
@@ -45,17 +43,7 @@ func update() -> void:
 	
 	# Push events to GameVisuals
 	
-	advance_state()
-
-func spawn_nomad():
-	var nomad: Nomad = nomad_scene.instantiate() as Nomad
-	# Generate a random position to spawn the nomad
-	var z = randi() % world_map.tiles.size()
-	var x = randi() % world_map.tiles[0].size()
-	nomad.world_pos = WorldPos.new(0, 0, x, z)
-	nomad.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
-	nomad.generate_id()
-	actors.add_child(nomad)
+#	advance_state()
 
 func advance_state() -> void:
 	game_states.append(next_state.copy())
@@ -77,7 +65,8 @@ func _on_boss_spawn_timer_timeout() -> void:
 	boss.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE + 10
 	print("NomadsGameLogic.gd: BOSS SPAWNED AT ", boss.world_pos, "!")
 
-func _on_nomads_game_input_card_played_event(card_player: CardPlayer, card: WorldCard, card_target):
+# Connected to game.tscn's card_played_event signal
+func _on_card_played_event(card_player: CardPlayer, card: WorldCard, card_target):
 	var card_model = card.card
 	print("You just played a card: ", card_model.name, " on ", card_target)
 	card_model.effect.expression.handle(card_player, card_target, next_state.expression_event_heap)

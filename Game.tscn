@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cywma501627j5"]
+[gd_scene load_steps=10 format=3 uid="uid://c0j0dqwy5cevv"]
 
-[ext_resource type="Script" path="res://Game.gd" id="1_1rhsf"]
-[ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_cndyb"]
-[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="4_3qvar"]
-[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="4_q77r4"]
-[ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_3t8e8"]
-[ext_resource type="Script" path="res://CameraPivot.gd" id="6_5hkch"]
+[ext_resource type="Script" path="res://game.gd" id="1_7028j"]
+[ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_o6hmh"]
+[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_tg0w8"]
+[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="4_6nie1"]
+[ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_ruiie"]
+[ext_resource type="Script" path="res://CameraPivot.gd" id="6_6nccw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
 sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
@@ -22,20 +22,20 @@ fog_sky_affect = 0.0
 adjustment_enabled = true
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_1rhsf")
+script = ExtResource("1_7028j")
 
-[node name="NomadsGameVisuals" parent="." instance=ExtResource("2_cndyb")]
+[node name="NomadsGameVisuals" parent="." instance=ExtResource("2_o6hmh")]
 
-[node name="UICardDashboard" parent="." instance=ExtResource("4_q77r4")]
+[node name="UICardDashboard" parent="." instance=ExtResource("3_tg0w8")]
 
 [node name="Actors" type="Node3D" parent="."]
 
-[node name="Nomad" parent="Actors" instance=ExtResource("4_3qvar")]
+[node name="Nomad" parent="Actors" instance=ExtResource("4_6nie1")]
 
-[node name="WorldMap" parent="." instance=ExtResource("5_3t8e8")]
+[node name="WorldMap" parent="." instance=ExtResource("5_ruiie")]
 
 [node name="CameraPivot" type="Marker3D" parent="."]
-script = ExtResource("6_5hkch")
+script = ExtResource("6_6nccw")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 environment = SubResource("1")
@@ -46,3 +46,6 @@ transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 24, 0
 light_color = Color(1, 0.901961, 0.701961, 1)
 light_energy = 0.705
 shadow_enabled = true
+
+[connection signal="card_looking_for_target" from="UICardDashboard" to="." method="_on_ui_card_dashboard_card_looking_for_target"]
+[connection signal="card_not_looking_for_target" from="UICardDashboard" to="." method="_on_ui_card_dashboard_card_not_looking_for_target"]

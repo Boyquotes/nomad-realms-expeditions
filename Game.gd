@@ -3,24 +3,24 @@ class_name Game
 
 signal card_played_event(card_player, card, card_target)
 
+@onready var ui_card_dashboard: UICardDashBoard = $UICardDashboard
+@onready var camera: Camera3D = $CameraPivot/Camera3D
+@onready var nomad: Nomad = $Actors/Nomad
+@onready var world_map: WorldMap = $WorldMap
+
 var context_queues: = ContextQueues.new()
 var card_looking_for_target: WorldCard
-var ui_card_dashboard: UICardDashBoard
-
-var camera: Camera3D
 var card_target: GameObject
-@export var nomad: Nomad
-
-@onready var world_map: WorldMap = $WorldMap
 
 func _ready() -> void:
 	print("Starting Nomad Realms Expeditions")
 	NomadsGameLogic.init(context_queues)
 	$NomadsGameVisuals.init(context_queues)
 	world_map.init(NomadsGameLogic.next_state)
-	ui_card_dashboard = $UICardDashboard
-	camera = $CameraPivot/Camera3D
-	nomad = $Actors/Nomad
+	connect("card_played_event", NomadsGameLogic._on_card_played_event)
+	set_nomad_position()
+
+func set_nomad_position() -> void:
 	# Set nomad position
 	var z = randi() % world_map.tiles.size()
 	var x = randi() % world_map.tiles[0].size()
@@ -34,7 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	var card_effect = card_looking_for_target.card.effect
 
 	if card_effect.target_type != 0 && event is InputEventMouseMotion:
-		print("Hi")
 		var mouse_pos: Vector2 = event.position
 		
 		# Find hovered target by casting a ray
@@ -70,16 +69,17 @@ func detect_card_play():
 	if target_predicate != null && !target_predicate.call(nomad, card_target):
 		return
 	emit_signal("card_played_event", nomad, card_looking_for_target, card_target)
-	card_looking_for_target = null
 	ui_card_dashboard.card_played_cleanup()
+	
+	card_looking_for_target = null
 	if card_target != null:
 		card_target.highlighted = false
 		card_target = null
 
-func _on_UICardDashboard_card_looking_for_target(card: WorldCard) -> void:
+func _on_ui_card_dashboard_card_looking_for_target(card):
 	card_looking_for_target = card
 
-func _on_UICardDashboard_card_not_looking_for_target(card: WorldCard) -> void:
+func _on_ui_card_dashboard_card_not_looking_for_target(card):
 	if card_target != null:
 		card_target.highlighted = false
 		card_target = null

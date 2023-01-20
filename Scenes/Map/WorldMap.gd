@@ -17,6 +17,7 @@ func _ready() -> void:
 func init(state: GameState) -> void:
 	generate_actors(state)
 
+# Called by Game.gd
 func generate_tiles() -> void:
 	var noise: = FastNoiseLite.new()
 	noise.offset = Vector3(0.5, 0.5, 0.5)
