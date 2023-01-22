@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0j0dqwy5cevv"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ry7p1juc8uy"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_7028j"]
 [ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_o6hmh"]
 [ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_tg0w8"]
 [ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="4_6nie1"]
 [ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_ruiie"]
-[ext_resource type="Script" path="res://CameraPivot.gd" id="6_6nccw"]
+[ext_resource type="Script" path="res://Camera.gd" id="6_wowo4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
 sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
@@ -34,12 +34,11 @@ script = ExtResource("1_7028j")
 
 [node name="WorldMap" parent="." instance=ExtResource("5_ruiie")]
 
-[node name="CameraPivot" type="Marker3D" parent="."]
-script = ExtResource("6_6nccw")
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("actor_to_follow")]
 environment = SubResource("1")
 current = true
+script = ExtResource("6_wowo4")
+actor_to_follow = NodePath("../Actors/Nomad")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 24, 0)

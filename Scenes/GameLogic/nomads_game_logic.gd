@@ -31,15 +31,15 @@ func update() -> void:
 #		actor.update()
 	
 	# Everyone draws a card if game_tick is divisible by 20
-	if game_tick != 0 && game_tick % 20 == 0:
-		var card_players: = get_tree().get_nodes_in_group("card_players")
-		for cp in card_players:
-			var card_player: CardPlayer = cp as CardPlayer
-			var dashboard: = card_player.card_dashboard
-			if dashboard.deck.size() > 0:
-				if dashboard.hand.size() == 8:
-					dashboard.discard.append(dashboard.hand.pop_front())
-				dashboard.hand.append(dashboard.deck.pop_front())
+#	if game_tick != 0 && game_tick % 20 == 0:
+#		var card_players: = get_tree().get_nodes_in_group("card_players")
+#		for cp in card_players:
+#			var card_player: CardPlayer = cp as CardPlayer
+#			var dashboard: = card_player.card_dashboard
+#			if dashboard.deck.size() > 0:
+#				if dashboard.hand.size() == 8:
+#					dashboard.discard.append(dashboard.hand.pop_front())
+#				dashboard.hand.append(dashboard.deck.pop_front())
 	
 	# Push events to GameVisuals
 	
@@ -70,6 +70,7 @@ func _on_card_played_event(card_player: CardPlayer, card: WorldCard, card_target
 	var card_model = card.card
 	print("You just played a card: ", card_model.name, " on ", card_target)
 	card_model.effect.expression.handle(card_player, card_target, next_state.expression_event_heap)
+	# Maybe we can await a timer timeout and then execute the expression...
 	# TODO: push an event instead of handling logic inside input
 	card_player.card_dashboard.discard.append(card)
 	var hand: = card_player.card_dashboard.hand

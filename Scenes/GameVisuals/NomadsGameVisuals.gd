@@ -19,7 +19,6 @@ func init(context_queues: ContextQueues) -> void:
 		var card: WorldCard = ui_card_dashboard.card_hand.cards[i]
 		card.position = card.target_position
 		card.position.y += 40
-	$"../CameraPivot".init()
 
 func create_card_gui(card: GameCard) -> void:
 	var card_node: WorldCard = card_scene.instantiate()

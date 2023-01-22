@@ -1,14 +1,11 @@
-extends Marker3D
+extends Camera3D
 
 @export var lerpSpeed: = 1
 
-var nomad: Node3D
-var camera_target: Node3D
+@export var actor_to_follow: Node3D
+@onready var camera_target = actor_to_follow.get_node("CameraTargetPivot/CameraTarget")
 
-# Called by NomadsGameVisuals
-func init() -> void:
-	nomad = $"../Actors/Nomad"
-	camera_target = $"../Actors/Nomad/CameraTargetPivot/CameraTarget"
+func _ready() -> void:
 	position = camera_target.global_position
 	rotation = camera_target.global_rotation
 
