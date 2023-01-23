@@ -4,7 +4,7 @@ class_name Game
 signal card_played_event(card_player, card, card_target)
 
 @onready var ui_card_dashboard: UICardDashBoard = $UICardDashboard
-@onready var camera: Camera3D = $CameraPivot/Camera3D
+@onready var camera: Camera3D = $Camera3D
 @onready var nomad: Nomad = $Actors/Nomad
 @onready var world_map: WorldMap = $WorldMap
 

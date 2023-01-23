@@ -16,3 +16,7 @@ func set_highlighted(h: bool) -> void:
 func die():
 	queue_free()
 	visible = false
+
+func copy_to(object):
+	super(object)
+	object.highlighted = highlighted
