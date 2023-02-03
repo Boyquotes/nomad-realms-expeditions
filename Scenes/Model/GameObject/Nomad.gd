@@ -6,8 +6,7 @@ class_name Nomad
 
 @onready var camera_target_pivot: Marker3D = $CameraTargetPivot
 @onready var camera_target: Marker3D = $CameraTargetPivot/CameraTarget
-@onready var mesh_pivot: Marker3D = $MeshPivot
-@onready var nomad_mesh: MeshInstance3D = $MeshPivot/nomad/Nomad
+@onready var nomad_mesh: MeshInstance3D = $nomad/Nomad
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +14,9 @@ func _ready() -> void:
 	health = 20
 
 func _process(_delta: float) -> void:
-	mesh_pivot.look_at(camera_target.global_position, Vector3.UP)
-	mesh_pivot.rotation.x = 0
-	mesh_pivot.rotation.y += PI
+	nomad_mesh.look_at(camera_target.global_position, Vector3.UP)
+	nomad_mesh.rotation.x = 0
+	nomad_mesh.rotation.y += PI
 	camera_target_pivot.position = camera_target_pivot.position * 0.9
 	if camera_target_pivot.position.length_squared() < 0.0001:
 		camera_target_pivot.position = Vector3.ZERO

@@ -1,28 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://drglmfxxc6dk8"]
+[gd_scene load_steps=7 format=3 uid="uid://bdf1ola8jtf0b"]
 
-[ext_resource type="Script" path="res://Scenes/Model/GameObject/Nomad.gd" id="1_d38if"]
-[ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="3"]
-[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_21smd"]
-[ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="4_1wdfx"]
-[ext_resource type="PackedScene" uid="uid://bg63owkkh1e6q" path="res://Assets/3D/nomad.glb" id="4_e7khk"]
+[ext_resource type="Script" path="res://Scenes/Model/GameObject/nomad.gd" id="1_1e3mp"]
+[ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="2_7011i"]
+[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_s7shm"]
+[ext_resource type="PackedScene" uid="uid://bg63owkkh1e6q" path="res://Assets/3D/nomad.glb" id="4_gmevs"]
+[ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="5_r4b70"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
-radius = 0.35
+radius = 0.300896
 height = 0.8
 
 [node name="Nomad" type="Node3D" groups=["actors"]]
-script = ExtResource("1_d38if")
-card_scene = ExtResource("3")
-highlight_flash = ExtResource("3_21smd")
+script = ExtResource("1_1e3mp")
+card_scene = ExtResource("2_7011i")
+highlight_flash = ExtResource("3_s7shm")
 
-[node name="MeshPivot" type="Marker3D" parent="."]
-
-[node name="nomad" parent="MeshPivot" instance=ExtResource("4_e7khk")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="nomad" parent="." instance=ExtResource("4_gmevs")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="CameraTargetPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-script = ExtResource("4_1wdfx")
+script = ExtResource("5_r4b70")
 
 [node name="CameraTarget" type="Marker3D" parent="CameraTargetPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
@@ -32,5 +30,5 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355487, 0)
 shape = SubResource("1")

@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddgvswha6i486"]
+[gd_scene load_steps=4 format=3 uid="uid://delvkn6rfc547"]
 
 [ext_resource type="Script" path="res://Scenes/GameLogic/nomads_game_logic.gd" id="1_t1mp6"]
-[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="2_s1b04"]
+[ext_resource type="PackedScene" uid="uid://bdf1ola8jtf0b" path="res://Scenes/Model/GameObject/nomad.tscn" id="2_sf64u"]
 [ext_resource type="PackedScene" uid="uid://das3vkks37pdg" path="res://Scenes/Model/GameObject/WolfActor.tscn" id="3_o1bfu"]
 
 [node name="NomadsGameLogic" type="Node"]
 script = ExtResource("1_t1mp6")
-nomad_scene = ExtResource("2_s1b04")
+nomad_scene = ExtResource("2_sf64u")
 boss_scene = ExtResource("3_o1bfu")
 
 [node name="BossSpawnTimer" type="Timer" parent="."]

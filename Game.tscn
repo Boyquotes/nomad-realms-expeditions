@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game.gd" id="1_7028j"]
 [ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_o6hmh"]
 [ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_tg0w8"]
-[ext_resource type="PackedScene" uid="uid://drglmfxxc6dk8" path="res://Scenes/Model/GameObject/Nomad.tscn" id="4_6nie1"]
+[ext_resource type="PackedScene" uid="uid://bdf1ola8jtf0b" path="res://Scenes/Model/GameObject/nomad.tscn" id="4_6nie1"]
 [ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_ruiie"]
 [ext_resource type="Script" path="res://Camera.gd" id="6_wowo4"]
 
