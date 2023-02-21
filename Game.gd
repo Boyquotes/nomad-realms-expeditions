@@ -26,7 +26,6 @@ func set_nomad_position() -> void:
 	var x = randi() % world_map.tiles[0].size()
 	nomad.world_pos = WorldPos.new(0, 0, x, z)
 	nomad.position.y += world_map.tiles[z][x].height * Tile.TILE_HEIGHT_SCALE
-	nomad.generate_id()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
@@ -76,10 +75,10 @@ func detect_card_play():
 		card_target.highlighted = false
 		card_target = null
 
-func _on_ui_card_dashboard_card_looking_for_target(card):
+func _on_ui_card_dashboard_card_looking_for_target(card: WorldCard):
 	card_looking_for_target = card
 
-func _on_ui_card_dashboard_card_not_looking_for_target(card):
+func _on_ui_card_dashboard_card_not_looking_for_target(card: WorldCard):
 	if card_target != null:
 		card_target.highlighted = false
 		card_target = null

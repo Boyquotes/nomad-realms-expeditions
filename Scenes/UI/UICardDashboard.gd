@@ -45,7 +45,7 @@ func detect_drag_and_release():
 	elif Input.is_action_just_released("interact"):
 		if is_card_looking_for_target:
 			# The actual playing of the card, and the card's effects, are
-			# handled by GameInput
+			# handled by Game.gd
 			return
 		if dragged_card != null:
 			dragged_card.dragged = false
