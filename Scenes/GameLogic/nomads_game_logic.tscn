@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://delvkn6rfc547"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://Scenes/GameLogic/nomads_game_logic.gd" id="1_t1mp6"]
-[ext_resource type="PackedScene" uid="uid://bdf1ola8jtf0b" path="res://Scenes/Model/GameObject/nomad.tscn" id="2_sf64u"]
+[ext_resource type="PackedScene" uid="uid://dt57bxc3avufy" path="res://Scenes/Model/GameObject/nomad.tscn" id="2_sf64u"]
 [ext_resource type="PackedScene" uid="uid://das3vkks37pdg" path="res://Scenes/Model/GameObject/WolfActor.tscn" id="3_o1bfu"]
+
 
 [node name="NomadsGameLogic" type="Node"]
 script = ExtResource("1_t1mp6")

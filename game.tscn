@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3ry7p1juc8uy"]
+[gd_scene load_steps=10 format=3 uid="uid://did1nha5thjwd"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_7028j"]
-[ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_o6hmh"]
-[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_tg0w8"]
-[ext_resource type="PackedScene" uid="uid://bdf1ola8jtf0b" path="res://Scenes/Model/GameObject/nomad.tscn" id="4_6nie1"]
-[ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_ruiie"]
-[ext_resource type="Script" path="res://Camera.gd" id="6_wowo4"]
+[ext_resource type="Script" path="res://game.gd" id="1_ho31h"]
+[ext_resource type="PackedScene" uid="uid://jo81l0grfumo" path="res://Scenes/GameVisuals/NomadsGameVisuals.tscn" id="2_naqaq"]
+[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_jjjob"]
+[ext_resource type="PackedScene" uid="uid://dt57bxc3avufy" path="res://Scenes/Model/GameObject/nomad.tscn" id="4_uf6rv"]
+[ext_resource type="PackedScene" uid="uid://dv04weg4eqxb0" path="res://Scenes/Map/WorldMap.tscn" id="5_yqrsa"]
+[ext_resource type="Script" path="res://camera.gd" id="6_sea5v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltiu1"]
 sky_top_color = Color(0.647059, 0.839216, 0.945098, 1)
@@ -22,22 +22,22 @@ fog_sky_affect = 0.0
 adjustment_enabled = true
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_7028j")
+script = ExtResource("1_ho31h")
 
-[node name="NomadsGameVisuals" parent="." instance=ExtResource("2_o6hmh")]
+[node name="NomadsGameVisuals" parent="." instance=ExtResource("2_naqaq")]
 
-[node name="UICardDashboard" parent="." instance=ExtResource("3_tg0w8")]
+[node name="UICardDashboard" parent="." instance=ExtResource("3_jjjob")]
 
 [node name="Actors" type="Node3D" parent="."]
 
-[node name="Nomad" parent="Actors" instance=ExtResource("4_6nie1")]
+[node name="Nomad" parent="Actors" instance=ExtResource("4_uf6rv")]
 
-[node name="WorldMap" parent="." instance=ExtResource("5_ruiie")]
+[node name="WorldMap" parent="." instance=ExtResource("5_yqrsa")]
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("actor_to_follow")]
 environment = SubResource("1")
 current = true
-script = ExtResource("6_wowo4")
+script = ExtResource("6_sea5v")
 actor_to_follow = NodePath("../Actors/Nomad")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]

@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdf1ola8jtf0b"]
+[gd_scene load_steps=5 format=3 uid="uid://dt57bxc3avufy"]
 
-[ext_resource type="Script" path="res://Scenes/Model/GameObject/nomad.gd" id="1_1e3mp"]
-[ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/WorldCard.tscn" id="2_7011i"]
-[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="3_s7shm"]
+[ext_resource type="Script" path="res://Scenes/Model/GameObject/nomad.gd" id="1_wl5d8"]
 [ext_resource type="PackedScene" uid="uid://bg63owkkh1e6q" path="res://Assets/3D/nomad.glb" id="4_gmevs"]
 [ext_resource type="Script" path="res://Scenes/Model/GameObject/CameraTargetPivot.gd" id="5_r4b70"]
 
@@ -11,9 +9,7 @@ radius = 0.300896
 height = 0.8
 
 [node name="Nomad" type="Node3D" groups=["actors"]]
-script = ExtResource("1_1e3mp")
-card_scene = ExtResource("2_7011i")
-highlight_flash = ExtResource("3_s7shm")
+script = ExtResource("1_wl5d8")
 
 [node name="nomad" parent="." instance=ExtResource("4_gmevs")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

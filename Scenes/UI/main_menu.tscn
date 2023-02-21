@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://necce1r75py8"]
 
 [ext_resource type="Script" path="res://Scenes/UI/main_menu.gd" id="1_m6sei"]
-[ext_resource type="PackedScene" uid="uid://dnjlxryq35dya" path="res://Game.tscn" id="2_2rgn7"]
+[ext_resource type="PackedScene" uid="uid://did1nha5thjwd" path="res://game.tscn" id="2_2rgn7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3t18a"]
 font_size = 30

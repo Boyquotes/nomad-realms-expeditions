@@ -18,7 +18,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameCards="*res://Scenes/Model/Card/GameCards.gd"
+GameCards="*res://Scenes/Model/Card/game_cards.gd"
 IdGenerator="*res://Scenes/Model/IdGenerator.gd"
 NomadsGameLogic="*res://Scenes/GameLogic/nomads_game_logic.gd"
 
