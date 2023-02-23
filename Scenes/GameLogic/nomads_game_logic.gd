@@ -66,7 +66,7 @@ func _on_boss_spawn_timer_timeout() -> void:
 	print("NomadsGameLogic.gd: BOSS SPAWNED AT ", boss.world_pos, "!")
 
 # Connected to game.tscn's card_played_event signal
-func _on_card_played_event(card_player: CardPlayer, card: WorldCard, card_target):
+func _on_card_played_event(card_player: Actor, card: WorldCard, card_target):
 	var card_model = card.card
 	print("You just played a card: ", card_model.name, " on ", card_target)
 	card_model.effect.expression.handle(card_player, card_target, next_state.expression_event_heap)

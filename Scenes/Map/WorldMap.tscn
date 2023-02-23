@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv04weg4eqxb0"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bfvu2m3pd7ohw" path="res://Scenes/Map/Tile.tscn" id="1"]
 [ext_resource type="Script" path="res://Scenes/Map/WorldMap.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://6aq20kjxy5i5" path="res://Scenes/Model/GameObject/TreeActor.tscn" id="3_ocste"]
-[ext_resource type="PackedScene" uid="uid://das3vkks37pdg" path="res://Scenes/Model/GameObject/WolfActor.tscn" id="4_d0fpa"]
+[ext_resource type="PackedScene" uid="uid://6aq20kjxy5i5" path="res://Scenes/Model/Actor/TreeActor.tscn" id="3_ocste"]
+[ext_resource type="PackedScene" uid="uid://das3vkks37pdg" path="res://Scenes/Model/Actor/WolfActor.tscn" id="4_d0fpa"]
+
 
 [node name="WorldMap" type="Node3D"]
 script = ExtResource("2")

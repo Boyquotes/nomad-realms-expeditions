@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6aq20kjxy5i5"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://Scenes/Model/GameObject/TreeActor.gd" id="1_qkqfq"]
+[ext_resource type="Script" path="res://Scenes/Model/Actor/TreeActor.gd" id="1_qkqfq"]
 [ext_resource type="PackedScene" uid="uid://8wk6ixjnssys" path="res://Assets/3D/tree_mesh.tscn" id="2_5mbfy"]
 [ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="2_wkc6w"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_42dvf"]
 radius = 0.25

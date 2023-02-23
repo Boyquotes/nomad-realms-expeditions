@@ -1,22 +1,18 @@
-extends CardPlayer
+extends Actor
 class_name Nomad
-
-@export var card_scene: PackedScene
-@export var highlight_flash: ShaderMaterial
 
 @onready var camera_target_pivot: Marker3D = $CameraTargetPivot
 @onready var camera_target: Marker3D = $CameraTargetPivot/CameraTarget
-@onready var nomad_mesh: MeshInstance3D = $nomad/Nomad
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	card_dashboard.hand = [GameCards.TELEPORT, GameCards.TELEPORT, GameCards.SLASH, GameCards.REGENESIS]
-	health = 20
+#func _ready() -> void:
+#	card_dashboard.hand = [GameCards.TELEPORT, GameCards.TELEPORT, GameCards.SLASH, GameCards.REGENESIS]
+#	health = 20
 
 func _process(_delta: float) -> void:
-	nomad_mesh.look_at(camera_target.global_position, Vector3.UP)
-	nomad_mesh.rotation.x = 0
-	nomad_mesh.rotation.y += PI
+	look_at(camera_target.global_position, Vector3.UP)
+	rotation.x = 0
+	rotation.y += PI
 	camera_target_pivot.position = camera_target_pivot.position * 0.9
 	if camera_target_pivot.position.length_squared() < 0.0001:
 		camera_target_pivot.position = Vector3.ZERO
@@ -29,9 +25,3 @@ func set_world_pos(pos: WorldPos) -> void:
 	else:
 		super.set_world_pos(pos)
 
-func set_highlighted(h: bool) -> void:
-	super.set_highlighted(h)
-	if h:
-		nomad_mesh.material_overlay = highlight_flash
-	else:
-		nomad_mesh.material_overlay = null

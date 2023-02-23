@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://6dt3m6lx0525"]
+
+[ext_resource type="Script" path="res://Scenes/Model/Actor/nomad.gd" id="1_1d5m7"]
+[ext_resource type="Script" path="res://Scenes/Model/card_player_component.gd" id="2_kj0iy"]
+[ext_resource type="Script" path="res://Scenes/Model/health_component.gd" id="3_i3ve3"]
+[ext_resource type="PackedScene" uid="uid://bg63owkkh1e6q" path="res://Assets/3D/nomad.glb" id="4_5bgg4"]
+[ext_resource type="Script" path="res://Scenes/Model/Actor/CameraTargetPivot.gd" id="5_5r65s"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+radius = 0.300896
+height = 0.8
+
+[node name="Nomad" type="Node3D" groups=["actors"]]
+script = ExtResource("1_1d5m7")
+mesh_path = "nomad/Nomad"
+
+[node name="CardPlayerComponent" type="Node3D" parent="."]
+script = ExtResource("2_kj0iy")
+
+[node name="HealthComponent" type="Node3D" parent="."]
+script = ExtResource("3_i3ve3")
+initial_health = 10
+
+[node name="nomad" parent="." instance=ExtResource("4_5bgg4")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CameraTargetPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+script = ExtResource("5_5r65s")
+
+[node name="CameraTarget" type="Marker3D" parent="CameraTargetPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="CollisionArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355487, 0)
+shape = SubResource("1")

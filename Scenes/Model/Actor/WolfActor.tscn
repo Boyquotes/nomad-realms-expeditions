@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://das3vkks37pdg"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://Scenes/Model/GameObject/WolfActor.gd" id="1_rbgyr"]
+[ext_resource type="Script" path="res://Scenes/Model/Actor/WolfActor.gd" id="1_rbgyr"]
 [ext_resource type="PackedScene" uid="uid://q4l0qdgcm7ry" path="res://Assets/3D/wolf.glb" id="2_2dhlc"]
 [ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="2_2ip5l"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jld8"]
 radius = 0.3

@@ -46,7 +46,7 @@ func generate_actors(state: GameState) -> void:
 				add_child(tree)
 				state.add(tree)
 			elif rand == 1:
-				var wolf: WolfActor = wolf_scene.instantiate()
+				var wolf: Actor = wolf_scene.instantiate()
 				wolf.card_dashboard.hand.append(GameCards.SLASH)
 				wolf.card_dashboard.hand.append(GameCards.SLASH)
 				wolf.card_dashboard.hand.append(GameCards.REGENESIS)

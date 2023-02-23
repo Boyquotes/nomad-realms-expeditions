@@ -10,7 +10,7 @@ signal card_played_event(card_player, card, card_target)
 
 var context_queues: = ContextQueues.new()
 var card_looking_for_target: WorldCard
-var card_target: GameObject
+var card_target: Actor
 
 func _ready() -> void:
 	print("Starting Nomad Realms Expeditions")
@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var to: = from + camera.project_ray_normal(mouse_pos) * 400
 		params.from = from
 		params.to = to
-		params.collision_mask = card_effect.target_type
+		params.collision_mask = card_effect.target_type # Important!
 		params.collide_with_areas = true
 		params.collide_with_bodies = false
 		
