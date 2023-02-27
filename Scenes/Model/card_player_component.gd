@@ -8,7 +8,7 @@ signal card_entered_deck(card)
 signal card_exited_discard(card)
 signal card_entered_discard(card)
 
-var hand: Array[WorldCard]
-var deck: Array[WorldCard]
-var discard: Array[WorldCard]
+var hand: Array[GameCard]
+var deck: Array[GameCard]
+var discard: Array[GameCard]
 

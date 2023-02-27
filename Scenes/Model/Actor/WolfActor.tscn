@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://b3s03fpilntru"]
 
-[ext_resource type="Script" path="res://Scenes/Model/Actor/WolfActor.gd" id="1_rbgyr"]
+[ext_resource type="Script" path="res://Scenes/Model/health_component.gd" id="1_6g5fn"]
 [ext_resource type="PackedScene" uid="uid://q4l0qdgcm7ry" path="res://Assets/3D/wolf.glb" id="2_2dhlc"]
-[ext_resource type="Material" uid="uid://bbg40pikh1ndj" path="res://Assets/3D/highlight_flash.tres" id="2_2ip5l"]
-
+[ext_resource type="Script" path="res://Scenes/Model/card_player_component.gd" id="3_68n2k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3jld8"]
 radius = 0.3
 height = 1.3
 
 [node name="WolfActor" type="Node3D"]
-script = ExtResource("1_rbgyr")
-highlight_flash = ExtResource("2_2ip5l")
+script = ExtResource("1_6g5fn")
+
+[node name="HealthComponent" type="Node3D" parent="."]
+script = ExtResource("1_6g5fn")
+
+[node name="CardPlayerComponent" type="Node3D" parent="."]
+script = ExtResource("3_68n2k")
 
 [node name="wolf" parent="." instance=ExtResource("2_2dhlc")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 4.76837e-07, 0, 0)

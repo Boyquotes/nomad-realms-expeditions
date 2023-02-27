@@ -3,10 +3,13 @@ class_name Actor
 
 var highlight_flash_material: ShaderMaterial = preload("res://Assets/3D/highlight_flash.tres")
 
+@export var mesh_path: String
+@export var health_component: HealthComponent
+@export var card_player_component: CardPlayerComponent
+
 var id: int
 var world_pos: WorldPos : set = set_world_pos
 var highlighted: = false : set = set_highlighted
-@export var mesh_path: String
 var mesh: MeshInstance3D
 
 func _ready():

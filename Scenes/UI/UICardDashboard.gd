@@ -4,12 +4,26 @@ class_name UICardDashBoard
 signal card_looking_for_target(card)
 signal card_not_looking_for_target(card)
 
+@export var world_card_scene: PackedScene
+
+@export var bound_actor: Actor : set = set_bound_actor
+
 @onready var card_hand: UICardHand = $UICardHand
 var hovered_card: WorldCard
 var dragged_card: WorldCard
 
 # Whether or not the card is dragged over the PlayZone
 var is_card_looking_for_target: bool = false
+
+func set_bound_actor(actor: Actor) -> void:
+	bound_actor = actor
+	if actor == null:
+		return
+	card_hand.delete_all_cards()
+	for game_card in actor.card_player_component.hand:
+		var world_card: WorldCard = world_card_scene.instantiate()
+		world_card.init(game_card)
+		card_hand.add_card(world_card)
 
 func reset_target_positions() -> void:
 	card_hand.reset_target_positions()
@@ -100,3 +114,6 @@ func card_played_cleanup() -> void:
 	dragged_card = null
 	is_card_looking_for_target = false
 	reset_target_positions()
+
+func _on_bound_actor_card_drawn(numDrawn: int) -> void:
+	pass

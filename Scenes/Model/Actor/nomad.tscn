@@ -10,9 +10,11 @@
 radius = 0.300896
 height = 0.8
 
-[node name="Nomad" type="Node3D" groups=["actors"]]
+[node name="Nomad" type="Node3D" node_paths=PackedStringArray("health_component", "card_player_component") groups=["actors"]]
 script = ExtResource("1_1d5m7")
 mesh_path = "nomad/Nomad"
+health_component = NodePath("HealthComponent")
+card_player_component = NodePath("CardPlayerComponent")
 
 [node name="CardPlayerComponent" type="Node3D" parent="."]
 script = ExtResource("2_kj0iy")

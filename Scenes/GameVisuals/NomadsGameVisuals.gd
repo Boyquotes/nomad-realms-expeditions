@@ -9,11 +9,10 @@ var player: Nomad
 @onready var ui_card_dashboard: Node2D = $"../UICardDashboard"
 
 func init(context_queues: ContextQueues) -> void:
-	player = $"../Actors/Nomad"
 	self.context_queues = context_queues
-	var dashboard: = player.card_dashboard
-	for i in range(len(dashboard.hand)):
-		create_card_gui(dashboard.hand[i])
+	var card_player_component: = player.card_player_component
+	for i in range(len(card_player_component.hand)):
+		create_card_gui(card_player_component.hand[i])
 	ui_card_dashboard.reset_target_positions()
 	for i in range(ui_card_dashboard.card_hand.cards.size()):
 		var card: WorldCard = ui_card_dashboard.card_hand.cards[i]

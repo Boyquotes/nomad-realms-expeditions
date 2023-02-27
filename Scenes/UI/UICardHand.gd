@@ -1,7 +1,7 @@
 extends Node2D
 class_name UICardHand
 
-var cards: Array = []
+var cards: Array[WorldCard] = []
 
 func reset_target_positions() -> void:
 	var num_cards: = cards.size()
@@ -16,4 +16,10 @@ func reset_target_positions() -> void:
 func add_card(card: Node) -> void:
 	cards.append(card)
 	add_child(card)
+	
+func delete_all_cards() -> void:
+	for card in cards:
+		card.queue_free()
+		card.visible = false
+	cards.clear()
 	

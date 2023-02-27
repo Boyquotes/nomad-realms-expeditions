@@ -15,8 +15,9 @@ var card_target: Actor
 func _ready() -> void:
 	print("Starting Nomad Realms Expeditions")
 	NomadsGameLogic.init(context_queues)
-	$NomadsGameVisuals.init(context_queues)
 	world_map.init(NomadsGameLogic.next_state)
+	$NomadsGameVisuals.nomad = $Actors/Nomad
+	$NomadsGameVisuals.init(context_queues)
 	connect("card_played_event", NomadsGameLogic._on_card_played_event)
 	set_nomad_position()
 
