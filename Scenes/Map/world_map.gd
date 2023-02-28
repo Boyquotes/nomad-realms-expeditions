@@ -42,17 +42,16 @@ func generate_actors(state: GameState) -> void:
 				var tree: TreeActor = tree_scene.instantiate()
 				tree.world_pos = WorldPos.new(0, 0, x, z)
 				tree.position.y = tile.scale.y
-				tree.generate_id()
 				add_child(tree)
 				state.add(tree)
 			elif rand == 1:
 				var wolf: Actor = wolf_scene.instantiate()
-				wolf.card_dashboard.hand.append(GameCards.SLASH)
-				wolf.card_dashboard.hand.append(GameCards.SLASH)
-				wolf.card_dashboard.hand.append(GameCards.REGENESIS)
+				
+				wolf.card_player_component.hand.append(GameCards.SLASH)
+				wolf.card_player_component.hand.append(GameCards.SLASH)
+				wolf.card_player_component.hand.append(GameCards.REGENESIS)
 				wolf.world_pos = WorldPos.new(0, 0, x, z)
 				wolf.position.y = tile.scale.y
-				wolf.generate_id()
 				add_child(wolf)
 				state.add(wolf)
 
