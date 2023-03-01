@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3]
-
-[ext_resource type="Script" path="res://Scenes/GameVisuals/NomadsGameVisuals.gd" id="1_rko81"]
-[ext_resource type="PackedScene" uid="uid://c3suk2hxxxjkv" path="res://Scenes/UI/world_card.tscn" id="2"]
-
-[node name="NomadsGameVisuals" type="Node"]
-script = ExtResource("1_rko81")
-card_scene = ExtResource("2")

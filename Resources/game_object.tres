@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://5iigag6g2ukv"]
-
-[ext_resource type="Script" path="res://Resources/game_object.gd" id="1_vf2vw"]
-
-[resource]
-script = ExtResource("1_vf2vw")
-id = null

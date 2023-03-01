@@ -1,31 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://67owloulctvy"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_ho31h"]
-[ext_resource type="PackedScene" uid="uid://6dt3m6lx0525" path="res://Scenes/Model/Actor/nomad.tscn" id="3_8kobj"]
-[ext_resource type="PackedScene" uid="uid://cbgwjkw8ydunf" path="res://Scenes/UI/UICardDashboard.tscn" id="3_jjjob"]
-[ext_resource type="PackedScene" uid="uid://b4p711ugq4yew" path="res://Scenes/Map/world_map.tscn" id="4_ih8va"]
-
-[sub_resource type="Environment" id="Environment_1j2ld"]
+[sub_resource type="Environment" id="Environment_lv35v"]
+background_color = Color(0.772549, 0.866667, 0.807843, 1)
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_ho31h")
 
-[node name="UICardDashboard" parent="." instance=ExtResource("3_jjjob")]
-
-[node name="Actors" type="Node3D" parent="."]
-
-[node name="Nomad" parent="Actors" instance=ExtResource("3_8kobj")]
-
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 24, 0)
-light_color = Color(1, 0.901961, 0.701961, 1)
-light_energy = 0.705
-shadow_enabled = true
-
-[node name="WorldMap" parent="." instance=ExtResource("4_ih8va")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1j2ld")
-
-[connection signal="card_looking_for_target" from="UICardDashboard" to="." method="_on_ui_card_dashboard_card_looking_for_target"]
-[connection signal="card_not_looking_for_target" from="UICardDashboard" to="." method="_on_ui_card_dashboard_card_not_looking_for_target"]
+[node name="Camera3D" type="Camera3D" parent="."]
+environment = SubResource("Environment_lv35v")
+current = true

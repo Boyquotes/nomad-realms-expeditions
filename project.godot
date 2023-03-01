@@ -10,61 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Nomad Realms Expeditions"
-run/main_scene="res://Scenes/UI/main_menu.tscn"
-config/features=PackedStringArray("4.0")
-boot_splash/show_image=false
+config/name="nomad-realms-expeditions"
+run/main_scene="res://game.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.png"
-
-[autoload]
-
-GameCards="*res://Scenes/Model/Card/game_cards.gd"
-IdGenerator="*res://Scenes/Model/IdGenerator.gd"
-NomadsGameLogic="*res://Scenes/GameLogic/nomads_game_logic.gd"
-
-[display]
-
-window/size/viewport_width=1024
-window/size/viewport_height=576
-window/size/resizable=false
-mouse_cursor/custom_image="res://Assets/2D/cursor.png"
-mouse_cursor/custom_image_hotspot=Vector2(5, 5)
-
-[global]
-
-cursor=false
-
-[gui]
-
-common/drop_mouse_on_gui_input_disabled=true
-
-[input]
-
-interact={
-"deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
-]
-}
-rotate_camera={
-"deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"pressed":false,"double_click":false,"script":null)
-]
-}
-
-[layer_names]
-
-2d_physics/layer_1="ui_cards"
-3d_physics/layer_1="tiles"
-3d_physics/layer_2="friendly_actors"
-3d_physics/layer_3="enemy_actors"
-3d_physics/layer_4="neutral_actors"
-
-[physics]
-
-common/enable_pause_aware_picking=true
-
-[rendering]
-
-anti_aliasing/quality/msaa_3d=1
-quality/filters/msaa=3
-environment/default_environment="res://default_env.tres"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2xtia473hxm2"]
+
+[ext_resource type="Script" path="res://actor/nomad.gd" id="1_35f1j"]
+[ext_resource type="PackedScene" uid="uid://dgt0gwm66sooh" path="res://assets/nomad.glb" id="2_q2qbq"]
+[ext_resource type="Script" path="res://actor/card_player_component.gd" id="3_aw84l"]
+[ext_resource type="Script" path="res://actor/health_component.gd" id="4_o2n4a"]
+[ext_resource type="Script" path="res://actor/inventory_component.gd" id="5_j5sdg"]
+
+[node name="Nomad" type="Node3D" node_paths=PackedStringArray("card_player_component", "health_component", "inventory_component")]
+script = ExtResource("1_35f1j")
+mesh_path = &"Model/Nomad"
+card_player_component = NodePath("CardPlayerComponent")
+health_component = NodePath("HealthComponent")
+inventory_component = NodePath("InventoryComponent")
+
+[node name="Model" parent="." instance=ExtResource("2_q2qbq")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+
+[node name="CardPlayerComponent" type="Node" parent="."]
+script = ExtResource("3_aw84l")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_o2n4a")
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("5_j5sdg")
