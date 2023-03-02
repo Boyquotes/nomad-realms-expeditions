@@ -33,5 +33,8 @@ func distance_to(other: WorldPos) -> int:
 	else:
 		return absDiffX + abs(diff.y) - yDiffAchievedGoingAlongX
 
+func equals(other: WorldPos) -> bool:
+	return chunk_pos == other.chunk_pos && tile_pos == other.tile_pos
+
 func _to_string():
 	return "WorldPos[" + str(chunk_pos.x) + ", " + str(chunk_pos.y) + "][" + str(tile_pos.x) + ", " + str(tile_pos.y) + "]"

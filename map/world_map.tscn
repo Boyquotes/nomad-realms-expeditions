@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3nkfhu6n6t2w"]
+
+[ext_resource type="Script" path="res://map/world_map.gd" id="1_wchbe"]
+[ext_resource type="PackedScene" uid="uid://bh6ojbxcjm670" path="res://actor/tile.tscn" id="2_uxwaq"]
+[ext_resource type="PackedScene" uid="uid://d2ljawn6q0s1m" path="res://actor/tree.tscn" id="3_ydino"]
+
+[node name="WorldMap" type="Node3D"]
+script = ExtResource("1_wchbe")
+tile_scene = ExtResource("2_uxwaq")
+tree_scene = ExtResource("3_ydino")
