@@ -22,6 +22,8 @@ script = ExtResource("1_mmfqv")
 [node name="WorldMap" parent="." instance=ExtResource("1_86hr1")]
 
 [node name="Nomad" parent="." instance=ExtResource("4_wwuov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
 
@@ -30,3 +32,10 @@ environment = SubResource("Environment_lv35v")
 current = true
 script = ExtResource("2_r5jb8")
 camera_pivot = NodePath("../Nomad/CameraPivot")
+
+[node name="SpawnPlayerTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]

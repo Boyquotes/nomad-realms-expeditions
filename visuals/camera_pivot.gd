@@ -14,7 +14,7 @@ var rotation_y_velocity: float
 
 func _process(delta):
 	target.position.z *= pow(0.9, scroll_velocity)
-	target.position.z = clamp(target.position.z, 5, 20)
+	target.position.z = clamp(target.position.z, 5, 24)
 	
 	rotation.x += rotation_x_velocity
 	rotation.x = clamp(rotation.x, -deg_to_rad(60), -deg_to_rad(10))

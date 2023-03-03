@@ -14,7 +14,7 @@ health_component = NodePath("HealthComponent")
 inventory_component = NodePath("InventoryComponent")
 
 [node name="Model" parent="." instance=ExtResource("2_q2qbq")]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
 
 [node name="CardPlayerComponent" type="Node" parent="."]
 script = ExtResource("3_aw84l")

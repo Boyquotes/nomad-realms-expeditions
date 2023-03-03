@@ -18,6 +18,7 @@ func generate_terrain() -> void:
 		tiles[i].resize(16)
 		for j in range(16):
 			var tile = tile_scene.instantiate()
+			tile.name = "Tile%d_%d" % [j, i]
 			tile.world_pos = WorldPos.new(0, 0, j, i)
 			tiles[i][j] = tile
 			add_child(tile)
@@ -28,6 +29,7 @@ func generate_trees() -> void:
 			if randf() > tree_density:
 				continue
 			var tree = tree_scene.instantiate()
+			tree.name = "Tree%d_%d" % [j, i]
 			tree.world_pos = WorldPos.new(0, 0, j, i)
 			tree.position.y = 1
 			tree.rotation.y = randf_range(0, 2 * PI)
