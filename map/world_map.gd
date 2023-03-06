@@ -33,6 +33,7 @@ func generate_trees() -> void:
 			tree.world_pos = WorldPos.new(0, 0, j, i)
 			tree.position.y = 1
 			tree.rotation.y = randf_range(0, 2 * PI)
+			tree.scale *= randf_range(1, 1.5)
 			add_child(tree)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
