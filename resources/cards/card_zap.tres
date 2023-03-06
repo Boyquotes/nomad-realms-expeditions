@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Card" load_steps=6 format=3 uid="uid://mgtrhrn3mq3y"]
+
+[ext_resource type="Script" path="res://resources/card_effect/damage_effect.gd" id="1_5ea40"]
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="2_noi0v"]
+
+[sub_resource type="Resource" id="Resource_mk7cs"]
+script = ExtResource("1_5ea40")
+damage = 3
+
+[sub_resource type="Gradient" id="Gradient_fywkg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6xkti"]
+gradient = SubResource("Gradient_fywkg")
+
+[resource]
+script = ExtResource("2_noi0v")
+name = &"Zap"
+texture = SubResource("GradientTexture2D_6xkti")
+target_type = 14
+card_effect = SubResource("Resource_mk7cs")
+text = "Deal 3 to a target within range 4."
+cooldown = 1
+rarity = 0

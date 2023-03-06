@@ -28,6 +28,13 @@ rotate_camera={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="tiles"
+3d_physics/layer_2="friendly_actors"
+3d_physics/layer_3="enemy_actors"
+3d_physics/layer_4="neutral_actors"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
