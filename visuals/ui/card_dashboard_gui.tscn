@@ -1,28 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgofwnvdncbv3"]
+[gd_scene load_steps=5 format=3 uid="uid://cgofwnvdncbv3"]
 
 [ext_resource type="Texture2D" uid="uid://bnosfl8xvfb5" path="res://assets/hand_zone.png" id="1_4rdd3"]
+[ext_resource type="Script" path="res://visuals/ui/card_dashboard_gui.gd" id="1_6rwx1"]
 
-[node name="CardDashboardGui" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qi7g"]
+size = Vector2(1920, 780)
 
-[node name="HandZone" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -384.0
-offset_top = -133.0
-offset_right = 384.0
-offset_bottom = 179.0
-grow_horizontal = 2
-grow_vertical = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrm1c"]
+size = Vector2(1920, 900)
+
+[node name="CardDashboardGui" type="Node2D"]
+script = ExtResource("1_6rwx1")
+
+[node name="HandZone" type="Sprite2D" parent="."]
+position = Vector2(960, 1104)
+scale = Vector2(2, 2)
 texture = ExtResource("1_4rdd3")
 flip_h = true
 flip_v = true
+
+[node name="PlayArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
+position = Vector2(960, 390)
+shape = SubResource("RectangleShape2D_3qi7g")
+
+[node name="RetainArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RetainArea"]
+position = Vector2(960, 450)
+shape = SubResource("RectangleShape2D_mrm1c")
+debug_color = Color(0, 0.614384, 0.608093, 0.42)
+
+[connection signal="mouse_entered" from="PlayArea" to="." method="_on_play_area_mouse_entered"]
+[connection signal="mouse_entered" from="RetainArea" to="." method="_on_retain_area_mouse_entered"]

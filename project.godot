@@ -24,6 +24,12 @@ Cards="*res://resources/cards/cards.gd"
 
 gdscript/warnings/integer_division=0
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=4
+
 [input]
 
 rotate_camera={
