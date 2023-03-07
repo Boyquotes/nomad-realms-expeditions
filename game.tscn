@@ -1,23 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://67owloulctvy"]
+[gd_scene load_steps=8 format=3 uid="uid://bwmyvmb2ehk0u"]
 
-[ext_resource type="PackedScene" uid="uid://b3nkfhu6n6t2w" path="res://map/world_map.tscn" id="1_86hr1"]
+[ext_resource type="PackedScene" path="res://map/world_map.tscn" id="1_86hr1"]
 [ext_resource type="Script" path="res://game.gd" id="1_mmfqv"]
+[ext_resource type="PackedScene" uid="uid://cgofwnvdncbv3" path="res://visuals/ui/card_dashboard_gui.tscn" id="2_4ap8f"]
 [ext_resource type="Script" path="res://camera.gd" id="2_r5jb8"]
-[ext_resource type="PackedScene" uid="uid://c2xtia473hxm2" path="res://actor/nomad.tscn" id="4_wwuov"]
+[ext_resource type="PackedScene" path="res://actors/nomad.tscn" id="4_wwuov"]
+[ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="5_1arwp"]
 [ext_resource type="PackedScene" uid="uid://blfq2k0wnvxn2" path="res://visuals/camera_pivot.tscn" id="5_n3djb"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qaxi"]
-
-[sub_resource type="Sky" id="Sky_ex8lk"]
-sky_material = SubResource("ProceduralSkyMaterial_2qaxi")
-
-[sub_resource type="Environment" id="Environment_lv35v"]
-background_mode = 2
-background_color = Color(0.772549, 0.866667, 0.807843, 1)
-sky = SubResource("Sky_ex8lk")
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_mmfqv")
+
+[node name="CardDashboardGui" parent="." instance=ExtResource("2_4ap8f")]
 
 [node name="WorldMap" parent="." instance=ExtResource("1_86hr1")]
 
@@ -28,7 +22,7 @@ visible = false
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_pivot")]
-environment = SubResource("Environment_lv35v")
+environment = ExtResource("5_1arwp")
 current = true
 script = ExtResource("2_r5jb8")
 camera_pivot = NodePath("../Nomad/CameraPivot")

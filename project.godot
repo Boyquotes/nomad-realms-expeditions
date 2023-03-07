@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
+[autoload]
+
+Cards="*res://resources/cards/cards.gd"
+
 [debug]
 
 gdscript/warnings/integer_division=0
@@ -38,3 +42,4 @@ rotate_camera={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+anti_aliasing/quality/screen_space_aa=1

@@ -1,6 +1,11 @@
 extends Node2D
 
-var card: Card : set = _set_card
+var card_instance: CardInstance : set = _set_card
 
-func _set_card(c: Card) -> void:
-	card = c
+@onready var texture: = $Texture
+@onready var text_label: = $TextLabel
+
+func _set_card(c: CardInstance) -> void:
+	card_instance = c
+	texture.texture = c.card.texture
+	text_label.text = c.card.text
