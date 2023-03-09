@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgofwnvdncbv3"]
+[gd_scene load_steps=4 format=3 uid="uid://cgofwnvdncbv3"]
 
-[ext_resource type="Texture2D" uid="uid://bnosfl8xvfb5" path="res://assets/hand_zone.png" id="1_4rdd3"]
 [ext_resource type="Script" path="res://visuals/ui/card_dashboard_gui.gd" id="1_6rwx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qi7g"]
@@ -11,13 +10,6 @@ size = Vector2(1920, 900)
 
 [node name="CardDashboardGui" type="Node2D"]
 script = ExtResource("1_6rwx1")
-
-[node name="HandZone" type="Sprite2D" parent="."]
-position = Vector2(960, 1104)
-scale = Vector2(2, 2)
-texture = ExtResource("1_4rdd3")
-flip_h = true
-flip_v = true
 
 [node name="PlayArea" type="Area2D" parent="."]
 collision_layer = 8

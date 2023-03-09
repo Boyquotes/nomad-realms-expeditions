@@ -32,4 +32,9 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 0, 6.06698, 4.11567)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
