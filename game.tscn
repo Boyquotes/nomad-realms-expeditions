@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwmyvmb2ehk0u"]
+[gd_scene load_steps=9 format=3 uid="uid://bwmyvmb2ehk0u"]
 
 [ext_resource type="PackedScene" path="res://map/world_map.tscn" id="1_86hr1"]
 [ext_resource type="Script" path="res://game.gd" id="1_mmfqv"]
 [ext_resource type="PackedScene" uid="uid://cgofwnvdncbv3" path="res://visuals/ui/card_dashboard_gui.tscn" id="2_4ap8f"]
 [ext_resource type="Script" path="res://camera.gd" id="2_r5jb8"]
-[ext_resource type="PackedScene" path="res://actors/nomad.tscn" id="4_wwuov"]
+[ext_resource type="PackedScene" uid="uid://cjv5mnk37jv2" path="res://actors/nomad.tscn" id="4_wwuov"]
 [ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="5_1arwp"]
 [ext_resource type="PackedScene" uid="uid://blfq2k0wnvxn2" path="res://visuals/camera_pivot.tscn" id="5_n3djb"]
+[ext_resource type="PackedScene" uid="uid://cfv85kcdtqm1j" path="res://visuals/fx/spawn/spawn_particles.tscn" id="5_q51k1"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_mmfqv")
@@ -21,6 +22,8 @@ visible = false
 
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
 
+[node name="SpawnParticles" parent="." instance=ExtResource("5_q51k1")]
+
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_pivot")]
 environment = ExtResource("5_1arwp")
 current = true
@@ -28,7 +31,7 @@ script = ExtResource("2_r5jb8")
 camera_pivot = NodePath("../Nomad/CameraPivot")
 
 [node name="SpawnPlayerTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.8
 one_shot = true
 autostart = true
 

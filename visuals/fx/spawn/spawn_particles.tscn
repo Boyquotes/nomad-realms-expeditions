@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfv85kcdtqm1j"]
+
+[sub_resource type="Curve" id="Curve_5hcw3"]
+min_value = -10.0
+max_value = 10.0
+_data = [Vector2(0, 1.81818), 0.0, 0.0, 0, 0, Vector2(0.211207, 10), 0.0, 0.0, 0, 0, Vector2(0.461207, -8.72727), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ox0l"]
+curve = SubResource("Curve_5hcw3")
+
+[sub_resource type="Curve" id="Curve_gieh8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0258621, 0.290909), 3.21914, 3.21914, 0, 0, Vector2(0.922414, 0.318182), -2.98788, -2.98788, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_r67xk"]
+curve = SubResource("Curve_gieh8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sytbx"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.1, 0.5)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 4.0
+linear_accel_curve = SubResource("CurveTexture_2ox0l")
+scale_min = 0.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_r67xk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehj8a"]
+emission_enabled = true
+emission = Color(0.745098, 0.866667, 0.862745, 1)
+emission_energy_multiplier = 10.0
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5sxy3"]
+material = SubResource("StandardMaterial3D_ehj8a")
+size = Vector3(0.1, 1, 0.1)
+
+[node name="SpawnParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+emitting = false
+amount = 50
+lifetime = 1.4
+one_shot = true
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_sytbx")
+draw_pass_1 = SubResource("BoxMesh_5sxy3")

@@ -3,7 +3,7 @@ extends Node3D
 signal card_played_event(card_player, card, card_target)
 
 @onready var card_dashboard_gui: = $CardDashboardGui
-@onready var nomad: = $Nomad
+@onready var nomad: Actor = $Nomad
 @onready var camera: Camera3D = $Camera
 @onready var world_map: = $WorldMap
 var card_looking_for_target: CardGui
@@ -11,14 +11,18 @@ var card_target: Actor
 
 func _ready():
 	print("Nomad Realms Expeditions")
+	$SpawnParticles.position += nomad.position
+	$SpawnParticles.emitting = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if card_looking_for_target == null:
 		return
-	var card_effect = card_looking_for_target.card.effect
+	var card_instance: = card_looking_for_target.card_instance
+	var card: = card_instance.card
+	var card_effect: = card.card_effect
 
-	if card_effect.target_type != 0 && event is InputEventMouseMotion:
+	if card.target_type != 0 && event is InputEventMouseMotion:
 		var mouse_pos: Vector2 = event.position
 		
 		# Find hovered target by casting a ray
@@ -27,7 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var to: = from + camera.project_ray_normal(mouse_pos) * 400
 		params.from = from
 		params.to = to
-		params.collision_mask = card_effect.target_type # Important!
+		params.collision_mask = card.target_type # Important!
 		params.collide_with_areas = true
 		params.collide_with_bodies = false
 		
