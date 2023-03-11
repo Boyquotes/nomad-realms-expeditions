@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgofwnvdncbv3"]
+[gd_scene load_steps=6 format=3 uid="uid://cgofwnvdncbv3"]
 
 [ext_resource type="Script" path="res://visuals/ui/card_dashboard_gui.gd" id="1_6rwx1"]
+[ext_resource type="PackedScene" uid="uid://dsnt2u1bgvqcc" path="res://visuals/ui/card_gui.tscn" id="2_obixq"]
+[ext_resource type="PackedScene" uid="uid://b4g6iw076524" path="res://assets/card_hand_gui.blend" id="2_sjr7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qi7g"]
 size = Vector2(1920, 780)
@@ -8,8 +10,23 @@ size = Vector2(1920, 780)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mrm1c"]
 size = Vector2(1920, 900)
 
-[node name="CardDashboardGui" type="Node2D"]
+[node name="CardDashboardGui" type="Node3D"]
 script = ExtResource("1_6rwx1")
+card_gui_scene = ExtResource("2_obixq")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20754, 1.23492, 2.2785)
+light_color = Color(0.921569, 0.894118, 0.784314, 1)
+light_energy = 3.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 1)
+light_color = Color(0.788235, 0.890196, 0.976471, 1)
+
+[node name="CardHandModel" parent="." instance=ExtResource("2_sjr7q")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="PlayArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -27,4 +44,4 @@ shape = SubResource("RectangleShape2D_mrm1c")
 debug_color = Color(0, 0.614384, 0.608093, 0.42)
 
 [connection signal="mouse_entered" from="PlayArea" to="." method="_on_play_area_mouse_entered"]
-[connection signal="mouse_entered" from="RetainArea" to="." method="_on_retain_area_mouse_entered"]
+[connection signal="mouse_exited" from="RetainArea" to="." method="_on_retain_area_mouse_exited"]

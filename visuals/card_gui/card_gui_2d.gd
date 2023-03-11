@@ -1,5 +1,4 @@
 extends Node2D
-class_name CardGui
 
 var card_instance: CardInstance : set = _set_card
 

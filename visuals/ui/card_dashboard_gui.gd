@@ -1,9 +1,14 @@
-extends Node2D
+extends Node3D
 
 signal card_looking_for_target(card)
 signal card_not_looking_for_target(card)
 
-@export var world_card_scene: PackedScene
+@export var camera: Camera3D
+@export var card_gui_scene: PackedScene
+
+var bound_actor: Actor : set = _set_bound_actor
+
+var card_guis: Array[CardGui] = []
 
 var hovered_card: CardGui
 var dragged_card: CardGui
@@ -51,21 +56,25 @@ func detect_drag_and_release():
 			hovered_card = null
 
 func get_hovered_card(event: InputEvent) -> CardGui:
-	var params: = PhysicsPointQueryParameters2D.new()
+	var mouse_pos: Vector2 = event.position
+	var params: = PhysicsRayQueryParameters3D.new()
+	var from: = camera.project_ray_origin(mouse_pos)
+	var to: = from + camera.project_ray_normal(mouse_pos) * 400
+	params.from = from
+	params.to = to
+	params.collision_mask = 0b00001 # Important!
 	params.collide_with_areas = true
 	params.collide_with_bodies = false
-	params.collision_mask = 0b1
-	params.position = event.position
-	var collided_areas = get_world_2d().direct_space_state.intersect_point(params, 5)
+	var collided_areas = get_world_3d().direct_space_state.intersect_ray(params)
 	if collided_areas.size() > 0:
 		collided_areas.sort_custom(func(a, b):
-			var card_a: = a.collider.get_parent() as CardGui
-			var card_b: = b.collider.get_parent() as CardGui
-			if card_a.hovered:
+			var card_gui_a: CardGui = a.collider.get_parent()
+			var card_gui_b: CardGui = b.collider.get_parent()
+			if card_gui_a.hovered:
 				return true
-			elif card_b.hovered:
+			elif card_gui_b.hovered:
 				return false
-			return card_a.get_index() > card_b.get_index()
+			return card_gui_a.get_index() > card_gui_b.get_index()
 		)
 		return collided_areas[0].collider.get_parent() as CardGui
 	return null
@@ -83,12 +92,27 @@ func _on_play_area_mouse_entered():
 
 # When card is dragged out of the RetainArea (which is a bit larger than the
 # PlayArea!), we interpret that as cancelling the card.
-func _on_retain_area_mouse_entered():
+func _on_retain_area_mouse_exited():
 	if dragged_card != null:
 		is_card_looking_for_target = false
 		emit_signal("card_not_looking_for_target", dragged_card)
 		dragged_card.visible = true
 		# Play an animation checked the card I guess?
+
+func _set_bound_actor(a: Actor) -> void:
+	bound_actor = a
+	var card_player_component: = a.card_player_component
+	for _card_gui in card_guis:
+		var card_gui: CardGui = _card_gui
+		card_gui.queue_free()
+		card_gui.visible = false
+	card_guis.clear()
+	
+	for card_instance in card_player_component.hand:
+		var card_gui: CardGui = card_gui_scene.instantiate()
+		card_gui.card_instance = card_instance
+		card_guis.append(card_gui)
+		add_child(card_gui)
 
 #func card_played_cleanup() -> void:
 #	card_hand.cards.remove_at(card_hand.cards.find(dragged_card))

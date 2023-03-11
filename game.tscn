@@ -12,8 +12,6 @@
 [node name="Game" type="Node3D"]
 script = ExtResource("1_mmfqv")
 
-[node name="CardDashboardGui" parent="." instance=ExtResource("2_4ap8f")]
-
 [node name="WorldMap" parent="." instance=ExtResource("1_86hr1")]
 
 [node name="Nomad" parent="." instance=ExtResource("4_wwuov")]
@@ -29,6 +27,10 @@ environment = ExtResource("5_1arwp")
 current = true
 script = ExtResource("2_r5jb8")
 camera_pivot = NodePath("../Nomad/CameraPivot")
+
+[node name="CardDashboardGui" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("2_4ap8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31654, -2)
+camera = NodePath("..")
 
 [node name="SpawnPlayerTimer" type="Timer" parent="."]
 wait_time = 0.8

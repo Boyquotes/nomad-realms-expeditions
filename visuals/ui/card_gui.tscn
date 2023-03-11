@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsnt2u1bgvqcc"]
+
+[ext_resource type="PackedScene" uid="uid://gr8kiwkaksun" path="res://assets/card_gui.blend" id="1_qurxm"]
+[ext_resource type="Script" path="res://visuals/ui/card_gui.gd" id="1_tmuoj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdme4"]
+size = Vector3(0.400552, 0.680457, 0.0241578)
+
+[sub_resource type="Gradient" id="Gradient_8me5v"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g5l13"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_egld5"]
+width = 256
+height = 336
+color_ramp = SubResource("Gradient_8me5v")
+noise = SubResource("FastNoiseLite_g5l13")
+
+[node name="CardGui" type="Node3D"]
+script = ExtResource("1_tmuoj")
+
+[node name="Model" parent="." instance=ExtResource("1_qurxm")]
+transform = Transform3D(0.2, 0, 3.49691e-08, 0, 0.2, 0, -3.49691e-08, 0, 0.2, 0, 0, -0.0137251)
+
+[node name="SelectBox" type="Area3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.0137251)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectBox"]
+shape = SubResource("BoxShape3D_tdme4")
+
+[node name="Texture" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.0431096, -0.00440039)
+texture = SubResource("NoiseTexture2D_egld5")
+
+[node name="TitleLabel" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.266435, 0)
+double_sided = false
+text = "Title"
+
+[node name="TextLabel" type="Label3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.226814, 0)
+text = "Text"

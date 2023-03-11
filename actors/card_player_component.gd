@@ -1,6 +1,6 @@
 extends Node
 class_name CardPlayerComponent
 
-var deck: Array = []
-var hand: Array = []
-var discard: Array = []
+var deck: Array[CardInstance] = []
+var hand: Array[CardInstance] = []
+var discard: Array[CardInstance] = []
