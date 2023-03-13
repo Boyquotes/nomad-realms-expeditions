@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d13pp1ra32tjb"]
+
+[ext_resource type="PackedScene" uid="uid://cgofwnvdncbv3" path="res://visuals/ui/card_dashboard_gui.tscn" id="1_72mp3"]
+[ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="2_xwtwi"]
+
+[node name="UI" type="SubViewport"]
+transparent_bg = true
+canvas_cull_mask = 4294443009
+size = Vector2i(1920, 1080)
+
+[node name="CardDashboardGui" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_72mp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16874, -1.54154)
+camera = NodePath("../Camera")
+
+[node name="Camera" type="Camera3D" parent="."]
+cull_mask = 524288
+environment = ExtResource("2_xwtwi")
+current = true

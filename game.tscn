@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" path="res://map/world_map.tscn" id="1_86hr1"]
 [ext_resource type="Script" path="res://game.gd" id="1_mmfqv"]
-[ext_resource type="PackedScene" uid="uid://cgofwnvdncbv3" path="res://visuals/ui/card_dashboard_gui.tscn" id="2_4ap8f"]
 [ext_resource type="Script" path="res://camera.gd" id="2_r5jb8"]
 [ext_resource type="PackedScene" uid="uid://cjv5mnk37jv2" path="res://actors/nomad.tscn" id="4_wwuov"]
 [ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="5_1arwp"]
 [ext_resource type="PackedScene" uid="uid://blfq2k0wnvxn2" path="res://visuals/camera_pivot.tscn" id="5_n3djb"]
 [ext_resource type="PackedScene" uid="uid://cfv85kcdtqm1j" path="res://visuals/fx/spawn/spawn_particles.tscn" id="5_q51k1"]
+[ext_resource type="PackedScene" uid="uid://d13pp1ra32tjb" path="res://visuals/ui/ui.tscn" id="8_wpnpj"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_mmfqv")
@@ -28,10 +28,6 @@ current = true
 script = ExtResource("2_r5jb8")
 camera_pivot = NodePath("../Nomad/CameraPivot")
 
-[node name="CardDashboardGui" parent="Camera" node_paths=PackedStringArray("camera") instance=ExtResource("2_4ap8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31654, -2)
-camera = NodePath("..")
-
 [node name="SpawnPlayerTimer" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
@@ -41,5 +37,14 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 0, 6.06698, 4.11567)
 shadow_enabled = true
 shadow_reverse_cull_face = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UI" parent="SubViewportContainer" instance=ExtResource("8_wpnpj")]
+handle_input_locally = false
+render_target_update_mode = 0
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
