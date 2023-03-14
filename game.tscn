@@ -38,13 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 
 shadow_enabled = true
 shadow_reverse_cull_face = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="UI" parent="SubViewportContainer" instance=ExtResource("8_wpnpj")]
-handle_input_locally = false
-render_target_update_mode = 0
+[node name="UI" parent="." instance=ExtResource("8_wpnpj")]
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]

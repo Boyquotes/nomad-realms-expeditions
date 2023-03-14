@@ -16,16 +16,9 @@ card_gui_scene = ExtResource("2_obixq")
 
 [node name="Lights" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20754, 1.23492, 2.2785)
-light_color = Color(0.921569, 0.894118, 0.784314, 1)
-light_energy = 3.0
-light_cull_mask = 4294967294
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 1)
-light_color = Color(0.788235, 0.890196, 0.976471, 1)
-light_cull_mask = 4294967294
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 1)
+light_color = Color(0.894118, 0.917647, 0.921569, 1)
 
 [node name="CardHandModel" parent="." instance=ExtResource("2_sjr7q")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
