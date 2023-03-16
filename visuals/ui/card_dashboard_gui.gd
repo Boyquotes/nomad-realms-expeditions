@@ -1,4 +1,5 @@
 extends Node3D
+class_name CardDashboardGui
 
 signal card_looking_for_target(card)
 signal card_not_looking_for_target(card)
@@ -110,9 +111,11 @@ func _set_bound_actor(a: Actor) -> void:
 	
 	for card_instance in card_player_component.hand:
 		var card_gui: CardGui = card_gui_scene.instantiate()
-		card_gui.card_instance = card_instance
 		card_guis.append(card_gui)
 		add_child(card_gui)
+		card_gui.position.z += 0.5
+		card_gui.position.y += 0.7
+		card_gui.card_instance = card_instance
 
 #func card_played_cleanup() -> void:
 #	card_hand.cards.remove_at(card_hand.cards.find(dragged_card))

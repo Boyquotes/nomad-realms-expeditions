@@ -2,7 +2,7 @@ extends Node3D
 
 signal card_played_event(card_player, card, card_target)
 
-@onready var card_dashboard_gui: = $CardDashboardGui
+@onready var card_dashboard_gui: CardDashboardGui = $UI/SubViewport/CardDashboardGui
 @onready var nomad: Actor = $Nomad
 @onready var camera: Camera3D = $Camera
 @onready var world_map: = $WorldMap
@@ -13,9 +13,12 @@ func _ready():
 	print("Nomad Realms Expeditions")
 	$SpawnParticles.position += nomad.position
 	$SpawnParticles.emitting = true
-
+	card_dashboard_gui.bound_actor = nomad
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
+		return
 	if card_looking_for_target == null:
 		return
 	var card_instance: = card_looking_for_target.card_instance
