@@ -41,3 +41,5 @@ shadow_reverse_cull_face = true
 [node name="UI" parent="." instance=ExtResource("8_wpnpj")]
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
+[connection signal="card_looking_for_target" from="UI" to="." method="_on_ui_card_looking_for_target"]
+[connection signal="card_not_looking_for_target" from="UI" to="." method="_on_ui_card_not_looking_for_target"]

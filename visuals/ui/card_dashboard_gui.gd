@@ -29,14 +29,14 @@ func detect_hover(event: InputEventMouseMotion):
 	var card: CardGui = get_hovered_card(event)
 	if card != null:
 		if hovered_card != null:
-			hovered_card._unhover()
+			hovered_card.unhover()
 		if !card.hovered:
-			card._hover()
+			card.hover()
 		hovered_card = card
 		get_viewport().set_input_as_handled()
 	else:
 		if hovered_card != null:
-			hovered_card._unhover()
+			hovered_card.unhover()
 			hovered_card = null
 
 func detect_drag_and_release():
@@ -52,7 +52,7 @@ func detect_drag_and_release():
 			return
 		if dragged_card != null:
 			dragged_card.dragged = false
-			dragged_card._unhover()
+			dragged_card.unhover()
 			dragged_card = null
 			hovered_card = null
 
@@ -63,21 +63,12 @@ func get_hovered_card(event: InputEvent) -> CardGui:
 	var to: = from + camera.project_ray_normal(mouse_pos) * 400
 	params.from = from
 	params.to = to
-	params.collision_mask = 0b00001 # Important!
+	params.collision_mask = 0x10000 # Important!
 	params.collide_with_areas = true
 	params.collide_with_bodies = false
-	var collided_areas = get_world_3d().direct_space_state.intersect_ray(params)
-	if collided_areas.size() > 0:
-		collided_areas.sort_custom(func(a, b):
-			var card_gui_a: CardGui = a.collider.get_parent()
-			var card_gui_b: CardGui = b.collider.get_parent()
-			if card_gui_a.hovered:
-				return true
-			elif card_gui_b.hovered:
-				return false
-			return card_gui_a.get_index() > card_gui_b.get_index()
-		)
-		return collided_areas[0].collider.get_parent() as CardGui
+	var collided_area: = get_world_3d().direct_space_state.intersect_ray(params)
+	if "collider" in collided_area:
+		return collided_area.collider.get_parent() as CardGui
 	return null
 
 # When card is dragged into the PlayArea, we interpret that as wanting to look

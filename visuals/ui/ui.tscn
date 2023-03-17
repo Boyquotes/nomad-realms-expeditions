@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d13pp1ra32tjb"]
+[gd_scene load_steps=4 format=3 uid="uid://d13pp1ra32tjb"]
 
 [ext_resource type="PackedScene" uid="uid://cgofwnvdncbv3" path="res://visuals/ui/card_dashboard_gui.tscn" id="1_72mp3"]
+[ext_resource type="Script" path="res://visuals/ui/ui.gd" id="1_bq7g3"]
 [ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="2_xwtwi"]
 
 [node name="UI" type="SubViewportContainer"]
 offset_right = 1920.0
 offset_bottom = 1080.0
+script = ExtResource("1_bq7g3")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -22,3 +24,6 @@ camera = NodePath("../Camera")
 [node name="Camera" type="Camera3D" parent="SubViewport"]
 environment = ExtResource("2_xwtwi")
 current = true
+
+[connection signal="card_looking_for_target" from="SubViewport/CardDashboardGui" to="." method="_on_card_dashboard_gui_card_looking_for_target"]
+[connection signal="card_not_looking_for_target" from="SubViewport/CardDashboardGui" to="." method="_on_card_dashboard_gui_card_not_looking_for_target"]

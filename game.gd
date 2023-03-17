@@ -68,6 +68,16 @@ func detect_card_play():
 		card_target.highlighted = false
 		card_target = null
 	
+func _on_ui_card_looking_for_target(card):
+	card_looking_for_target = card
+
+func _on_ui_card_not_looking_for_target(_card):
+	card_looking_for_target = null
+
 func _on_spawn_player_timer_timeout():
 	nomad.visible = true
 	nomad.position.y = 1
+
+
+
+
