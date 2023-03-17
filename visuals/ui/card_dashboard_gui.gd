@@ -1,8 +1,8 @@
 extends Node3D
 class_name CardDashboardGui
 
-signal card_looking_for_target(card)
-signal card_not_looking_for_target(card)
+signal card_gui_looking_for_target(card)
+signal card_gui_not_looking_for_target(card)
 
 @export var camera: Camera3D
 @export var card_gui_scene: PackedScene
@@ -15,7 +15,7 @@ var hovered_card: CardGui
 var dragged_card: CardGui
 
 # Whether or not the card is dragged over the PlayZone
-var is_card_looking_for_target: bool = false
+var is_card_gui_looking_for_target: bool = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	detect_drag_and_release()
@@ -46,7 +46,7 @@ func detect_drag_and_release():
 			dragged_card.dragged = true
 		get_viewport().set_input_as_handled()
 	elif Input.is_action_just_released("interact"):
-		if is_card_looking_for_target:
+		if is_card_gui_looking_for_target:
 			# The actual playing of the card, and the card's effects, are
 			# handled by game.gd
 			return
@@ -75,8 +75,8 @@ func get_hovered_card(event: InputEvent) -> CardGui:
 # for a target
 func _on_play_area_mouse_entered():
 	if dragged_card != null:
-		is_card_looking_for_target = true
-		emit_signal("card_looking_for_target", dragged_card)
+		is_card_gui_looking_for_target = true
+		emit_signal("card_gui_looking_for_target", dragged_card)
 		# If it requires a target, make the card disappear
 		if dragged_card.card.effect.target_type != 0:
 			# TODO: play an animation checked the card
@@ -86,8 +86,8 @@ func _on_play_area_mouse_entered():
 # PlayArea!), we interpret that as cancelling the card.
 func _on_retain_area_mouse_exited():
 	if dragged_card != null:
-		is_card_looking_for_target = false
-		emit_signal("card_not_looking_for_target", dragged_card)
+		is_card_gui_looking_for_target = false
+		emit_signal("card_gui_not_looking_for_target", dragged_card)
 		dragged_card.visible = true
 		# Play an animation checked the card I guess?
 
@@ -112,5 +112,5 @@ func _set_bound_actor(a: Actor) -> void:
 #	card_hand.cards.remove_at(card_hand.cards.find(dragged_card))
 #	hovered_card = null
 #	dragged_card = null
-#	is_card_looking_for_target = false
+#	is_card_gui_looking_for_target = false
 #	reset_target_positions()
