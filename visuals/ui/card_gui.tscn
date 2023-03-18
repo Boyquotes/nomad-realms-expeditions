@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsnt2u1bgvqcc"]
+[gd_scene load_steps=8 format=3 uid="uid://dsnt2u1bgvqcc"]
 
 [ext_resource type="PackedScene" uid="uid://gr8kiwkaksun" path="res://assets/card_gui.blend" id="1_qurxm"]
 [ext_resource type="Script" path="res://visuals/ui/card_gui.gd" id="1_tmuoj"]
@@ -15,6 +15,8 @@ width = 256
 height = 336
 color_ramp = SubResource("Gradient_8me5v")
 noise = SubResource("FastNoiseLite_g5l13")
+
+[sub_resource type="FontVariation" id="FontVariation_c2puv"]
 
 [node name="CardGui" type="Node3D"]
 script = ExtResource("1_tmuoj")
@@ -38,7 +40,12 @@ texture = SubResource("NoiseTexture2D_egld5")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.266435, 0)
 double_sided = false
 text = "Title"
+autowrap_mode = 3
+width = 250.0
 
 [node name="TextLabel" type="Label3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.226814, 0)
 text = "Text"
+font = SubResource("FontVariation_c2puv")
+autowrap_mode = 3
+width = 250.0

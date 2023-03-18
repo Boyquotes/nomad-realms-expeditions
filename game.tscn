@@ -38,8 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 
 shadow_enabled = true
 shadow_reverse_cull_face = true
 
-[node name="UI" parent="." instance=ExtResource("8_wpnpj")]
+[node name="UI" parent="." node_paths=PackedStringArray("camera", "bound_actor") instance=ExtResource("8_wpnpj")]
+camera = NodePath("../Camera")
+bound_actor = NodePath("../Nomad")
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
-[connection signal="card_looking_for_target" from="UI" to="." method="_on_ui_card_looking_for_target"]
-[connection signal="card_not_looking_for_target" from="UI" to="." method="_on_ui_card_not_looking_for_target"]

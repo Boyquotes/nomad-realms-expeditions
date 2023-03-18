@@ -19,6 +19,7 @@ card_gui_scene = ExtResource("2_obixq")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 1)
 light_color = Color(0.894118, 0.917647, 0.921569, 1)
+shadow_enabled = true
 
 [node name="CardHandModel" parent="." instance=ExtResource("2_sjr7q")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

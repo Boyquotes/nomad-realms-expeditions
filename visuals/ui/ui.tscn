@@ -27,5 +27,4 @@ camera = NodePath("../Camera")
 environment = ExtResource("2_xwtwi")
 current = true
 
-[connection signal="card_looking_for_target" from="SubViewportContainer/SubViewport/CardDashboardGui" to="." method="_on_card_dashboard_gui_card_looking_for_target"]
-[connection signal="card_not_looking_for_target" from="SubViewportContainer/SubViewport/CardDashboardGui" to="." method="_on_card_dashboard_gui_card_not_looking_for_target"]
+[connection signal="set_card_gui_looking_for_target" from="SubViewportContainer/SubViewport/CardDashboardGui" to="." method="_on_card_dashboard_gui_set_card_gui_looking_for_target"]

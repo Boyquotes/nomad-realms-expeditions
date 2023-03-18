@@ -3,8 +3,13 @@ extends Node3D
 @export var camera: Camera3D
 @export var bound_actor: Actor
 
+@onready var card_dashboard_gui: CardDashboardGui = $SubViewportContainer/SubViewport/CardDashboardGui
+
 var card_gui_looking_for_target: CardGui
 var card_target: Actor
+
+func _ready():
+	card_dashboard_gui.bound_actor = bound_actor
 
 func _unhandled_input(event):
 	if card_gui_looking_for_target == null:
@@ -40,3 +45,5 @@ func _unhandled_input(event):
 			else:
 				card_target = null
 
+func _on_card_dashboard_gui_set_card_gui_looking_for_target(card_gui):
+	card_gui_looking_for_target = card_gui

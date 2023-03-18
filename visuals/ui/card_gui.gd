@@ -9,10 +9,12 @@ var card_instance: CardInstance : set = _set_card
 
 var hovered: = false
 var dragged: = false
+var target_position: Vector3 = Vector3.ZERO
 var target_scale: = 1.0
 
 func _process(delta: float) -> void:
 	scale *= (target_scale / scale.x - 1) * 0.5 + 1
+	position = position.lerp(target_position, 0.3)
 
 func _set_card(c: CardInstance) -> void:
 	card_instance = c
@@ -23,7 +25,9 @@ func _set_card(c: CardInstance) -> void:
 func hover() -> void:
 	target_scale = 1.1
 	hovered = true
+	target_position.y += 0.1
 
 func unhover() -> void:
 	target_scale = 1.0
 	hovered = false
+	target_position.y -= 0.1
