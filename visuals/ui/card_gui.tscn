@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://gr8kiwkaksun" path="res://assets/card_gui.blend" id="1_qurxm"]
 [ext_resource type="Script" path="res://visuals/ui/card_gui.gd" id="1_tmuoj"]
+[ext_resource type="FontFile" uid="uid://b0i7552hunr0o" path="res://assets/fonts/Baloo2-VariableFont_wght.ttf" id="3_c0qfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tdme4"]
 size = Vector3(0.400552, 0.680457, 0.0241578)
@@ -15,8 +16,6 @@ width = 256
 height = 336
 color_ramp = SubResource("Gradient_8me5v")
 noise = SubResource("FastNoiseLite_g5l13")
-
-[sub_resource type="FontVariation" id="FontVariation_c2puv"]
 
 [node name="CardGui" type="Node3D"]
 script = ExtResource("1_tmuoj")
@@ -38,14 +37,23 @@ texture = SubResource("NoiseTexture2D_egld5")
 
 [node name="TitleLabel" type="Label3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.266435, 0)
+pixel_size = 0.0025
 double_sided = false
 text = "Title"
+font = ExtResource("3_c0qfw")
+font_size = 80
+outline_size = 0
+line_spacing = -36.0
 autowrap_mode = 3
-width = 250.0
+width = 480.0
 
 [node name="TextLabel" type="Label3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.226814, 0)
+pixel_size = 0.0025
 text = "Text"
-font = SubResource("FontVariation_c2puv")
+font = ExtResource("3_c0qfw")
+font_size = 64
+outline_size = 0
+line_spacing = -36.0
 autowrap_mode = 3
-width = 250.0
+width = 480.0

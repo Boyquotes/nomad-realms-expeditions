@@ -15,7 +15,7 @@ offset_bottom = 40.0
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-screen_space_aa = 1
+msaa_3d = 1
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 

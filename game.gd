@@ -12,6 +12,10 @@ func _ready():
 	$SpawnParticles.position += nomad.position
 	$SpawnParticles.emitting = true
 
+func _unhandled_key_input(event):
+	if Input.is_action_just_released("exit"):
+		get_tree().quit()
+
 func _on_spawn_player_timer_timeout():
 	nomad.visible = true
 	nomad.position.y = 1

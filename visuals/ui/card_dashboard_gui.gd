@@ -6,6 +6,8 @@ signal set_card_gui_looking_for_target(card_gui)
 @export var camera: Camera3D
 @export var card_gui_scene: PackedScene
 
+@onready var card_gui_spawn_marker: = $CardGuiSpawnMarker
+
 var bound_actor: Actor : set = _set_bound_actor
 
 var card_guis: Array[CardGui] = []
@@ -109,7 +111,8 @@ func _set_bound_actor(a: Actor) -> void:
 func reset_card_gui_target_positions() -> void:
 	var hand_size: = len(card_guis)
 	for i in range(hand_size):
-		card_guis[i].target_position = Vector3(1.0 * i / hand_size, 0.4, 0.2)
+		card_guis[i].target_position = card_gui_spawn_marker.position
+		card_guis[i].target_position.x += (i + (1 - hand_size) * 0.5) * 0.5
 
 #func card_played_cleanup() -> void:
 #	card_hand.cards.remove_at(card_hand.cards.find(dragged_card_gui))
