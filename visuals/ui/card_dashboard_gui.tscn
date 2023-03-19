@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgofwnvdncbv3"]
+[gd_scene load_steps=7 format=3 uid="uid://cgofwnvdncbv3"]
 
 [ext_resource type="Script" path="res://visuals/ui/card_dashboard_gui.gd" id="1_6rwx1"]
 [ext_resource type="PackedScene" uid="uid://dsnt2u1bgvqcc" path="res://visuals/ui/card_gui.tscn" id="2_obixq"]
 [ext_resource type="PackedScene" uid="uid://b4g6iw076524" path="res://assets/card_hand_gui.blend" id="2_sjr7q"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jibtt"]
+plane = Plane(0, 0, 1, 0.12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qi7g"]
 size = Vector2(1920, 780)
@@ -13,6 +16,13 @@ size = Vector2(1920, 900)
 [node name="CardDashboardGui" type="Node3D"]
 script = ExtResource("1_6rwx1")
 card_gui_scene = ExtResource("2_obixq")
+
+[node name="CursorDragArea" type="Area3D" parent="."]
+collision_layer = 131072
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CursorDragArea"]
+shape = SubResource("WorldBoundaryShape3D_jibtt")
 
 [node name="Lights" type="Node3D" parent="."]
 

@@ -21,12 +21,26 @@ var is_card_gui_looking_for_target: bool = false
 func _unhandled_input(event: InputEvent) -> void:
 	detect_drag_and_release()
 	if event is InputEventMouseMotion:
-		detect_hover(event)
+		if dragged_card_gui:
+			move_card(event)
+		else:
+			detect_hover(event)
+
+func move_card(event: InputEventMouseMotion):
+	var mouse_pos: Vector2 = event.position
+	var params: = PhysicsRayQueryParameters3D.new()
+	var from: = camera.project_ray_origin(mouse_pos)
+	var to: = from + camera.project_ray_normal(mouse_pos) * 400
+	params.from = from
+	params.to = to
+	params.collision_mask = 0x20000 # ui_2
+	params.collide_with_areas = true
+	params.collide_with_bodies = false
+	var collision: = get_world_3d().direct_space_state.intersect_ray(params)
+	if "position" in collision:
+		dragged_card_gui.position = collision.position - position
 
 func detect_hover(event: InputEventMouseMotion):
-	if dragged_card_gui != null:
-		return
-		
 	var card: CardGui = get_hovered_card_gui(event)
 	if card != null:
 		if hovered_card_gui != null:
@@ -64,7 +78,7 @@ func get_hovered_card_gui(event: InputEvent) -> CardGui:
 	var to: = from + camera.project_ray_normal(mouse_pos) * 400
 	params.from = from
 	params.to = to
-	params.collision_mask = 0x10000 # Important!
+	params.collision_mask = 0x10000 # ui_1
 	params.collide_with_areas = true
 	params.collide_with_bodies = false
 	var collided_area: = get_world_3d().direct_space_state.intersect_ray(params)

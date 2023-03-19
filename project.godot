@@ -54,7 +54,8 @@ exit={
 3d_physics/layer_2="friendly_actors"
 3d_physics/layer_3="enemy_actors"
 3d_physics/layer_4="neutral_actors"
-3d_physics/layer_17="ui"
+3d_physics/layer_17="ui_1"
+3d_physics/layer_18="ui_2"
 
 [rendering]
 

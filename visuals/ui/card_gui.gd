@@ -14,11 +14,13 @@ var target_scale: = 1.0
 
 func _process(delta: float) -> void:
 	scale *= (target_scale / scale.x - 1) * 0.5 + 1
-	position = position.lerp(target_position, 0.3)
+	if !dragged:
+		position = position.lerp(target_position, 0.3)
 
 func _set_card(c: CardInstance) -> void:
 	card_instance = c
-	texture.texture = c.card.texture
+	if c.card.texture:
+		texture.texture = c.card.texture
 	title_label.text = c.card.name
 	text_label.text = c.card.text
 
