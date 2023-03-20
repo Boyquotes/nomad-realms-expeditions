@@ -2,6 +2,8 @@ extends Node3D
 
 signal card_played_event(card_player, card, card_target)
 
+@export var spawn_particles_scene: PackedScene
+
 @onready var ui: = $UI
 @onready var nomad: Actor = $Nomad
 @onready var camera: Camera3D = $Camera
@@ -9,8 +11,10 @@ signal card_played_event(card_player, card, card_target)
 
 func _ready():
 	print("Nomad Realms Expeditions")
-	$SpawnParticles.position += nomad.position
-	$SpawnParticles.emitting = true
+	var particles: = spawn_particles_scene.instantiate()
+	add_child(particles)
+	particles.position += nomad.position
+	particles.emitting = true
 
 func _unhandled_key_input(event):
 	if Input.is_action_just_released("exit"):

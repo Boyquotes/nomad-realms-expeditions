@@ -31,19 +31,24 @@ func _unhandled_input(event):
 		params.collide_with_areas = true
 		params.collide_with_bodies = false
 		
-		var intersected: = get_world_3d().direct_space_state.intersect_ray(params)
+		var collision: = get_world_3d().direct_space_state.intersect_ray(params)
 		
-		if intersected.has("collider"):
+		if "collider" in collision:
 			if card_target != null:
 				# Unhighlight previous target
-				card_target.highlighted = false
-			var potential_target = intersected.collider.get_parent()
-			var target_predicate = card_effect.target_predicate
-			if target_predicate != null && target_predicate.call(bound_actor, potential_target):
-				card_target = intersected.collider.get_parent()
-				card_target.highlighted = true
+				card_target.set_highlighted(false)
+			card_target = collision.collider.get_parent()
+			# TODO: Target Predicate (e.g. range)
+#			var target_predicate = card.target_predicate
+#			if target_predicate != null && target_predicate.call(bound_actor, potential_target):
+#				card_target = collision.collider.get_parent()
+#				card_target.set_highlighted(true)
+			if true:
+				card_target.set_highlighted(true)
 			else:
 				card_target = null
 
 func _on_card_dashboard_gui_set_card_gui_looking_for_target(card_gui):
 	card_gui_looking_for_target = card_gui
+	if !card_gui and card_target:
+		card_target.set_highlighted(false)

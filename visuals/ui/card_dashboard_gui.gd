@@ -37,8 +37,9 @@ func move_card(event: InputEventMouseMotion):
 	params.collide_with_areas = true
 	params.collide_with_bodies = false
 	var collision: = get_world_3d().direct_space_state.intersect_ray(params)
-	if "position" in collision:
-		dragged_card_gui.position = collision.position - position
+	
+	dragged_card_gui.position = collision.position - position
+	
 
 func detect_hover(event: InputEventMouseMotion):
 	var card: CardGui = get_hovered_card_gui(event)
@@ -65,7 +66,7 @@ func detect_drag_and_release():
 			# The actual playing of the card, and the card's effects, are
 			# handled by game.gd
 			return
-		if dragged_card_gui != null:
+		if dragged_card_gui:
 			dragged_card_gui.dragged = false
 			dragged_card_gui.unhover()
 			dragged_card_gui = null
@@ -89,18 +90,18 @@ func get_hovered_card_gui(event: InputEvent) -> CardGui:
 # When card is dragged into the PlayArea, we interpret that as wanting to look
 # for a target
 func _on_play_area_mouse_entered():
-	if dragged_card_gui != null:
+	if dragged_card_gui:
 		is_card_gui_looking_for_target = true
 		emit_signal("set_card_gui_looking_for_target", dragged_card_gui)
 		# If it requires a target, make the card disappear
-		if dragged_card_gui.card.effect.target_type != 0:
+		if dragged_card_gui.card_instance.card.target_type != 0:
 			# TODO: play an animation checked the card
 			dragged_card_gui.visible = false
 
 # When card is dragged out of the RetainArea (which is a bit larger than the
 # PlayArea!), we interpret that as cancelling the card.
 func _on_retain_area_mouse_exited():
-	if dragged_card_gui != null:
+	if dragged_card_gui:
 		is_card_gui_looking_for_target = false
 		emit_signal("set_card_gui_looking_for_target", null)
 		dragged_card_gui.visible = true

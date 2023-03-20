@@ -11,6 +11,7 @@
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_mmfqv")
+spawn_particles_scene = ExtResource("5_q51k1")
 
 [node name="WorldMap" parent="." instance=ExtResource("1_86hr1")]
 
@@ -19,8 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
-
-[node name="SpawnParticles" parent="." instance=ExtResource("5_q51k1")]
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_pivot")]
 environment = ExtResource("5_1arwp")

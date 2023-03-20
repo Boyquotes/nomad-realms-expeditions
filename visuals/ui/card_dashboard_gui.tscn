@@ -35,7 +35,7 @@ shadow_enabled = true
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="PlayArea" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 65536
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
@@ -43,6 +43,8 @@ position = Vector2(960, 390)
 shape = SubResource("RectangleShape2D_3qi7g")
 
 [node name="RetainArea" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RetainArea"]
 position = Vector2(960, 450)

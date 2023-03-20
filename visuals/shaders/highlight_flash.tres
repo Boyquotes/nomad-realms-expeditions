@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dy8vxubmse0oq"]
+
+[ext_resource type="Shader" path="res://visuals/shaders/highlight_flash.gdshader" id="1_7nuc3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7nuc3")
+shader_parameter/highlight_color = Color(0.92, 0.7, 0.04, 1)
+shader_parameter/highlight_alpha = 0.8
+shader_parameter/flash_speed = 7.0
