@@ -5,7 +5,11 @@ signal health_changed(old, new)
 signal health_depleted
 
 @export var starting_health: int = 10
-var health: int = starting_health : set = _set_health
+
+var health: int : set = _set_health
+
+func _ready():
+	health = starting_health
 
 func _set_health(h: int) -> void:
 	if h != health:

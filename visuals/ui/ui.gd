@@ -47,6 +47,14 @@ func _unhandled_input(event):
 				card_target.set_highlighted(true)
 			else:
 				card_target = null
+			get_viewport().set_input_as_handled()
+	elif card.target_type != 0 && Input.is_action_just_released("interact"):
+		var card_player: = bound_actor.card_player_component
+		card_player.move_card_instance(card_instance, "hand", "discard")
+		card_effect._handle(bound_actor, card_target)
+		card_target.set_highlighted(false)
+		card_target = null
+		card_gui_looking_for_target = null
 
 func _on_card_dashboard_gui_set_card_gui_looking_for_target(card_gui):
 	card_gui_looking_for_target = card_gui

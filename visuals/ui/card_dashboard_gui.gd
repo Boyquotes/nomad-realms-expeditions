@@ -122,6 +122,7 @@ func _set_bound_actor(a: Actor) -> void:
 		add_child(card_gui)
 		card_gui.card_instance = card_instance
 	reset_card_gui_target_positions()
+	bound_actor.card_player_component.card_instance_moved.connect(_on_bound_actor_card_instance_moved)
 
 func reset_card_gui_target_positions() -> void:
 	var hand_size: = len(card_guis)
@@ -129,6 +130,21 @@ func reset_card_gui_target_positions() -> void:
 		card_guis[i].target_position = card_gui_spawn_marker.position
 		card_guis[i].target_position.x += (i + (1 - hand_size) * 0.5) * 0.5
 
+func _remove_card_gui_with_instance(c: CardInstance) -> void:
+	if dragged_card_gui.card_instance == c:
+		dragged_card_gui = null
+		is_card_gui_looking_for_target = false
+	if hovered_card_gui.card_instance == c:
+		hovered_card_gui = null
+		is_card_gui_looking_for_target = false
+	for i in range(card_guis.size()):
+		if card_guis[i].card_instance == c:
+			card_guis.remove_at(i)
+			return
+
+func _on_bound_actor_card_instance_moved(c: CardInstance, from: String, to: String) -> void:
+	if from == "hand":
+		_remove_card_gui_with_instance(c)
 #func card_played_cleanup() -> void:
 #	card_hand.cards.remove_at(card_hand.cards.find(dragged_card_gui))
 #	hovered_card_gui = null

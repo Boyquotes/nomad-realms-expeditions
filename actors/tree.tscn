@@ -10,7 +10,7 @@ height = 1.78632
 
 [node name="Tree" type="Node3D" node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_c0wfr")
-mesh_path = &"Model/Tree"
+mesh_path = "Model/Tree"
 health_component = NodePath("HealthComponent")
 
 [node name="Model" parent="." instance=ExtResource("1_o6byu")]
@@ -27,3 +27,5 @@ shape = SubResource("CapsuleShape3D_k25cj")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_duba1")
 starting_health = 3
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

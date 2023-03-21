@@ -36,3 +36,5 @@ script = ExtResource("4_o2n4a")
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("5_j5sdg")
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
