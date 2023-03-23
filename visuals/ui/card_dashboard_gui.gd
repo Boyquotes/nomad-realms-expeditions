@@ -145,9 +145,4 @@ func _remove_card_gui_with_instance(c: CardInstance) -> void:
 func _on_bound_actor_card_instance_moved(c: CardInstance, from: String, to: String) -> void:
 	if from == "hand":
 		_remove_card_gui_with_instance(c)
-#func card_played_cleanup() -> void:
-#	card_hand.cards.remove_at(card_hand.cards.find(dragged_card_gui))
-#	hovered_card_gui = null
-#	dragged_card_gui = null
-#	is_card_gui_looking_for_target = false
-#	reset_target_positions()
+		reset_card_gui_target_positions()

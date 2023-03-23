@@ -32,6 +32,10 @@ wait_time = 0.8
 one_shot = true
 autostart = true
 
+[node name="TickTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 0, 6.06698, 4.11567)
 shadow_enabled = true
@@ -42,3 +46,4 @@ camera = NodePath("../Camera")
 bound_actor = NodePath("../Nomad")
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

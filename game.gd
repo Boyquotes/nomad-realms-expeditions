@@ -24,6 +24,9 @@ func _on_spawn_player_timer_timeout():
 	nomad.visible = true
 	nomad.position.y = 1
 
-
-
-
+func _on_tick_timer_timeout():
+	var card_played_events: = Global.card_played_events
+	Global.card_played_events = []
+	for card_played_event in card_played_events:
+		var cpe: CardPlayedEvent = card_played_event
+		cpe.card_instance.card.card_effect._handle(cpe.player, cpe.target)

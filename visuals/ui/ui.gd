@@ -51,7 +51,9 @@ func _unhandled_input(event):
 	elif card.target_type != 0 && Input.is_action_just_released("interact"):
 		var card_player: = bound_actor.card_player_component
 		card_player.move_card_instance(card_instance, "hand", "discard")
-		card_effect._handle(bound_actor, card_target)
+		# We don't handle the effect immediately. Instead, we queue it up
+		# and it is handled the next tick
+		Global.make_card_played_event(bound_actor, card_instance, card_target)
 		card_target.set_highlighted(false)
 		card_target = null
 		card_gui_looking_for_target = null
