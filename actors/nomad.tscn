@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjv5mnk37jv2"]
 
 [ext_resource type="Script" path="res://actors/nomad.gd" id="1_35f1j"]
-[ext_resource type="PackedScene" uid="uid://dgt0gwm66sooh" path="res://assets/nomad.glb" id="2_q2qbq"]
+[ext_resource type="PackedScene" uid="uid://c32ohebe42ex8" path="res://assets/nomad.blend" id="2_few86"]
 [ext_resource type="Script" path="res://actors/card_player_component.gd" id="3_aw84l"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="4_o2n4a"]
 [ext_resource type="Script" path="res://actors/inventory_component.gd" id="5_j5sdg"]
@@ -17,7 +17,7 @@ card_player_component = NodePath("CardPlayerComponent")
 health_component = NodePath("HealthComponent")
 inventory_component = NodePath("InventoryComponent")
 
-[node name="Model" parent="." instance=ExtResource("2_q2qbq")]
+[node name="Model" parent="." instance=ExtResource("2_few86")]
 transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0, 0)
 
 [node name="CollisionArea" type="Area3D" parent="."]
