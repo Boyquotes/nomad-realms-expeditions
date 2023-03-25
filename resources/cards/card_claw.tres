@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://dj6ls1c2w4fy4"]
+
+[ext_resource type="Script" path="res://resources/card_effect/damage_effect.gd" id="1_luaot"]
+[ext_resource type="Script" path="res://resources/cards/card.gd" id="1_pt4v1"]
+
+[sub_resource type="Resource" id="Resource_cyti2"]
+script = ExtResource("1_luaot")
+damage = 2
+
+[resource]
+script = ExtResource("1_pt4v1")
+name = &"Claw"
+target_type = 10
+card_effect = SubResource("Resource_cyti2")
+text = "Deal 2.s"
+cooldown = 1
+rarity = 0

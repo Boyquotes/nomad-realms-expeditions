@@ -3,8 +3,8 @@ class_name CardPlayerComponent
 
 signal card_instance_moved(c: CardInstance, from: String, to: String)
 
-var deck: Array[CardInstance] = []
-var hand: Array[CardInstance] = []
+@export var deck: Array[CardInstance] = []
+@export var hand: Array[CardInstance] = []
 var discard: Array[CardInstance] = []
 
 func move_card_instance(c: CardInstance, from: String, to: String) -> void:

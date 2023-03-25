@@ -117,6 +117,7 @@ func _set_bound_actor(a: Actor) -> void:
 	card_guis.clear()
 	
 	for card_instance in card_player_component.hand:
+		print("Card instance in actor hand: " + card_instance.card.name)
 		var card_gui: CardGui = card_gui_scene.instantiate()
 		card_guis.append(card_gui)
 		add_child(card_gui)
