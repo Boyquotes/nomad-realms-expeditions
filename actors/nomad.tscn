@@ -1,37 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjv5mnk37jv2"]
+[gd_scene load_steps=7 format=3 uid="uid://cjv5mnk37jv2"]
 
 [ext_resource type="Script" path="res://actors/nomad.gd" id="1_35f1j"]
 [ext_resource type="PackedScene" uid="uid://c32ohebe42ex8" path="res://assets/nomad.blend" id="2_few86"]
 [ext_resource type="Script" path="res://actors/card_player_component.gd" id="3_aw84l"]
-[ext_resource type="Resource" uid="uid://btj6anqavu2aj" path="res://resources/cards/card_preparation.tres" id="4_86lvw"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="4_o2n4a"]
 [ext_resource type="Script" path="res://actors/inventory_component.gd" id="5_j5sdg"]
-[ext_resource type="Script" path="res://resources/cards/card_instance.gd" id="5_jh6km"]
-[ext_resource type="Resource" uid="uid://mgtrhrn3mq3y" path="res://resources/cards/card_zap.tres" id="6_42xx6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lvcf2"]
 radius = 0.326375
 height = 1.05108
-
-[sub_resource type="Resource" id="Resource_derfs"]
-script = ExtResource("5_jh6km")
-card = ExtResource("4_86lvw")
-
-[sub_resource type="Resource" id="Resource_00emh"]
-script = ExtResource("5_jh6km")
-card = ExtResource("6_42xx6")
-
-[sub_resource type="Resource" id="Resource_ovvcu"]
-script = ExtResource("5_jh6km")
-card = ExtResource("4_86lvw")
-
-[sub_resource type="Resource" id="Resource_aybw0"]
-script = ExtResource("5_jh6km")
-card = ExtResource("4_86lvw")
-
-[sub_resource type="Resource" id="Resource_61gil"]
-script = ExtResource("5_jh6km")
-card = ExtResource("6_42xx6")
 
 [node name="Nomad" type="Node3D" node_paths=PackedStringArray("card_player_component", "health_component", "inventory_component")]
 script = ExtResource("1_35f1j")
@@ -53,8 +30,6 @@ shape = SubResource("CapsuleShape3D_lvcf2")
 
 [node name="CardPlayerComponent" type="Node" parent="."]
 script = ExtResource("3_aw84l")
-deck = Array[ExtResource("5_jh6km")]([SubResource("Resource_derfs"), SubResource("Resource_00emh"), SubResource("Resource_ovvcu")])
-hand = Array[ExtResource("5_jh6km")]([SubResource("Resource_aybw0"), SubResource("Resource_61gil")])
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_o2n4a")

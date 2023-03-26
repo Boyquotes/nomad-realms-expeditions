@@ -140,10 +140,19 @@ func _remove_card_gui_with_instance(c: CardInstance) -> void:
 		is_card_gui_looking_for_target = false
 	for i in range(card_guis.size()):
 		if card_guis[i].card_instance == c:
+			card_guis[i].queue_free()
+			card_guis[i].visible = false
 			card_guis.remove_at(i)
 			return
 
 func _on_bound_actor_card_instance_moved(c: CardInstance, from: String, to: String) -> void:
 	if from == "hand":
 		_remove_card_gui_with_instance(c)
+		reset_card_gui_target_positions()
+	elif to == "hand":
+		print("Adding card instance to hand")
+		var card_gui: CardGui = card_gui_scene.instantiate()
+		card_guis.append(card_gui)
+		add_child(card_gui)
+		card_gui.card_instance = c
 		reset_card_gui_target_positions()
