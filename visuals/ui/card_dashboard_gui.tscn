@@ -51,8 +51,14 @@ position = Vector2(960, 450)
 shape = SubResource("RectangleShape2D_mrm1c")
 debug_color = Color(0, 0.614384, 0.608093, 0.42)
 
-[node name="CardGuiSpawnMarker" type="Marker3D" parent="."]
+[node name="CardDiscardMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.437, 0.4, 0.12)
+
+[node name="CardHandMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.12)
+
+[node name="CardDeckMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43717, 0.4, 0.12)
 
 [connection signal="mouse_entered" from="PlayArea" to="." method="_on_play_area_mouse_entered"]
 [connection signal="mouse_exited" from="RetainArea" to="." method="_on_retain_area_mouse_exited"]

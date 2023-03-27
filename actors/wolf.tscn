@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://resources/cards/card_instance.gd" id="5_apo5t"]
 [ext_resource type="Script" path="res://actors/inventory_component.gd" id="5_udsbm"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1o36k"]
+radius = 0.156392
+height = 0.900054
+
 [sub_resource type="Resource" id="Resource_ot67a"]
 script = ExtResource("5_apo5t")
 card = ExtResource("4_6v1aj")
@@ -24,10 +28,6 @@ card = ExtResource("4_6v1aj")
 script = ExtResource("5_apo5t")
 card = ExtResource("4_6v1aj")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1o36k"]
-radius = 0.156392
-height = 0.733536
-
 [node name="Actor" type="Node3D" node_paths=PackedStringArray("card_player_component", "health_component", "inventory_component")]
 script = ExtResource("1_76cet")
 mesh_path = "Model/Cube"
@@ -38,6 +38,14 @@ inventory_component = NodePath("InventoryComponent")
 [node name="Model" parent="." instance=ExtResource("2_67304")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
+[node name="CollisionArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+transform = Transform3D(0.222825, -0.974859, 0, 0.974859, 0.222825, 0, 0, 0, 1, -0.0197379, 0.546832, 0)
+shape = SubResource("CapsuleShape3D_1o36k")
+
 [node name="CardPlayerComponent" type="Node" parent="."]
 script = ExtResource("3_2adwi")
 deck = Array[ExtResource("5_apo5t")]([SubResource("Resource_ot67a"), SubResource("Resource_rs7jy"), SubResource("Resource_f7hxl"), SubResource("Resource_flvl1")])
@@ -47,11 +55,3 @@ script = ExtResource("4_hcygx")
 
 [node name="InventoryComponent" type="Node" parent="."]
 script = ExtResource("5_udsbm")
-
-[node name="CollisionArea" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0197379, 0.344457, 0)
-shape = SubResource("CapsuleShape3D_1o36k")

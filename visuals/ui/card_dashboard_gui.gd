@@ -6,7 +6,9 @@ signal set_card_gui_looking_for_target(card_gui)
 @export var camera: Camera3D
 @export var card_gui_scene: PackedScene
 
-@onready var card_gui_spawn_marker: = $CardGuiSpawnMarker
+@onready var card_discard_marker: = $CardDiscardMarker
+@onready var card_hand_marker: = $CardHandMarker
+@onready var card_deck_marker: = $CardDeckMarker
 
 var bound_actor: Actor : set = _set_bound_actor
 
@@ -39,7 +41,10 @@ func move_card(event: InputEventMouseMotion):
 	var collision: = get_world_3d().direct_space_state.intersect_ray(params)
 	
 	dragged_card_gui.position = collision.position - position
-	
+	var vel: = event.velocity
+	var perpendicular: = Vector3(vel.y, vel.x, 0).normalized()
+	var rotateAmount: = minf(40.0, vel.length() * 0.02)
+	dragged_card_gui.rotate(perpendicular, deg_to_rad(rotateAmount))
 
 func detect_hover(event: InputEventMouseMotion):
 	var card: CardGui = get_hovered_card_gui(event)
@@ -128,7 +133,7 @@ func _set_bound_actor(a: Actor) -> void:
 func reset_card_gui_target_positions() -> void:
 	var hand_size: = len(card_guis)
 	for i in range(hand_size):
-		card_guis[i].target_position = card_gui_spawn_marker.position
+		card_guis[i].target_position = card_hand_marker.position
 		card_guis[i].target_position.x += (i + (1 - hand_size) * 0.5) * 0.5
 
 func _remove_card_gui_with_instance(c: CardInstance) -> void:
@@ -155,4 +160,8 @@ func _on_bound_actor_card_instance_moved(c: CardInstance, from: String, to: Stri
 		card_guis.append(card_gui)
 		add_child(card_gui)
 		card_gui.card_instance = c
+		if from == "deck":
+			card_gui.position = card_deck_marker.position
+		elif from == "discard":
+			card_gui.position = card_discard_marker.position
 		reset_card_gui_target_positions()

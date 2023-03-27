@@ -10,12 +10,14 @@ var card_instance: CardInstance : set = _set_card
 var hovered: = false
 var dragged: = false
 var target_position: Vector3 = Vector3.ZERO
+var target_rotation: Quaternion = Quaternion.IDENTITY
 var target_scale: = 1.0
 
 func _process(delta: float) -> void:
 	scale *= (target_scale / scale.x - 1) * 0.5 + 1
 	if !dragged:
 		position = position.lerp(target_position, 0.3)
+	rotation = transform.basis.get_rotation_quaternion().slerp(target_rotation, 0.5).get_euler()
 
 func _set_card(c: CardInstance) -> void:
 	card_instance = c
