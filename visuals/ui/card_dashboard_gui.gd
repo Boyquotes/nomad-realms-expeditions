@@ -39,11 +39,12 @@ func move_card(event: InputEventMouseMotion):
 	params.collide_with_areas = true
 	params.collide_with_bodies = false
 	var collision: = get_world_3d().direct_space_state.intersect_ray(params)
-	
-	dragged_card_gui.position = collision.position - position
+	var new_pos: Vector3 = collision.position - position
+	dragged_card_gui.position.x = new_pos.x
+	dragged_card_gui.position.y = new_pos.y
 	var vel: = event.velocity
 	var perpendicular: = Vector3(vel.y, vel.x, 0).normalized()
-	var rotateAmount: = minf(40.0, vel.length() * 0.02)
+	var rotateAmount: = minf(40.0, vel.length() * 0.01)
 	dragged_card_gui.rotate(perpendicular, deg_to_rad(rotateAmount))
 
 func detect_hover(event: InputEventMouseMotion):

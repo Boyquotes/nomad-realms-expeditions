@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	scale *= (target_scale / scale.x - 1) * 0.5 + 1
 	if !dragged:
 		position = position.lerp(target_position, 0.3)
-	rotation = transform.basis.get_rotation_quaternion().slerp(target_rotation, 0.5).get_euler()
+	rotation = transform.basis.get_rotation_quaternion().slerp(target_rotation, 0.45).get_euler()
 
 func _set_card(c: CardInstance) -> void:
 	card_instance = c
@@ -29,9 +29,11 @@ func _set_card(c: CardInstance) -> void:
 func hover() -> void:
 	target_scale = 1.1
 	hovered = true
-	target_position.y += 0.1
+	target_position.y += 0.15
+	target_position.z += 0.1
 
 func unhover() -> void:
 	target_scale = 1.0
 	hovered = false
-	target_position.y -= 0.1
+	target_position.y -= 0.15
+	target_position.z -= 0.1
