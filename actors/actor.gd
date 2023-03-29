@@ -8,6 +8,7 @@ var highlight_flash_material: ShaderMaterial = preload("res://visuals/shaders/hi
 @export var mesh_path: String
 var mesh: MeshInstance3D
 
+@export var ai_component: AiComponent
 @export var card_player_component: CardPlayerComponent
 @export var health_component: HealthComponent
 @export var inventory_component: InventoryComponent
@@ -16,6 +17,7 @@ var world_pos: WorldPos = WorldPos.new(0, 0, 0, 0) : set = _set_world_pos
 
 func _ready():
 	mesh = get_node(mesh_path)
+	add_to_group("actors")
 
 func _set_world_pos(pos: WorldPos):
 	if !world_pos.equals(pos):
@@ -33,3 +35,6 @@ func _set_world_pos(pos: WorldPos):
 
 func set_highlighted(h: bool) -> void:
 	mesh.material_overlay = highlight_flash_material if h else null
+
+func _exit_tree():
+	remove_from_group("actors")

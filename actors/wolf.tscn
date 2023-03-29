@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://clo1morxtewnf"]
+[gd_scene load_steps=14 format=3 uid="uid://clo1morxtewnf"]
 
 [ext_resource type="Script" path="res://actors/actor.gd" id="1_76cet"]
 [ext_resource type="PackedScene" uid="uid://bx4t1q4tl34yf" path="res://assets/wolf.blend" id="2_67304"]
 [ext_resource type="Script" path="res://actors/card_player_component.gd" id="3_2adwi"]
+[ext_resource type="Script" path="res://actors/ai_component.gd" id="3_4v3be"]
 [ext_resource type="Resource" uid="uid://dj6ls1c2w4fy4" path="res://resources/cards/card_claw.tres" id="4_6v1aj"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="4_hcygx"]
 [ext_resource type="Script" path="res://resources/cards/card_instance.gd" id="5_apo5t"]
@@ -28,9 +29,10 @@ card = ExtResource("4_6v1aj")
 script = ExtResource("5_apo5t")
 card = ExtResource("4_6v1aj")
 
-[node name="Actor" type="Node3D" node_paths=PackedStringArray("card_player_component", "health_component", "inventory_component")]
+[node name="Actor" type="Node3D" node_paths=PackedStringArray("ai_component", "card_player_component", "health_component", "inventory_component")]
 script = ExtResource("1_76cet")
 mesh_path = "Model/Cube"
+ai_component = NodePath("AiComponent")
 card_player_component = NodePath("CardPlayerComponent")
 health_component = NodePath("HealthComponent")
 inventory_component = NodePath("InventoryComponent")
@@ -45,6 +47,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
 transform = Transform3D(0.222825, -0.974859, 0, 0.974859, 0.222825, 0, 0, 0, 1, -0.0197379, 0.546832, 0)
 shape = SubResource("CapsuleShape3D_1o36k")
+
+[node name="AiComponent" type="Node" parent="."]
+script = ExtResource("3_4v3be")
 
 [node name="CardPlayerComponent" type="Node" parent="."]
 script = ExtResource("3_2adwi")
