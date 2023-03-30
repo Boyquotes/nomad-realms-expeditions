@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clo1morxtewnf"]
+[gd_scene load_steps=9 format=3 uid="uid://clo1morxtewnf"]
 
 [ext_resource type="Script" path="res://actors/actor.gd" id="1_76cet"]
 [ext_resource type="PackedScene" uid="uid://bx4t1q4tl34yf" path="res://assets/wolf.blend" id="2_67304"]
@@ -6,28 +6,11 @@
 [ext_resource type="Script" path="res://actors/ai_component.gd" id="3_4v3be"]
 [ext_resource type="Resource" uid="uid://dj6ls1c2w4fy4" path="res://resources/cards/card_claw.tres" id="4_6v1aj"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="4_hcygx"]
-[ext_resource type="Script" path="res://resources/cards/card_instance.gd" id="5_apo5t"]
 [ext_resource type="Script" path="res://actors/inventory_component.gd" id="5_udsbm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1o36k"]
-radius = 0.156392
+radius = 0.169769
 height = 0.900054
-
-[sub_resource type="Resource" id="Resource_ot67a"]
-script = ExtResource("5_apo5t")
-card = ExtResource("4_6v1aj")
-
-[sub_resource type="Resource" id="Resource_rs7jy"]
-script = ExtResource("5_apo5t")
-card = ExtResource("4_6v1aj")
-
-[sub_resource type="Resource" id="Resource_f7hxl"]
-script = ExtResource("5_apo5t")
-card = ExtResource("4_6v1aj")
-
-[sub_resource type="Resource" id="Resource_flvl1"]
-script = ExtResource("5_apo5t")
-card = ExtResource("4_6v1aj")
 
 [node name="Actor" type="Node3D" node_paths=PackedStringArray("ai_component", "card_player_component", "health_component", "inventory_component")]
 script = ExtResource("1_76cet")
@@ -53,7 +36,7 @@ script = ExtResource("3_4v3be")
 
 [node name="CardPlayerComponent" type="Node" parent="."]
 script = ExtResource("3_2adwi")
-deck = Array[ExtResource("5_apo5t")]([SubResource("Resource_ot67a"), SubResource("Resource_rs7jy"), SubResource("Resource_f7hxl"), SubResource("Resource_flvl1")])
+starting_hand = Array[Resource("res://resources/cards/card.gd")]([ExtResource("4_6v1aj")])
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_hcygx")

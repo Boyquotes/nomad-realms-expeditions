@@ -30,3 +30,8 @@ func _on_tick_timer_timeout():
 	for card_played_event in card_played_events:
 		var cpe: CardPlayedEvent = card_played_event
 		cpe.card_instance.card.card_effect._handle(cpe.player, cpe.target)
+	
+	for a in get_tree().get_nodes_in_group("actors"):
+		var actor: Actor = a
+		if actor.ai_component:
+			actor.ai_component.update(actor)
