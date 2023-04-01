@@ -19,4 +19,5 @@ func _play_cards(actor: Actor):
 	if card_player_component.hand.is_empty():
 		return
 	else:
-		print("There are some cards in hand!")
+#		print("There are some cards in hand!")
+		var hand: = card_player_component.hand

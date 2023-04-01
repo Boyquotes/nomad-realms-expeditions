@@ -7,9 +7,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_r44ew"]
 font = ExtResource("1_qlnqh")
 font_size = 60
-shadow_size = 10
-shadow_color = Color(0.701961, 0.666667, 0.439216, 0.572549)
-shadow_offset = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hbqm4"]
 font = ExtResource("1_qlnqh")
@@ -22,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_nctui")
 game_scene = ExtResource("2_t831i")
 
@@ -32,7 +30,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.117647, 0.141176, 0.145098, 1)
+mouse_filter = 2
+color = Color(0.117647, 0.137255, 0.164706, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
