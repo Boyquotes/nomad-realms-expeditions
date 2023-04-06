@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 class_name Actor
 
@@ -13,7 +14,7 @@ var mesh: MeshInstance3D
 @export var health_component: HealthComponent
 @export var inventory_component: InventoryComponent
 
-var world_pos: WorldPos = WorldPos.new(0, 0, 0, 0) : set = _set_world_pos
+var world_pos: WorldPos = WorldPos.new(0, 0) : set = _set_world_pos
 
 func _ready():
 	mesh = get_node(mesh_path)
@@ -22,19 +23,38 @@ func _ready():
 func _set_world_pos(pos: WorldPos):
 	if !world_pos.equals(pos):
 		emit_signal('world_pos_changed', world_pos, pos)
+	
+	if not _is_tile():
+		# Change position in world map
+		Global.world_map.actors[world_pos.tile_pos.y][world_pos.tile_pos.x] = null
+		Global.world_map.actors[pos.tile_pos.y][pos.tile_pos.x] = self
+	
 	world_pos = pos
 	
 	var tx: = pos.tile_pos.x
 	var ty: = pos.tile_pos.y
-	var net_x: int = pos.chunk_pos.x * 16 + tx
-	var net_y: int = pos.chunk_pos.y * 16 + ty
 	
-	position.x = 1.5 * net_x
-	# Offset y by half a tile if x is odd
-	position.z = sqrt(3) * (net_y + 0.5 * (tx % 2))
+	position.x = 1.5 * tx
+	# Offset z by half a tile if x is odd
+	position.z = sqrt(3) * (ty + 0.5 * (tx % 2))
 
 func set_highlighted(h: bool) -> void:
 	mesh.material_overlay = highlight_flash_material if h else null
 
 func _exit_tree():
 	remove_from_group("actors")
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: = []
+	var hasArea3D: = false
+	for node in get_children():
+		if node is Area3D:
+			hasArea3D = true
+			break
+	if not hasArea3D:
+		warnings.append("No Area3D found. Consider adding one so that it can" \
+			+ "be hovered over by a cursor.")
+	return warnings
+
+func _is_tile() -> bool:
+	return false

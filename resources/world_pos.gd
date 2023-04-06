@@ -1,18 +1,16 @@
 extends Resource
 class_name WorldPos
 
-@export var chunk_pos: Vector2i
 @export var tile_pos: Vector2i
 
-func _init(cx, cy, tx, ty):
-	chunk_pos = Vector2i(cx, cy)
+func _init(tx, ty):
 	tile_pos = Vector2i(tx, ty)
 
 func shifted() -> bool:
 	return tile_pos.x % 2 == 1
 
 func distance_to(other: WorldPos) -> int:
-	var diff: = other.tile_pos - tile_pos + (other.chunk_pos - chunk_pos) * 16
+	var diff: = other.tile_pos - tile_pos
 	var absDiffX: int = abs(diff.x)
 
 	var yDiffAchievedGoingAlongX: int
@@ -34,7 +32,10 @@ func distance_to(other: WorldPos) -> int:
 		return absDiffX + abs(diff.y) - yDiffAchievedGoingAlongX
 
 func equals(other: WorldPos) -> bool:
-	return chunk_pos == other.chunk_pos && tile_pos == other.tile_pos
+	return tile_pos == other.tile_pos
+
+func plus(x: int, y: int) -> WorldPos:
+	return WorldPos.new(tile_pos.x + x, tile_pos.y + y)
 
 func _to_string():
-	return "WorldPos[" + str(chunk_pos.x) + ", " + str(chunk_pos.y) + "][" + str(tile_pos.x) + ", " + str(tile_pos.y) + "]"
+	return "WorldPos[" + str(tile_pos.x) + ", " + str(tile_pos.y) + "]"
