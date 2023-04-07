@@ -11,6 +11,7 @@ var mesh: MeshInstance3D
 
 @export var ai_component: AiComponent
 @export var card_player_component: CardPlayerComponent
+@export var collision_area: Area3D
 @export var health_component: HealthComponent
 @export var inventory_component: InventoryComponent
 
@@ -37,6 +38,20 @@ func _set_world_pos(pos: WorldPos):
 	position.x = 1.5 * tx
 	# Offset z by half a tile if x is odd
 	position.z = sqrt(3) * (ty + 0.5 * (tx % 2))
+
+func get_neutrality_tags() -> int:
+	return collision_area.collision_layer
+
+func is_an_enemy_to(other: Actor) -> bool:
+	var neutr: = get_neutrality_tags()
+	var other_neutr: = other.get_neutrality_tags()
+	if neutr == other_neutr:
+		return false
+	if neutr & 0b1000 > 0 or other_neutr & 0b1000 > 0:
+		return false
+	if neutr & other_neutr > 0:
+		return false
+	return true
 
 func set_highlighted(h: bool) -> void:
 	mesh.material_overlay = highlight_flash_material if h else null

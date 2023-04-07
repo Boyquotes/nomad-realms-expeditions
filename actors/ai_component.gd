@@ -1,6 +1,10 @@
 extends Node
 class_name AiComponent
 
+@export_range(0, 10) var surrounding_actors_reward_factor: float = 3
+@export_range(0, 10) var health_reward_factor: float = 10
+@export_range(0, 10) var hand_cards_reward_factor: float = 4
+
 const wait_times: Array[int] = [40, 30, 25, 20, 15]
 
 @export_range(0, 4) var intelligence: int = 0
@@ -15,7 +19,32 @@ func update(actor: Actor):
 	else:
 		wait_time_remaining -= 1
 
-func _calculate_state(actor: Actor):
+
+func _reward_function(actor: Actor) -> int:
+	var surroundings: = _get_surroundings(actor)
+	var card_player_comp: = actor.card_player_component
+	var health_comp: = actor.health_component
+	var v: int = 0
+	
+	if surroundings:
+		for i in range(surroundings.size()):
+			for j in range(surroundings[i].size()):
+				var a: Actor = surroundings[i][j]
+				if not a or not a.health_component:
+					continue
+				if actor.is_an_enemy_to(a):
+					v -= a.health_component.health
+				else:
+					v += a.health_component.health
+	
+	if health_comp:
+		v += health_reward_factor * health_comp.health / health_comp.starting_health
+	if card_player_comp:
+		v += hand_cards_reward_factor * card_player_comp.hand.size()
+	
+	return v
+
+func _get_surroundings(actor: Actor) -> Array[Array]:
 	var pos: = actor.world_pos
 	var world_map: = Global.world_map
 	var top_left_x: = pos.tile_pos.x - sight
