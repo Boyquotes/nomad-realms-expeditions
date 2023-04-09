@@ -12,6 +12,11 @@ func calculate_playability(surroundings: Array[Array], player: Actor) -> float:
 	var health_comp: = player.health_component
 	var v: int = 0
 	
+	var num_enemies: = 0
+	var total_enemy_health: = 0
+	
+	var total_friendlies: = 0
+	
 	if surroundings:
 		for i in range(surroundings.size()):
 			for j in range(surroundings[i].size()):
@@ -19,13 +24,21 @@ func calculate_playability(surroundings: Array[Array], player: Actor) -> float:
 				if not a or not a.health_component:
 					continue
 				if player.is_an_enemy_to(a):
-					v -= a.health_component.health
+					num_enemies += 1
+					total_enemy_health += a.health_component.health
 				else:
-					v += a.health_component.health
+					total_friendlies += 1
 	
-	if health_comp:
-		v += health_comp.health / health_comp.starting_health
-	if card_player_comp:
-		v += card_player_comp.hand.size()
+	if num_enemies == 0:
+		return 0
 	
-	return v
+	# If you can one-hit kill
+	if num_enemies == 1 and total_enemy_health <= damage:
+		return 1
+	
+	var avg_enemy_health: float = 1.0 * total_enemy_health / num_enemies
+	
+	if avg_enemy_health < damage:
+		return 1.0 / num_enemies
+	
+	return damage / avg_enemy_health
