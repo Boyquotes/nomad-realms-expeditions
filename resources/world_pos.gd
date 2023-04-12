@@ -37,5 +37,8 @@ func equals(other: WorldPos) -> bool:
 func plus(x: int, y: int) -> WorldPos:
 	return WorldPos.new(tile_pos.x + x, tile_pos.y + y)
 
+func serialize() -> int:
+	return var_to_bytes(tile_pos).decode_s32(0)
+
 func _to_string():
 	return "WorldPos[" + str(tile_pos.x) + ", " + str(tile_pos.y) + "]"

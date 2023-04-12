@@ -17,3 +17,6 @@ func _set_health(h: int) -> void:
 	if h <= 0:
 		emit_signal('health_depleted')
 	health = h
+
+func serialize() -> int:
+	return starting_health << 16 || health

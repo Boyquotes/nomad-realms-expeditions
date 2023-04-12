@@ -19,3 +19,6 @@ func move_card_instance(c: CardInstance, from: String, to: String) -> void:
 	f.remove_at(f.find(c))
 	t.append(c)
 	card_instance_moved.emit(c, from, to)
+
+func serialize() -> int:
+	return 0

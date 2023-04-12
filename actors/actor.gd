@@ -42,6 +42,13 @@ func _set_world_pos(pos: WorldPos):
 func get_neutrality_tags() -> int:
 	return collision_area.collision_layer
 
+func serialize() -> int:
+	var cpc: = card_player_component.serialize() # 64 * 64 bits
+	var hc: = health_component.serialize() # 64 bits
+	# var ic: = inventory_component.serialize() # Not used
+	var wp: = world_pos.serialize() # 128
+	return cpc << 64 | hc << 32 || wp
+
 func is_an_enemy_to(other: Actor) -> bool:
 	var neutr: = get_neutrality_tags()
 	var other_neutr: = other.get_neutrality_tags()
