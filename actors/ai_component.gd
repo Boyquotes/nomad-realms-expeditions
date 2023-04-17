@@ -19,31 +19,6 @@ func update(actor: Actor):
 	else:
 		wait_time_remaining -= 1
 
-
-func _reward_function(actor: Actor) -> int:
-	var surroundings: = _get_surroundings(actor)
-	var card_player_comp: = actor.card_player_component
-	var health_comp: = actor.health_component
-	var v: int = 0
-	
-	if surroundings:
-		for i in range(surroundings.size()):
-			for j in range(surroundings[i].size()):
-				var a: Actor = surroundings[i][j]
-				if not a or not a.health_component:
-					continue
-				if actor.is_an_enemy_to(a):
-					v -= a.health_component.health
-				else:
-					v += a.health_component.health
-	
-	if health_comp:
-		v += health_reward_factor * health_comp.health / health_comp.starting_health
-	if card_player_comp:
-		v += hand_cards_reward_factor * card_player_comp.hand.size()
-	
-	return v
-
 func _get_surroundings(actor: Actor) -> Array[Array]:
 	var pos: = actor.world_pos
 	var world_map: = Global.world_map
@@ -68,5 +43,10 @@ func _play_cards(actor: Actor):
 	if card_player_component.hand.is_empty():
 		return
 	else:
+		var surroundings: = _get_surroundings(actor)
 #		print("There are some cards in hand!")
 		var hand: = card_player_component.hand
+		for i in range(hand.size()):
+			var card_instance: = hand[i]
+			var effect: = card_instance.card.card_effect
+			var playability: = effect.calculate_playability(surroundings, actor)

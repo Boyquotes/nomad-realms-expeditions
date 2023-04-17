@@ -12,11 +12,12 @@
 radius = 0.169769
 height = 0.900054
 
-[node name="Actor" type="Node3D" node_paths=PackedStringArray("ai_component", "card_player_component", "health_component", "inventory_component")]
+[node name="Wolf" type="Node3D" node_paths=PackedStringArray("ai_component", "card_player_component", "collision_area", "health_component", "inventory_component")]
 script = ExtResource("1_76cet")
 mesh_path = "Model/Cube"
 ai_component = NodePath("AiComponent")
 card_player_component = NodePath("CardPlayerComponent")
+collision_area = NodePath("CollisionArea")
 health_component = NodePath("HealthComponent")
 inventory_component = NodePath("InventoryComponent")
 

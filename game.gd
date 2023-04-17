@@ -29,13 +29,12 @@ func set_nomad_position() -> void:
 			if world_map.actors[i][j]:
 				continue
 			empty_positions.append(WorldPos.new(j, i))
-	var world_pos: = empty_positions[empty_positions.size() / 2]
+	var world_pos: = empty_positions[empty_positions.size() / 2 - 2]
 	nomad.world_pos = world_pos
 	world_map.actors[world_pos.tile_pos.y][world_pos.tile_pos.x] = nomad
 
 func _on_spawn_player_timer_timeout() -> void:
 	nomad.visible = true
-	nomad.position.y = 1
 
 func _on_tick_timer_timeout() -> void:
 	var card_played_events: = Global.card_played_events

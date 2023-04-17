@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://brcvh1f4ii8we"]
+
+[ext_resource type="Script" path="res://actors/actor.gd" id="1_hyge4"]
+[ext_resource type="PackedScene" uid="uid://jjhl5o3qv8hn" path="res://assets/target_dummy.blend" id="2_m1l45"]
+[ext_resource type="Script" path="res://actors/health_component.gd" id="3_4l0wt"]
+[ext_resource type="Script" path="res://actors/inventory_component.gd" id="4_mmjwj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ufit4"]
+radius = 0.406555
+height = 2.87357
+
+[node name="TargetDummy" type="Node3D" node_paths=PackedStringArray("collision_area", "health_component", "inventory_component")]
+script = ExtResource("1_hyge4")
+mesh_path = "Model/Cylinder"
+collision_area = NodePath("CollisionArea")
+health_component = NodePath("HealthComponent")
+inventory_component = NodePath("InventoryComponent")
+
+[node name="Model" parent="." instance=ExtResource("2_m1l45")]
+
+[node name="CollisionArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28117, 0)
+shape = SubResource("CapsuleShape3D_ufit4")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_4l0wt")
+starting_health = 1
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("4_mmjwj")

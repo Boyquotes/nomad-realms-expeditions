@@ -19,6 +19,8 @@ var world_pos: WorldPos = WorldPos.new(0, 0) : set = _set_world_pos
 
 func _ready():
 	mesh = get_node(mesh_path)
+	if not _is_tile():
+		print(mesh)
 	add_to_group("actors")
 
 func _set_world_pos(pos: WorldPos):

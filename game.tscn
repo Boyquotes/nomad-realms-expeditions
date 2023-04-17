@@ -14,9 +14,9 @@ script = ExtResource("1_mmfqv")
 spawn_particles_scene = ExtResource("5_q51k1")
 
 [node name="WorldMap" parent="." instance=ExtResource("1_86hr1")]
+preset = 1
 
 [node name="Nomad" parent="." instance=ExtResource("4_wwuov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
@@ -41,7 +41,9 @@ transform = Transform3D(1, 0, 0, 0, 0.697002, 0.717069, 0, -0.717069, 0.697002, 
 shadow_enabled = true
 shadow_reverse_cull_face = true
 
-[node name="UI" parent="." instance=ExtResource("8_wpnpj")]
+[node name="UI" parent="." node_paths=PackedStringArray("camera", "bound_actor") instance=ExtResource("8_wpnpj")]
+camera = NodePath("../Camera")
+bound_actor = NodePath("../Nomad")
 
 [connection signal="timeout" from="SpawnPlayerTimer" to="." method="_on_spawn_player_timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
