@@ -1,30 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn2h0g3k57qgo"]
+[gd_scene load_steps=4 format=3 uid="uid://bb82oojhohgpu"]
 
 [ext_resource type="Script" path="res://actors/actor.gd" id="1_n0heb"]
-[ext_resource type="PackedScene" uid="uid://d2wh27n1oskqh" path="res://assets/tree.glb" id="1_o6byu"]
+[ext_resource type="PackedScene" uid="uid://2wllmdgmfxud" path="res://assets/tree.blend" id="1_rnibo"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="3_duba1"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k25cj"]
-radius = 0.230058
-height = 1.78632
-
-[node name="Tree" type="Node3D" node_paths=PackedStringArray("collision_area", "health_component")]
+[node name="Tree" node_paths=PackedStringArray("mesh", "collision_body", "health_component") instance=ExtResource("1_rnibo")]
 script = ExtResource("1_n0heb")
-mesh_path = "Model/Tree"
-collision_area = NodePath("CollisionArea")
+mesh = NodePath("Model")
+collision_body = NodePath("Model/StaticBody3D")
 health_component = NodePath("HealthComponent")
 
-[node name="Model" parent="." instance=ExtResource("1_o6byu")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-
-[node name="CollisionArea" type="Area3D" parent="."]
+[node name="StaticBody3D" parent="Model" index="0"]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.877173, 0)
-shape = SubResource("CapsuleShape3D_k25cj")
-
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." index="1"]
 script = ExtResource("3_duba1")
-starting_health = 3
+starting_health = 2

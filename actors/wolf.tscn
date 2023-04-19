@@ -1,46 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://clo1morxtewnf"]
+[gd_scene load_steps=7 format=3 uid="uid://c43yjicixvthk"]
 
 [ext_resource type="Script" path="res://actors/actor.gd" id="1_76cet"]
-[ext_resource type="PackedScene" uid="uid://bx4t1q4tl34yf" path="res://assets/wolf.blend" id="2_67304"]
+[ext_resource type="PackedScene" uid="uid://cyectevk0ig8e" path="res://assets/wolf.blend" id="2_67304"]
 [ext_resource type="Script" path="res://actors/card_player_component.gd" id="3_2adwi"]
 [ext_resource type="Script" path="res://actors/ai_component.gd" id="3_4v3be"]
-[ext_resource type="Resource" uid="uid://dj6ls1c2w4fy4" path="res://resources/cards/card_claw.tres" id="4_6v1aj"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="4_hcygx"]
 [ext_resource type="Script" path="res://actors/inventory_component.gd" id="5_udsbm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1o36k"]
-radius = 0.169769
-height = 0.900054
-
-[node name="Wolf" type="Node3D" node_paths=PackedStringArray("ai_component", "card_player_component", "collision_area", "health_component", "inventory_component")]
+[node name="Wolf" node_paths=PackedStringArray("mesh", "collision_body", "ai_component", "card_player_component", "health_component", "inventory_component") instance=ExtResource("2_67304")]
 script = ExtResource("1_76cet")
-mesh_path = "Model/Cube"
+mesh = NodePath("Model")
+collision_body = NodePath("Model/StaticBody3D")
 ai_component = NodePath("AiComponent")
 card_player_component = NodePath("CardPlayerComponent")
-collision_area = NodePath("CollisionArea")
 health_component = NodePath("HealthComponent")
 inventory_component = NodePath("InventoryComponent")
 
-[node name="Model" parent="." instance=ExtResource("2_67304")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-
-[node name="CollisionArea" type="Area3D" parent="."]
-collision_layer = 8
+[node name="StaticBody3D" parent="Model" index="0"]
+collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(0.222825, -0.974859, 0, 0.974859, 0.222825, 0, 0, 0, 1, -0.0197379, 0.546832, 0)
-shape = SubResource("CapsuleShape3D_1o36k")
-
-[node name="AiComponent" type="Node" parent="."]
+[node name="AiComponent" type="Node" parent="." index="1"]
 script = ExtResource("3_4v3be")
 
-[node name="CardPlayerComponent" type="Node" parent="."]
+[node name="CardPlayerComponent" type="Node" parent="." index="2"]
 script = ExtResource("3_2adwi")
-starting_hand = Array[Resource("res://resources/cards/card.gd")]([ExtResource("4_6v1aj")])
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." index="3"]
 script = ExtResource("4_hcygx")
 
-[node name="InventoryComponent" type="Node" parent="."]
+[node name="InventoryComponent" type="Node" parent="." index="4"]
 script = ExtResource("5_udsbm")

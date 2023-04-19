@@ -1,34 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://brcvh1f4ii8we"]
+[gd_scene load_steps=5 format=3 uid="uid://b3qcqk0amh57v"]
 
-[ext_resource type="Script" path="res://actors/actor.gd" id="1_hyge4"]
-[ext_resource type="PackedScene" uid="uid://jjhl5o3qv8hn" path="res://assets/target_dummy.blend" id="2_m1l45"]
-[ext_resource type="Script" path="res://actors/health_component.gd" id="3_4l0wt"]
-[ext_resource type="Script" path="res://actors/inventory_component.gd" id="4_mmjwj"]
+[ext_resource type="PackedScene" uid="uid://dy46x622drh4s" path="res://assets/target_dummy.blend" id="1_kedvw"]
+[ext_resource type="Script" path="res://actors/actor.gd" id="2_2shqj"]
+[ext_resource type="Script" path="res://actors/health_component.gd" id="3_skmfp"]
+[ext_resource type="Material" uid="uid://dy8vxubmse0oq" path="res://visuals/shaders/highlight_flash.tres" id="3_ytxaj"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ufit4"]
-radius = 0.406555
-height = 2.87357
-
-[node name="TargetDummy" type="Node3D" node_paths=PackedStringArray("collision_area", "health_component", "inventory_component")]
-script = ExtResource("1_hyge4")
-mesh_path = "Model/Cylinder"
-collision_area = NodePath("CollisionArea")
+[node name="TargetDummy" node_paths=PackedStringArray("mesh", "collision_body", "health_component") instance=ExtResource("1_kedvw")]
+script = ExtResource("2_2shqj")
+mesh = NodePath("Model")
+collision_body = NodePath("Model/StaticBody3D")
 health_component = NodePath("HealthComponent")
-inventory_component = NodePath("InventoryComponent")
 
-[node name="Model" parent="." instance=ExtResource("2_m1l45")]
+[node name="Model" parent="." index="0"]
+material_overlay = ExtResource("3_ytxaj")
 
-[node name="CollisionArea" type="Area3D" parent="."]
+[node name="StaticBody3D" parent="Model" index="0"]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28117, 0)
-shape = SubResource("CapsuleShape3D_ufit4")
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_4l0wt")
+[node name="HealthComponent" type="Node" parent="." index="1"]
+script = ExtResource("3_skmfp")
 starting_health = 1
-
-[node name="InventoryComponent" type="Node" parent="."]
-script = ExtResource("4_mmjwj")

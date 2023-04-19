@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bwmyvmb2ehk0u"]
 
-[ext_resource type="PackedScene" uid="uid://cntiis8v6031o" path="res://map/world_map.tscn" id="1_86hr1"]
+[ext_resource type="PackedScene" uid="uid://s5r53hlkahgj" path="res://map/world_map.tscn" id="1_86hr1"]
 [ext_resource type="Script" path="res://game.gd" id="1_mmfqv"]
 [ext_resource type="Script" path="res://camera.gd" id="2_r5jb8"]
-[ext_resource type="PackedScene" uid="uid://cjv5mnk37jv2" path="res://actors/nomad.tscn" id="4_wwuov"]
+[ext_resource type="PackedScene" uid="uid://dycghq6eydtkq" path="res://actors/nomad.tscn" id="4_wwuov"]
 [ext_resource type="Environment" uid="uid://brpkeewkxrpif" path="res://default_env.tres" id="5_1arwp"]
 [ext_resource type="PackedScene" uid="uid://blfq2k0wnvxn2" path="res://visuals/camera_pivot.tscn" id="5_n3djb"]
 [ext_resource type="PackedScene" uid="uid://cfv85kcdtqm1j" path="res://visuals/fx/spawn/spawn_particles.tscn" id="5_q51k1"]
@@ -20,6 +20,7 @@ preset = 1
 visible = false
 
 [node name="CameraPivot" parent="Nomad" instance=ExtResource("5_n3djb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_pivot")]
 environment = ExtResource("5_1arwp")

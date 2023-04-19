@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://visuals/ui/card_dashboard_gui.gd" id="1_6rwx1"]
 [ext_resource type="PackedScene" uid="uid://dsnt2u1bgvqcc" path="res://visuals/ui/card_gui.tscn" id="2_obixq"]
-[ext_resource type="PackedScene" uid="uid://b4g6iw076524" path="res://assets/card_hand_gui.blend" id="2_sjr7q"]
+[ext_resource type="PackedScene" uid="uid://b48qml8hb17cp" path="res://assets/card_hand_gui.blend" id="2_sjr7q"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jibtt"]
 plane = Plane(0, 0, 1, 0.12)

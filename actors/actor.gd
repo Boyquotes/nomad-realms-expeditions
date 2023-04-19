@@ -6,22 +6,28 @@ signal world_pos_changed(old, new)
 
 var highlight_flash_material: ShaderMaterial = preload("res://visuals/shaders/highlight_flash.tres")
 
-@export var mesh_path: String
-var mesh: MeshInstance3D
+@export var mesh: MeshInstance3D :
+	set(new_mesh):
+		mesh = new_mesh
+		update_configuration_warnings()
+@export var collision_body: StaticBody3D :
+	set(new_collision_body):
+		collision_body = new_collision_body
+		update_configuration_warnings()
 
+@export_group("Components")
 @export var ai_component: AiComponent
 @export var card_player_component: CardPlayerComponent
-@export var collision_area: Area3D
 @export var health_component: HealthComponent
 @export var inventory_component: InventoryComponent
 
 var world_pos: WorldPos = WorldPos.new(0, 0) : set = _set_world_pos
 
-func _ready():
-	mesh = get_node(mesh_path)
-	if not _is_tile():
-		print(mesh)
+func _enter_tree():
 	add_to_group("actors")
+
+func _ready():
+	pass
 
 func _set_world_pos(pos: WorldPos):
 	if !world_pos.equals(pos):
@@ -42,7 +48,7 @@ func _set_world_pos(pos: WorldPos):
 	position.z = sqrt(3) * (ty + 0.5 * (tx % 2))
 
 func get_neutrality_tags() -> int:
-	return collision_area.collision_layer
+	return collision_body.collision_layer
 
 func serialize() -> int:
 	var cpc: = card_player_component.serialize() # 64 * 64 bits
@@ -68,17 +74,13 @@ func set_highlighted(h: bool) -> void:
 func _exit_tree():
 	remove_from_group("actors")
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: = []
-	var hasArea3D: = false
-	for node in get_children():
-		if node is Area3D:
-			hasArea3D = true
-			break
-	if not hasArea3D:
-		warnings.append("No Area3D found. Consider adding one so that it can" \
-			+ "be hovered over by a cursor.")
-	return warnings
-
 func _is_tile() -> bool:
 	return false
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	if !mesh:
+		warnings.append("No mesh found.")
+	if !collision_body:
+		warnings.append("No collision body found.")
+	return warnings

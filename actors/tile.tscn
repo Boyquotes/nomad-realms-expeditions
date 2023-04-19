@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://7skycoiwnloj"]
+[gd_scene load_steps=3 format=3 uid="uid://ep5312ct1cbu"]
 
-[ext_resource type="Script" path="res://actors/tile.gd" id="1_xg5sn"]
-[ext_resource type="PackedScene" uid="uid://cvgle3uoqtjq5" path="res://assets/tile.glb" id="2_v2ial"]
+[ext_resource type="Script" path="res://actors/tile.gd" id="2_dqrxp"]
+[ext_resource type="PackedScene" uid="uid://htb806ymh6ug" path="res://assets/tile.blend" id="2_pp4iv"]
 
-[node name="Tile" type="Node3D"]
-script = ExtResource("1_xg5sn")
-mesh_path = "Model/Hexagon"
+[node name="Tile" node_paths=PackedStringArray("mesh", "collision_body") instance=ExtResource("2_pp4iv")]
+script = ExtResource("2_dqrxp")
+mesh = NodePath("Model")
+collision_body = NodePath("Model/StaticBody3D")
 
-[node name="Model" parent="." instance=ExtResource("2_v2ial")]
+[node name="StaticBody3D" parent="Model" index="0"]
+collision_mask = 0

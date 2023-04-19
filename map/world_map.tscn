@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cntiis8v6031o"]
+[gd_scene load_steps=6 format=3 uid="uid://s5r53hlkahgj"]
 
 [ext_resource type="Script" path="res://map/world_map.gd" id="1_wchbe"]
-[ext_resource type="PackedScene" uid="uid://7skycoiwnloj" path="res://actors/tile.tscn" id="2_uxwaq"]
-[ext_resource type="PackedScene" uid="uid://bn2h0g3k57qgo" path="res://actors/tree.tscn" id="3_ydino"]
-[ext_resource type="PackedScene" uid="uid://clo1morxtewnf" path="res://actors/wolf.tscn" id="4_mmlir"]
-[ext_resource type="PackedScene" uid="uid://brcvh1f4ii8we" path="res://actors/target_dummy.tscn" id="5_d820w"]
+[ext_resource type="PackedScene" uid="uid://ep5312ct1cbu" path="res://actors/tile.tscn" id="2_uxwaq"]
+[ext_resource type="PackedScene" uid="uid://bb82oojhohgpu" path="res://actors/tree.tscn" id="3_ydino"]
+[ext_resource type="PackedScene" uid="uid://c43yjicixvthk" path="res://actors/wolf.tscn" id="4_0cje0"]
+[ext_resource type="PackedScene" uid="uid://b3qcqk0amh57v" path="res://actors/target_dummy.tscn" id="5_d820w"]
 
 [node name="WorldMap" type="Node3D"]
 script = ExtResource("1_wchbe")
 tile_scene = ExtResource("2_uxwaq")
 tree_scene = ExtResource("3_ydino")
-wolf_scene = ExtResource("4_mmlir")
+wolf_scene = ExtResource("4_0cje0")
 target_dummy_scene = ExtResource("5_d820w")

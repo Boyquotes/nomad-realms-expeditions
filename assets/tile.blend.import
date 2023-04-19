@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cyectevk0ig8e"
-path="res://.godot/imported/wolf.blend-e2f99bc731e1763edecf12d08491af67.scn"
+uid="uid://bkslb5g46b46x"
+path="res://.godot/imported/tile.blend-8efef01bcb522e5133267710f9a4b439.scn"
 
 [deps]
 
-source_file="res://assets/wolf.blend"
-dest_files=["res://.godot/imported/wolf.blend-e2f99bc731e1763edecf12d08491af67.scn"]
+source_file="res://assets/tile.blend"
+dest_files=["res://.godot/imported/tile.blend-8efef01bcb522e5133267710f9a4b439.scn"]
 
 [params]
 

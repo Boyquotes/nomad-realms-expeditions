@@ -27,17 +27,17 @@ func _unhandled_input(event):
 		var to: = from + camera.project_ray_normal(mouse_pos) * 400
 		params.from = from
 		params.to = to
-		params.collision_mask = card.target_type # Important!
-		params.collide_with_areas = true
-		params.collide_with_bodies = false
+		params.collision_mask = 0b1111110 # Important!
+		print(card.target_type)
 		
 		var collision: = get_world_3d().direct_space_state.intersect_ray(params)
 		
 		if "collider" in collision:
+			print("target " + collision.collider.to_string())
 			if card_target != null:
 				# Unhighlight previous target
 				card_target.set_highlighted(false)
-			card_target = collision.collider.get_parent()
+			card_target = collision.collider.get_parent().get_parent()
 			# TODO: Target Predicate (e.g. range)
 #			var target_predicate = card.target_predicate
 #			if target_predicate != null && target_predicate.call(bound_actor, potential_target):
@@ -48,7 +48,12 @@ func _unhandled_input(event):
 			else:
 				card_target = null
 			get_viewport().set_input_as_handled()
+		else:
+			if card_target:
+				card_target.set_highlighted(false)
 	elif Input.is_action_just_released("interact"):
+		if card.target_type > 0 && not card_target:
+			return
 		var card_player: = bound_actor.card_player_component
 		card_player.move_card_instance(card_instance, "hand", "discard")
 		# We don't handle the effect immediately. Instead, we queue it up

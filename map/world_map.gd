@@ -34,7 +34,7 @@ func generate_terrain() -> void:
 			if not Engine.is_editor_hint():
 				tile.world_pos = WorldPos.new(j, i)
 			tiles[i][j] = tile
-			tile.position.y = -1
+			tile.position.y = -1 + randf_range(0, 0.1)
 			add_child(tile)
 			tile.world_pos = WorldPos.new(j, i)
 
