@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk666fjv0cxvu"]
+
+[sub_resource type="Curve" id="Curve_rk3dl"]
+_data = [Vector2(0, 0.0454545), 0.0, 0.0, 0, 0, Vector2(0.120729, 0.963636), 0.0, 0.0, 0, 0, Vector2(0.273349, 0.827273), 0.0, 0.0, 0, 0, Vector2(0.46697, 0.981818), 0.0, 0.0, 0, 0, Vector2(0.678815, 0.718182), 0.0, 0.0, 0, 0, Vector2(0.861048, 0.909091), 0.0, 0.0, 0, 0, Vector2(0.993166, 0.0363636), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_tckmy"]
+curve = SubResource("Curve_rk3dl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rn2rv"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.3, 1)
+spread = 40.0
+flatness = 0.4
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+linear_accel_min = -0.3
+linear_accel_max = -0.05
+scale_min = 0.4
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_tckmy")
+color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omsgw"]
+albedo_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kgfhn"]
+material = SubResource("StandardMaterial3D_omsgw")
+radial_segments = 16
+rings = 8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1s34n"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t3pr"]
+shading_mode = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_wa73f"]
+material = SubResource("StandardMaterial3D_3t3pr")
+shape = 0
+size = 0.3
+
+[node name="LightingParticles" type="GPUParticles3D"]
+emitting = false
+amount = 64
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.54
+process_material = SubResource("ParticleProcessMaterial_rn2rv")
+draw_pass_1 = SubResource("SphereMesh_kgfhn")
+
+[node name="Zap" type="GPUParticles3D" parent="."]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_1s34n")
+draw_pass_1 = SubResource("RibbonTrailMesh_wa73f")
