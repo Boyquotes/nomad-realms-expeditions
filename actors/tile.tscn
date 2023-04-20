@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ep5312ct1cbu"]
+[gd_scene load_steps=4 format=3 uid="uid://ep5312ct1cbu"]
 
 [ext_resource type="Script" path="res://actors/tile.gd" id="2_dqrxp"]
-[ext_resource type="PackedScene" uid="uid://htb806ymh6ug" path="res://assets/tile.blend" id="2_pp4iv"]
+[ext_resource type="PackedScene" uid="uid://bkslb5g46b46x" path="res://assets/tile.blend" id="2_pp4iv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ithln"]
+albedo_color = Color(0.447059, 0.756863, 0.396078, 1)
 
 [node name="Tile" node_paths=PackedStringArray("mesh", "collision_body") instance=ExtResource("2_pp4iv")]
 script = ExtResource("2_dqrxp")
 mesh = NodePath("Model")
 collision_body = NodePath("Model/StaticBody3D")
+
+[node name="Model" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ithln")
 
 [node name="StaticBody3D" parent="Model" index="0"]
 collision_mask = 0

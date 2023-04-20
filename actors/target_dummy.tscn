@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3qcqk0amh57v"]
+[gd_scene load_steps=4 format=3 uid="uid://b3qcqk0amh57v"]
 
 [ext_resource type="PackedScene" uid="uid://dy46x622drh4s" path="res://assets/target_dummy.blend" id="1_kedvw"]
 [ext_resource type="Script" path="res://actors/actor.gd" id="2_2shqj"]
 [ext_resource type="Script" path="res://actors/health_component.gd" id="3_skmfp"]
-[ext_resource type="Material" uid="uid://dy8vxubmse0oq" path="res://visuals/shaders/highlight_flash.tres" id="3_ytxaj"]
 
 [node name="TargetDummy" node_paths=PackedStringArray("mesh", "collision_body", "health_component") instance=ExtResource("1_kedvw")]
 script = ExtResource("2_2shqj")
 mesh = NodePath("Model")
 collision_body = NodePath("Model/StaticBody3D")
 health_component = NodePath("HealthComponent")
-
-[node name="Model" parent="." index="0"]
-material_overlay = ExtResource("3_ytxaj")
 
 [node name="StaticBody3D" parent="Model" index="0"]
 collision_layer = 8

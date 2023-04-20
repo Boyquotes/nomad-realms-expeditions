@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 class_name Actor
 
@@ -6,14 +5,8 @@ signal world_pos_changed(old, new)
 
 var highlight_flash_material: ShaderMaterial = preload("res://visuals/shaders/highlight_flash.tres")
 
-@export var mesh: MeshInstance3D :
-	set(new_mesh):
-		mesh = new_mesh
-		update_configuration_warnings()
-@export var collision_body: StaticBody3D :
-	set(new_collision_body):
-		collision_body = new_collision_body
-		update_configuration_warnings()
+@export var mesh: MeshInstance3D
+@export var collision_body: StaticBody3D
 
 @export_group("Components")
 @export var ai_component: AiComponent
@@ -77,10 +70,3 @@ func _exit_tree():
 func _is_tile() -> bool:
 	return false
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: PackedStringArray = []
-	if !mesh:
-		warnings.append("No mesh found.")
-	if !collision_body:
-		warnings.append("No collision body found.")
-	return warnings

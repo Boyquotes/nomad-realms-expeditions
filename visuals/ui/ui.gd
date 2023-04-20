@@ -27,13 +27,11 @@ func _unhandled_input(event):
 		var to: = from + camera.project_ray_normal(mouse_pos) * 400
 		params.from = from
 		params.to = to
-		params.collision_mask = 0b1111110 # Important!
-		print(card.target_type)
+		params.collision_mask = card.target_type # Important!
 		
 		var collision: = get_world_3d().direct_space_state.intersect_ray(params)
 		
 		if "collider" in collision:
-			print("target " + collision.collider.to_string())
 			if card_target != null:
 				# Unhighlight previous target
 				card_target.set_highlighted(false)
